@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+@import './variables.css';
+@import './utility-classes.css';
+
+
+/* Resets */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+a{
+	text-decoration: none;
+  	color: inherit;
+}
+
+
+ul,
+ol,
+li{
+	list-style: none;
+}
+
+img, picture, video, canvas, svg {
+  	display: block;
+  	max-width: 100%;
+}
+
+input, button, textarea, select {
+  	font: inherit;
+}
+
+nav li {
+	color: currentColor;
+}
+
+/* universal styles and layout*/
+
+html{
+	height: 100%;
+	font-size: 16px;
+}
+
+body {
+	min-height: 100%;
+	background: var(--moon-papper);
+	color: var(--ultramarine-8);
+  	font-family: Montserrat;
+  	line-height: 1.75;
+  	font-size: var(--fs-body);
+	display: grid;
+}
+
+body > *{
+	display: grid;
+	grid-template-rows: auto auto auto 1fr auto;
+}
+
+.wrapper{
+	--element-max-width: var(--fluid-480-1200);
+	--inline-padding: 2rem;
+
+	width: min(var(--element-max-width), 100% - (var(--inline-padding) * 2));
+	margin-inline: auto;
+}
+
+.flow > * + * {
+	/* all els except first, + is next sibling selector */ 
+    margin-top: var(--flow-spacer, 3rem);
+}
+
+.flow {
+	margin-bottom: 3rem;
+}
+
+/* general link styles */ 
+
+footer{
+	a:is(:hover, :focus){
+		color: var(--goldenrod-2);
+	}
+}
+
+p {
+	a:is(:hover, :focus){
+		color: var(--monza-5);
+	}
+}
+
+.gallery-nav{
+	a:is(:hover, :focus){
+		color: var(--young-orange-4);
+	}
+}
+
+a:has(> svg){
+	width: max-content;
+}
+
+/* typeset styling */
+
+
+h1,
+h2,
+h3,
+h4 {
+	color: var(--ultramarine-8);
+}
+
+h1 {
+    font-size: var(--fs-1000);
+    line-height: 1.05;
+    text-transform: uppercase;
+    font-weight: 800;
+    text-wrap: balance;
+}
+
+h2{
+	font-size: var(--fs-700);
+}
+
+p {
+	text-wrap: pretty;
+
+	a{
+		text-decoration-line: underline;
+  		text-decoration-color: var(--carrot-4);
+  		text-decoration-style: double;
+  		text-decoration-thickness: .5px;
+  		text-underline-offset: 2px;
+	}
+}
+
+
+
+
+
+
+

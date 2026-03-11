@@ -1,0 +1,199 @@
+:root{
+
+--radio-dial: 10px;
+--before-display: block;
+--content-max-width: 100%;
+
+
+/* Font sizes - from https://utopia.fyi/*/ 
+/* min viewport: 800, 16, 1.2 | max viewport 1920, 22, 1.25*/
+
+--fs-100: clamp(0.4823rem, 0.4219rem + 0.1177vw, 0.5632rem);
+--fs-200: clamp(0.5787rem, 0.4853rem + 0.1822vw, 0.704rem);
+--fs-300: clamp(0.6944rem, 0.5561rem + 0.2699vw, 0.88rem);
+--fs-400: clamp(0.8333rem, 0.6345rem + 0.3879vw, 1.1rem);
+--fs-500: clamp(1rem, 0.7205rem + 0.5455vw, 1.375rem);
+--fs-600: clamp(1.2rem, 0.8133rem + 0.7545vw, 1.7188rem);
+--fs-700: clamp(1.44rem, 0.9119rem + 1.0305vw, 2.1484rem);
+--fs-800: clamp(1.728rem, 1.0142rem + 1.3928vw, 2.6855rem);
+--fs-900: clamp(2.0736rem, 1.1169rem + 1.8667vw, 3.3569rem);
+--fs-1000: clamp(2.4883rem, 1.2152rem + 2.4841vw, 4.1962rem);
+
+--fs-body: var(--fs-500);
+--fs-primary-heading: var(--fs-800);
+--fs-secondary-heading: var(--fs-700);
+--fs-tertiary-heading: var(--fs-600);
+--fs-main-nav: var(--fs-700);
+--fs-secondary-nav: var(--fs-600);
+--fs-note: var(--fs-400);
+--fs-small-note: var(--fs-300);
+--fs-logo: var(--fs-900);
+
+/* font weights */
+
+--fw-normal: 300;
+--fw-semi-bold: 500;
+--fw-bold: 900;
+
+/* Spacing */
+
+--space-3xs: clamp(0.25rem, 0.1568rem + 0.1818vw, 0.375rem);
+--space-2xs: clamp(0.5rem, 0.3602rem + 0.2727vw, 0.6875rem);
+--space-xs: clamp(0.75rem, 0.517rem + 0.4545vw, 1.0625rem);
+--space-s: clamp(1rem, 0.7205rem + 0.5455vw, 1.375rem);
+--space-m: clamp(1.5rem, 1.0807rem + 0.8182vw, 2.0625rem);
+--space-l: clamp(2rem, 1.4409rem + 1.0909vw, 2.75rem);
+--space-xl: clamp(3rem, 2.1614rem + 1.6364vw, 4.125rem);
+--space-2xl: clamp(4rem, 2.8818rem + 2.1818vw, 5.5rem);
+--space-3xl: clamp(6rem, 4.3227rem + 3.2727vw, 8.25rem);
+
+/* One-up pairs */
+
+--space-3xs-2xs: clamp(0.25rem, -0.0761rem + 0.6364vw, 0.6875rem);
+--space-2xs-xs: clamp(0.5rem, 0.0807rem + 0.8182vw, 1.0625rem);
+--space-xs-s: clamp(0.75rem, 0.2841rem + 0.9091vw, 1.375rem);
+--space-s-m: clamp(1rem, 0.208rem + 1.5455vw, 2.0625rem);
+--space-m-l: clamp(1.5rem, 0.5682rem + 1.8182vw, 2.75rem);
+--space-l-xl: clamp(2rem, 0.4159rem + 3.0909vw, 4.125rem);
+--space-xl-2xl: clamp(3rem, 1.1364rem + 3.6364vw, 5.5rem);
+--space-2xl-3xl: clamp(4rem, 0.8318rem + 6.1818vw, 8.25rem);
+
+/* Custom pairs */
+
+--space-s-l: clamp(1rem, -0.3045rem + 2.5455vw, 2.75rem);
+--space-l-xl: clamp(2rem, 0.4159rem + 3.0909vw, 4.125rem);
+--fluid-400-1000: clamp(25rem, 0rem + 52.0833vw, 62.5rem);
+--fluid-480-1200: clamp(30rem, 0rem + 62.5vw, 75rem);
+--fluid-14-32: clamp(0.875rem, 0.125rem + 1.5625vw, 2rem);
+--fluid-20-48: clamp(1.25rem, 0.0833rem + 2.4306vw, 3rem);
+--fluid-640-1600: clamp(40rem, 0rem + 83.3333vw, 100rem);
+
+/* Fluid Grid */
+
+--grid-scale-factor: .5;
+--grid-max-width: calc(152.63rem * (1 + var(--grid-scale-factor)));
+--grid-gutter: var(--space-l-xl, clamp(2.25rem, 1.3898rem + 1.7921vw, 4.125rem));
+--grid-columns: 12;
+
+/* Colors - singletons */
+
+--moon-papper: hsl(54, 80%, 96%);
+--goldenrod: hsl(46, 99%, 71%);
+--teak: hsl(43, 29%, 51%);
+--bluemaine: hsl(207, 61%, 30%);
+--bluemaine-filter: hsla(207, 61%, 30%, .5);
+--emerald: hsl(150, 52%, 51%);
+--deep-forest: hsl(165, 48%, 27%);
+--monza: hsl(356, 100%, 41%);
+--monza-filter: hsl(356, 100%, 20%, .4);
+
+/* Colors - pallete scales */
+
+--monza-0: hsl(356, 100%, 90%);
+--monza-1: hsl(356, 100%, 80%);
+--monza-2: hsl(356, 100%, 70%);
+--monza-3: hsl(356, 100%, 60%);
+--monza-4: hsl(356, 100%, 50%);
+--monza-5: hsl(356, 100%, 40%);
+--monza-6: hsl(356, 100%, 30%);
+--monza-7: hsl(356, 100%, 20%);
+--monza-8: hsl(356, 100%, 10%);
+
+--ultramarine-0: hsl(228, 90%, 90%);
+--ultramarine-1: hsl(228, 90%, 80%);
+--ultramarine-2: hsl(228, 90%, 70%);
+--ultramarine-3: hsl(228, 90%, 60%);
+--ultramarine-4: hsl(228, 90%, 50%);
+--ultramarine-5: hsl(228, 90%, 40%);
+--ultramarine-6: hsl(228, 90%, 30%);
+--ultramarine-7: hsl(228, 90%, 20%);
+--ultramarine-8: hsl(228, 90%, 10%);
+
+--moon-paper-0: hsl(54, 80%, 95%);
+--moon-paper-1: hsl(54, 80%, 85%);
+--moon-paper-2: hsl(54, 80%, 75%);
+--moon-paper-3: hsl(54, 80%, 65%);
+--moon-paper-4: hsl(54, 80%, 55%);
+
+--moon-glow-0: hsl(54, 95%, 90%);
+--moon-glow-1: hsl(54, 95%, 80%);
+--moon-glow-2: hsl(54, 95%, 70%);
+--moon-glow-3: hsl(54, 95%, 60%);
+--moon-glow-4: hsl(54, 95%, 50%);
+
+--goldenrod-0: hsl(46, 99%, 90%);
+--goldenrod-1: hsl(46, 99%, 80%);
+--goldenrod-2: hsl(46, 99%, 70%);
+--goldenrod-3: hsl(46, 99%, 60%);
+--goldenrod-4: hsl(46, 99%, 50%);
+--goldenrod-5: hsl(46, 99%, 40%);
+
+--lemon-burst-0: hsl(50, 100%, 85%);
+--lemon-burst-1: hsl(50, 100%, 75%);
+--lemon-burst-2: hsl(50, 100%, 65%);
+--lemon-burst-3: hsl(50, 100%, 55%);
+--lemon-burst-4: hsl(50, 100%, 45%);
+--lemon-burst-5: hsl(50, 100%, 35%);
+
+--carrot-0: hsl(28, 80%, 90%);
+--carrot-1: hsl(28, 80%, 80%);
+--carrot-2: hsl(28, 80%, 70%);
+--carrot-3: hsl(28, 80%, 60%);
+--carrot-4: hsl(28, 80%, 50%);
+--carrot-5: hsl(28, 80%, 40%);
+
+--young-orange-0: hsl(43, 100%, 90%);
+--young-orange-1: hsl(43, 100%, 80%);
+--young-orange-2: hsl(43, 100%, 70%);
+--young-orange-3: hsl(43, 100%, 60%);
+--young-orange-4: hsl(43, 100%, 50%);
+--young-orange-5: hsl(43, 100%, 40%);
+
+--old-orange-0: hsl(12, 98%, 90%);
+--old-orange-1: hsl(12, 98%, 80%);
+--old-orange-2: hsl(12, 98%, 70%);
+--old-orange-3: hsl(12, 98%, 60%);
+--old-orange-4: hsl(12, 98%, 50%);
+--old-orange-5: hsl(12, 98%, 40%);
+
+--scarlet-0: hsl(354, 93%, 70%);
+--scarlet-1: hsl(354, 93%, 60%);
+--scarlet-2: hsl(354, 93%, 50%);
+--scarlet-3: hsl(354, 93%, 40%);
+--scarlet-4: hsl(354, 93%, 30%);
+--scarlet-5: hsl(354, 93%, 20%);
+
+
+--lime-0: hsl(118, 95%, 90%);
+--lime-1: hsl(118, 95%, 80%);
+--lime-2: hsl(118, 95%, 70%);
+--lime-3: hsl(118, 95%, 60%);
+--lime-4: hsl(118, 95%, 50%);
+--lime-5: hsl(118, 95%, 40%);
+--lime-6: hsl(118, 95%, 30%);
+--lime-7: hsl(118, 95%, 20%);
+
+--deepslate-0: hsl(202, 32%, 90%);
+--deepslate-1: hsl(202, 32%, 80%);
+--deepslate-2: hsl(202, 32%, 70%);
+--deepslate-3: hsl(202, 32%, 60%);
+--deepslate-4: hsl(202, 32%, 50%);
+--deepslate-5: hsl(202, 32%, 40%);
+--deepslate-6: hsl(202, 32%, 30%);
+--deepslate-7: hsl(202, 32%, 15%);
+--deepslate-8: hsl(202, 32%, 10%);
+
+--mountain-0: hsl(168, 76%, 90%);
+--mountain-1: hsl(168, 76%, 80%);
+--mountain-2: hsl(168, 76%, 70%);
+--mountain-3: hsl(168, 76%, 60%);
+--mountain-4: hsl(168, 76%, 50%);
+--mountain-5: hsl(168, 76%, 40%);
+--mountain-6: hsl(168, 76%, 30%);
+
+
+
+
+}
+
+

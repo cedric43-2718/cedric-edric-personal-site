@@ -1,0 +1,131 @@
+
+/* Text based Colors */
+
+.text-primary{
+	color: var(--ultramarine-8);
+}
+
+.text-secondary{
+	color: var(--mountain-0);
+}
+
+.text-info-1000{
+	color: var(--goldenrod-2);
+}
+
+.text-info-1001{
+	color: var(--goldenrod-3);
+}
+
+.text-info-1002{
+	color: var(--goldenrod-4);
+}
+
+.text-info-2000{
+	color: var(--young-orange-2);
+}
+
+.text-info-2001{
+	color: var(--young-orange-3);
+}
+
+.text-info-2002 {
+	color: var(--young-orange-4);
+}
+
+.text-accent-1000{
+	color: var(--carrot-3);
+}
+
+.text-accent-1001{
+	color: var(--carrot-4);
+}
+
+.text-accent-1002{
+	color: var(--carrot-5);
+}
+
+.text-accent-2000{
+	color: var(--deepslate-5);
+}
+
+.text-accent-2001{
+	color: var(--deepslate-6);
+}
+
+.text-accent-2002{
+	color: var(--deepslate-7);
+}
+
+.text-accent-3000{
+	color: var(--monza-5);
+}
+
+.text-accent-3001{
+	color: var(--monza-6);
+}
+
+.text-accent-3002{
+	color: var(--monza-7);
+}
+
+/* Background Colors */
+
+.bg-primary{
+	background-color: var(--moon-papper);
+}
+
+.bg-secondary{
+	background-color: var(--deepslate-7);
+}
+
+
+/* Font Sizes & Weights */
+
+.fs-primary-heading{
+	font-size: var(--fs-primary-heading);
+}
+
+.fs-secondary-heading{
+	font-size: var(--fs-secondary-heading);
+}
+
+.fs-tertiary-heading{
+	font-size: var(--fs-tertiary-heading);
+}
+
+.fs-main-nav{
+	font-size: var(--fs-main-nav);
+}
+
+.fs-secondary-nav{
+	font-size: var(--fs-secondary-nav);
+}
+
+.fs-note{
+	font-size: var(--fs-note);
+}
+
+.fs-small-note{
+	font-size: var(--fs-small-note);
+}
+
+.fs-logo{
+	font-size: var(--fs-logo);
+}
+
+.fw-normal {
+	font-weight: var(--fw-normal);
+}
+
+.fw-semibold {
+	font-weight: var(--fw-semi-bold);
+}
+
+.fw-bold{
+	font-weight: var(--fw-bold);
+}
+
+
+
+
