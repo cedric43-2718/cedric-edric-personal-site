@@ -11,21 +11,21 @@
 						<li>
 							<a aria-label="linkedin" href="https://www.linkedin.com/in/jason-rudokas-08856610/" target="_blank">
 								<svg class="social-icon">
-  									<use href="../assets/images/social-icons.svg#linkedin"></use>
+  									<use href="/public/social-icons.svg#linkedin"></use>
 								</svg>
 							</a>
 						</li>
 						<li>
 							<a aria-label="github" href="https://github.com/cedric43-2718" target="_blank">
 								<svg class="social-icon">
-  									<use href="../assets/images/social-icons.svg#github"></use>
+  									<use href="/public/social-icons.svg#github"></use>
 								</svg>
 							</a>
 						</li>
 						<li>
 							<a aria-label="instagram" href="https://www.instagram.com/" target="_blank">
 								<svg class="social-icon">
-  									<use href="../assets/images/social-icons.svg#instagram"></use>
+  									<use href="/public/social-icons.svg#instagram"></use>
 								</svg>
 							</a>
 						</li>
