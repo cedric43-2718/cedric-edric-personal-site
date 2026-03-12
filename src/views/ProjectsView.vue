@@ -4,18 +4,26 @@
 		<ul v-if="!isProjectRoot">
 			<router-link class="aci" v-if="!displayArt" to="/projects/aci-explorer">
 				<svg class="project-icon palette">
-					<use href="/public/project-icons.svg#palette"></use>
+					<use href="../assets/images/project-icons.svg#palette"></use>
 				</svg>
 			</router-link>
 			<router-link class="reading" v-if="!displayKnowledge" to="/projects/knowledge">
 				<svg class="project-icon book">
-					<use href="/public/project-icons.svg#books"></use>
+					<use href="../assets/images/project-icons.svg#books"></use>
 				</svg>
 			</router-link>
 			<router-link class="cooking" v-if="!displayCooking" to="/projects/cooking">
-				<svg class="project-icon tools">
-					<use href="/public/project-icons.svg#tools-kitchen-3"></use>
+				<svg class="project-icon tools" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+				stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+				stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+					<path d="M7 4v17m-3 -17v3a3 3 0 1 0 6 0v-3" />
+					<path d="M14 8a3 4 0 1 0 6 0a3 4 0 1 0 -6 0" />
+					<path d="M17 12v9" />
 				</svg>
+				<!-- <svg class="project-icon tools">
+					<use href="/public/project-icons.svg#tools-kitchen-3"></use>
+				</svg> -->
 			</router-link>
 		</ul>
 	</nav>
@@ -26,7 +34,7 @@
 					<div class="frosted-circle">
 						<router-link class="aci" to="/projects/aci-explorer">
 							<svg class="project-icon palette">
-								<use href="/public/project-icons.svg#palette"></use>
+								<use href="../assets/images/project-icons.svg#palette"></use>
 							</svg>
 						</router-link>
 					</div>
@@ -47,7 +55,7 @@
 					<div class="frosted-circle">
 						<router-link class="reading" to="/projects/knowledge">
 							<svg class="project-icon book">
-								<use href="/public/project-icons.svg#books"></use>
+								<use href="../assets/images/project-icons.svg#books"></use>
 							</svg>
 						</router-link>
 					</div>
@@ -63,7 +71,7 @@
 					<div class="frosted-circle">
 						<router-link class="cooking" to="/projects/cooking">
 							<svg class="project-icon tools">
-								<use href="/public/project-icons.svg#tools-kitchen-3"></use>
+								<use href="../assets/images/project-icons.svg#tools-kitchen-3"></use>
 							</svg>
 						</router-link>
 					</div>
