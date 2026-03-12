@@ -4,26 +4,44 @@
 		<ul v-if="!isProjectRoot">
 			<router-link class="aci" v-if="!displayArt" to="/projects/aci-explorer">
 				<svg class="project-icon palette">
-					<use href="../assets/images/project-icons.svg#palette"></use>
+					<!-- <use href="../assets/images/project-icons.svg#palette"></use> -->
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-palette">	
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+						<path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" />
+						<path d="M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+						<path d="M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+						<path d="M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+					</svg>
 				</svg>
 			</router-link>
 			<router-link class="reading" v-if="!displayKnowledge" to="/projects/knowledge">
 				<svg class="project-icon book">
-					<use href="../assets/images/project-icons.svg#books"></use>
+					<!-- <use href="../assets/images/project-icons.svg#books"></use> -->
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+					stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-books">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+						<path d="M5 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" />
+						<path d="M9 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" />
+						<path d="M5 8h4" />
+						<path d="M9 16h4" />
+						<path d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041" />
+						<path d="M14 9l4 -1" />
+						<path d="M16 16l3.923 -.98" />
+					</svg>
 				</svg>
 			</router-link>
 			<router-link class="cooking" v-if="!displayCooking" to="/projects/cooking">
-				<svg class="project-icon tools" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-				stroke="currentColor" stroke-width="2" stroke-linecap="round" 
-				stroke-linejoin="round">
-					<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-					<path d="M7 4v17m-3 -17v3a3 3 0 1 0 6 0v-3" />
-					<path d="M14 8a3 4 0 1 0 6 0a3 4 0 1 0 -6 0" />
-					<path d="M17 12v9" />
+				<svg class="project-icon tools">
+					<!-- <use href="../assets/images/project-icons.svg#tools-kitchen-3"></use> -->
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+					stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+					class="icon icon-tabler icons-tabler-outline icon-tabler-tools-kitchen-3">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+						<path d="M7 4v17m-3 -17v3a3 3 0 1 0 6 0v-3" />
+						<path d="M14 8a3 4 0 1 0 6 0a3 4 0 1 0 -6 0" />
+						<path d="M17 12v9" />
+					</svg>
 				</svg>
-				<!-- <svg class="project-icon tools">
-					<use href="/public/project-icons.svg#tools-kitchen-3"></use>
-				</svg> -->
 			</router-link>
 		</ul>
 	</nav>
@@ -34,7 +52,14 @@
 					<div class="frosted-circle">
 						<router-link class="aci" to="/projects/aci-explorer">
 							<svg class="project-icon palette">
-								<use href="../assets/images/project-icons.svg#palette"></use>
+								<!-- <use href="../assets/images/project-icons.svg#palette"></use> -->
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-palette">	
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+									<path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" />
+									<path d="M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+									<path d="M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+									<path d="M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+								</svg>
 							</svg>
 						</router-link>
 					</div>
@@ -55,7 +80,18 @@
 					<div class="frosted-circle">
 						<router-link class="reading" to="/projects/knowledge">
 							<svg class="project-icon book">
-								<use href="../assets/images/project-icons.svg#books"></use>
+								<!-- <use href="../assets/images/project-icons.svg#books"></use> -->
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-books">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+									<path d="M5 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" />
+									<path d="M9 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" />
+									<path d="M5 8h4" />
+									<path d="M9 16h4" />
+									<path d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041" />
+									<path d="M14 9l4 -1" />
+									<path d="M16 16l3.923 -.98" />
+								</svg>
 							</svg>
 						</router-link>
 					</div>
@@ -70,8 +106,18 @@
 				<div class="link-container p3-link">
 					<div class="frosted-circle">
 						<router-link class="cooking" to="/projects/cooking">
-							<svg class="project-icon tools">
+							<!-- <svg class="project-icon tools">
 								<use href="../assets/images/project-icons.svg#tools-kitchen-3"></use>
+							</svg> -->
+							<svg class="project-icon tools">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+								class="icon icon-tabler icons-tabler-outline icon-tabler-tools-kitchen-3">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+									<path d="M7 4v17m-3 -17v3a3 3 0 1 0 6 0v-3" />
+									<path d="M14 8a3 4 0 1 0 6 0a3 4 0 1 0 -6 0" />
+									<path d="M17 12v9" />
+								</svg>
 							</svg>
 						</router-link>
 					</div>
