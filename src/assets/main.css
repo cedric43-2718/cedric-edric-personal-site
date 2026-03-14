@@ -40,6 +40,10 @@ nav li {
 	color: currentColor;
 }
 
+span {
+	display: inline;
+}
+
 /* universal styles and layout*/
 
 html{
