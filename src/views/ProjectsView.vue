@@ -69,7 +69,7 @@
 				</div>
 				<p class="p1-description fs-note wrapper">This was a lot of fun to build. It's an application that reaches out
 				to API endpoints developed by the Art Institute of Chicago. You can search the full text of all the peices
-				in their digital collection and the app return a subset of results and display a picture, artist name, title and a description of the selected piece. 
+				in their digital collection and the app will return a subset of results and display a picture, artist name, title and a description of the selected piece. 
 				I made the the core parts of this a long time ago when I was first learning how to use async / await functions. 
 				I'm glad it's finally been put to good use. Be sure to fool around with the scatterplot. 
 				I made it interactive as a way to "scroll" through a subset of the returned art peices.
