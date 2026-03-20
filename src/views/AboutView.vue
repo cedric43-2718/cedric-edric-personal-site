@@ -41,18 +41,18 @@
 			
 			<div class="wrapper">
 				<h2>Website</h2>
-				<p>I started learning about building websites during the pandemic and I've been dabbling with various projects ever since. I always 
-				have some sort of course going on Udemy or other channel of knowledge. It's about time I've got one of these pushed live. This site is 
-				built entirely using <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">Vue 3</a> in the composition dialect. I wrote all the css myself. The current site is a 
-				Single Page Application that uses client side routing. This is just the begining for this site though. I'm looking forward
-				to recasting this into either a server side rendered site or a statically generated site to incorporate better SEO, a CMS, users and roles and
-				a blog feature.  
+				<p>I started learning about building websites during the pandemic and I've been dabbling with various projects ever since. 
+				It's about time I've got one of these pushed live. This site is 
+				built entirely using <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">Vue 3</a> in the composition dialect. The layout and design is all custom css. The current site is a 
+				Single Page Application that uses client side routing. A few notable integrations are <a href="https://css-doodle.com/" target="_blank" rel="noopener noreferrer">css-doodle</a> 
+				and <a href="https://observablehq.com/plot/" target="_blank" rel="noopener noreferrer">Observable Plot </a>. My plan is to recast this project into a Nuxt site that includes a blogging feature
+				using Nuxt/Content and also incorporates some features that rely on server side rendering. The testing I've done with Nuxt so far makes me really excited to continue exploring this meta-framework.
 				</p>
 			</div>
 			<div class="wrapper">
 				<h2>Programing</h2>
-				<p>I've loved programming since I learned logo as a kid in elementary school. I'm not a software engineer by any means, but this
-				is a list of languages and frameworks that I use in my professional work and personal projects on a daily basis.
+				<p>I've loved programming since I learned logo as a kid in elementary school. I'm not a software engineer, but I love 
+				writing programs to solve analytical problems and design websites. This	is a list of languages and frameworks that I use in my professional work and personal projects on a daily basis.
 				<ul>
 					<li>R</li>
 					<li>Python</li>
