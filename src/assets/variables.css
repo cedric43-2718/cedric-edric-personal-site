@@ -103,7 +103,7 @@
 
 /* Fluid Grid */
 
---grid-scale-factor: .5;
+--grid-scale-factor: 2;
 --grid-max-width: calc(152.63rem * (1 + var(--grid-scale-factor)));
 --grid-gutter: var(--space-l-xl, clamp(2.25rem, 1.3898rem + 1.7921vw, 4.125rem));
 --grid-columns: 12;
