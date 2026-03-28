@@ -7,7 +7,7 @@
 		<div class="flow">
 			<div class="wrapper">
 				<h2>Education</h2>
-				<p>When I encounted ways to bring partial equilibrium systems into a general framework while studying economics at The University of New Hampshire
+				<p>When I encountered ways to bring partial equilibrium systems into a general framework while studying economics at The University of New Hampshire
 				- using tools like IS-LM - I realized that a deep interest of mine was building models of complex systems. The language of model building and dynamics being mathematics I decided to 
 				pursue a second undergraduate degree in mathematics with a concentration in statistics. Complexity and dynamic systems remained an interest throughout college and does
 				so to this day. At any rate after finishing my math and econ undergraduate degrees I completed a graduate degree in economics. 
