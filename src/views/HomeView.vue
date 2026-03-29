@@ -80,8 +80,8 @@ main{
 .doodle-leaves
 {
 	margin-top: var(--space-l-xl);
-	width: var(--fluid-400-1000);
-	height: var(--fluid-400-1000);
+	width: var(--fluid-400-1200);
+	height: var(--fluid-400-1200);
 }
 
 .doodle-leaves{

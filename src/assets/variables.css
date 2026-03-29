@@ -97,6 +97,11 @@
 --space-l-xl: clamp(2rem, 0.4159rem + 3.0909vw, 4.125rem);
 --fluid-400-1000: clamp(25rem, 0rem + 52.0833vw, 62.5rem);
 --fluid-480-1200: clamp(30rem, 0rem + 62.5vw, 75rem);
+/* defined from 800 to 3413 */
+--fluid-400-1700: clamp(25rem, 0.1244rem + 49.7512vw, 106.25rem);
+--fluid-400-1000a: clamp(25rem, 13.5189rem + 22.9621vw, 62.5rem);
+--fluid-400-1200: clamp(25rem, 9.6919rem + 30.6162vw, 75rem);
+
 --fluid-14-32: clamp(0.875rem, 0.125rem + 1.5625vw, 2rem);
 --fluid-20-48: clamp(1.25rem, 0.0833rem + 2.4306vw, 3rem);
 --fluid-640-1600: clamp(40rem, 0rem + 83.3333vw, 100rem);
