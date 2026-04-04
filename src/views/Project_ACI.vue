@@ -273,7 +273,7 @@ input::placeholder{
 		display: grid;
 		grid-column: 5 / 13;
 		grid-template-columns: subgrid;
-		border-left: .5px solid var(--teak);
+		border-left: .5px solid var(--young-orange-4);
 		padding: var(--space-m);
 
 		.image-wrapper{
@@ -294,7 +294,7 @@ input::placeholder{
 			.divider{
 				margin-block: var(--space-xs);
 				margin-inline-end: var(--space-3xl);
-				border-bottom: .5px solid var(--teak);
+				border-bottom: .5px solid var(--young-orange-4);
 			}
 		}
 	}

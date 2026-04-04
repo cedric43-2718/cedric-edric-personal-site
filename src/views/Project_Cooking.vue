@@ -13,10 +13,8 @@
 				</div>
 				<p>I've been making this once a week for the past 3 years. It can ferment in the fridge for days - one to two is best - so the workflow is easy to integrate into a day. This has a great floavor and structure. I love the Angel brand Pita, but this is better.</p>
 			</div>
-			<div class="project-images">
-				<!-- <img src="../assets/images/pita3.jpeg" alt=""> -->
-				<img src="../assets/images/pita2.jpeg" alt="">
-				<img src="../assets/images/pita1.jpeg" alt="">
+			<div class="project-image" @click="nextPita()">
+				<img :src="currentPita" />
 			</div>
 		</div>
 		<div class="project">
@@ -33,17 +31,26 @@
 				</div>
 				<p>I've been wanting to make one of these since my brother sent me one from NYC on my birthday a couple years ago</p>
 			</div>
-			<div class="project-images">
-				<img src="../assets/images/Babka0.jpeg" alt="">
-				<img src="../assets/images/Babka1.jpeg" alt="">
-				<img src="../assets/images/Babka2.jpeg" alt="">
+			<div class="project-image" @click="nextBabka()">
+				<img :src="currentBabka" />
 			</div>
 		</div>
 	</main>
 </template>
 
 <script setup>
+import { useCycleList } from '@vueuse/core'
 
+const getImageUrl = (name) => {
+  return new URL(`../assets/images/${name}.jpeg`, import.meta.url).href
+}
+
+// const images = ['../assets/images/Babka0.jpeg', '../assets/images/Babka1.jpeg', '../assets/images/Babka2.jpeg']
+const babkaImages = [getImageUrl('Babka0'), getImageUrl('Babka1'), getImageUrl('Babka2')]
+const pitaImages = [getImageUrl('pita1'), getImageUrl('pita2'), getImageUrl('pita3')]
+
+const {  state: currentBabka, next: nextBabka } = useCycleList(babkaImages)
+const {  state: currentPita, next: nextPita } = useCycleList(pitaImages)
 </script>
 
 
@@ -65,17 +72,19 @@ main{
 .project{
 	display: grid;
 	grid-template-columns: subgrid;
-	grid-column: 2 / span 8;
+	grid-column: 3 / span 6;
 	gap: 1rem;
-	padding-block: 1rem;
+	padding: 1rem;
+	border: .5px solid var(--young-orange-4);
+	border-radius: 20px;
 
 	.project-info{
 		display: grid;
 		grid-auto-flow: row;
-		grid-column: 1 / span 3;
+		grid-column: 1 / span 4;
 		gap: 1rem;
 		padding-right: 1rem;
-		border-right: .5px solid var(--teak);
+		border-right: .5px solid var(--young-orange-4);
 
 		.project-items{
 			display: grid;
@@ -98,17 +107,14 @@ main{
 		}
 	}
 
-	.project-images{
-		display: grid;
-		justify-items: center;
-		grid-column: 4 / 10;
-		gap: .5rem;
-		padding: 1rem;
-		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-		grid-auto-flow: dense;
+	.project-image{
+		grid-column: span 2;
+		cursor: pointer;
 
 		img{
-			max-height: 400px;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
 			/* padding: 0 .5rem; */
 		}
 	}

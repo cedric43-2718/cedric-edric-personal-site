@@ -173,7 +173,7 @@ console.log(route.name)
 	grid-template-columns: 1rem repeat(4, 1fr) 1rem;
 	/* align-items: center; */
 	padding: .5rem 0;
-	border-top: .5px solid var(--teak);
+	border-top: .5px solid var(--young-orange-4);
 }
 
 .gallery-nav.project{

@@ -94,7 +94,6 @@
 /* Custom pairs */
 
 --space-s-l: clamp(1rem, -0.3045rem + 2.5455vw, 2.75rem);
-/* --space-l-xl: clamp(2rem, 0.4159rem + 3.0909vw, 4.125rem); */
 --fluid-400-1000: clamp(25rem, 0rem + 52.0833vw, 62.5rem);
 --fluid-480-1200: clamp(30rem, 0rem + 62.5vw, 75rem);
 /* defined from 800 to 3413 */
