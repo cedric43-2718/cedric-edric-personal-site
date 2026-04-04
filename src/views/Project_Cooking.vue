@@ -64,7 +64,7 @@ main{
 .cooking-layout{
 	--col-count: 8;
 	display: grid;
-	grid-template-columns: minmax(1rem, 1fr) repeat(var(--col-count), minmax(0, 10rem)) minmax(1rem, 1fr);
+	grid-template-columns: minmax(6rem, 1.25fr) repeat(var(--col-count), minmax(0, 6rem)) minmax(1rem, 1fr);
 	gap: 2rem;
 	margin: var(--space-m-l) 0;
 }
@@ -72,9 +72,10 @@ main{
 .project{
 	display: grid;
 	grid-template-columns: subgrid;
-	grid-column: 3 / span 6;
+	grid-column: 2 / span 7;
 	gap: 1rem;
 	padding: 1rem;
+	/* background-color: var(--young-orange-0); */
 	border: .5px solid var(--young-orange-4);
 	border-radius: 20px;
 
@@ -108,7 +109,7 @@ main{
 	}
 
 	.project-image{
-		grid-column: span 2;
+		grid-column: span 3;
 		cursor: pointer;
 
 		img{
@@ -120,5 +121,4 @@ main{
 	}
 
 }
-
 </style>
