@@ -1,38 +1,29 @@
 <template>
 	<main class="cooking-layout">
-		<div class="project">
+		<div
+			class="project" 
+			v-for="article in articleStore.articleItems.articles"
+			:key="article.id"
+		>
 			<div class="project-info">
-				<h2 class="project-title fs-secondary-heading">Pita Bread</h2>
+				<h2 class="project-title fs-secondary-heading">{{ article.title }}</h2>
 				<div class="project-items">
-					<p class="tools"><span>Tools:</span> Large Bowl, Medium Bowl, Plastic Bench Scraper</p>
+					<p class="tools"><span>Tools:</span> {{ article.tools }}</p>
 					<ul class="ratios">
-						<li><span>Flour:</span> 530g - 540g</li>
-						<li><span>Water:</span> 385g - 390g</li>
-						<li><span>Others:</span> Salt, Yeast, Olive Oil, Honey</li>
+						<li
+							v-for="formula in article.formulas"
+							:key="formula.id"
+						>
+							<span>{{ formula.ingredient }}:</span> {{ formula.value }}
+						</li>
 					</ul>
 				</div>
-				<p>I've been making this once a week for the past 3 years. It can ferment in the fridge for days - one to two is best - so the workflow is easy to integrate into a day. This has a great floavor and structure. I love the Angel brand Pita, but this is better.</p>
+				<p>{{ article.description }}</p>
 			</div>
-			<div class="project-image" @click="nextPita()">
-				<img :src="currentPita" />
-			</div>
-		</div>
-		<div class="project">
-			<div class="project-info">
-				<h2 class="project-title fs-secondary-heading">Chocolate Babka</h2>
-				<div class="project-items">
-					<p class="tools"><span>Tools:</span> Large Bowl, Medium Bowl (2), Plastic Bench Scraper, Sharp Knife 8"</p>
-					<ul class="ratios">
-						<li><span>Flour:</span> 750g</li>
-						<li><span>Water:</span> 240g - 260g</li>
-						<li><span>Butter:</span> 142g</li>
-						<li><span>Others:</span> 2 Eggs, Yeast, Sugar, Dry Milk, Cinnamon, Vanilla, Filling Ingredients</li>
-					</ul>
-				</div>
-				<p>I've been wanting to make one of these since my brother sent me one from NYC on my birthday a couple years ago</p>
-			</div>
-			<div class="project-image" @click="nextBabka()">
-				<img :src="currentBabka" />
+			<div class="project-image">
+				<CycleInstance
+					:imageArray="getImageArray(article.imageNames)"
+				/>
 			</div>
 		</div>
 	</main>
@@ -40,17 +31,25 @@
 
 <script setup>
 import { useCycleList } from '@vueuse/core'
+import { useGeneralStore } from '@/stores/appStore'
+import CycleInstance  from '@/components/CycleInstance.vue'
+
+// Store 
+
+const articleStore = useGeneralStore()
+
+// Image Carosel
 
 const getImageUrl = (name) => {
-  return new URL(`../assets/images/${name}.jpeg`, import.meta.url).href
+    return new URL(`../assets/images/${name}.jpeg`, import.meta.url).href
 }
 
-// const images = ['../assets/images/Babka0.jpeg', '../assets/images/Babka1.jpeg', '../assets/images/Babka2.jpeg']
-const babkaImages = [getImageUrl('Babka0'), getImageUrl('Babka1'), getImageUrl('Babka2')]
-const pitaImages = [getImageUrl('pita1'), getImageUrl('pita2'), getImageUrl('pita3')]
+function getImageArray(imageArray){
+	let renderArray = []
+	imageArray.forEach(image => renderArray.push(getImageUrl(image)))
+	return renderArray
+}
 
-const {  state: currentBabka, next: nextBabka } = useCycleList(babkaImages)
-const {  state: currentPita, next: nextPita } = useCycleList(pitaImages)
 </script>
 
 

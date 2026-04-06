@@ -1,0 +1,60 @@
+{
+  "name": "articleData",
+  "articles": [
+    {
+      "id": "61f7ae57-bb72-45b0-a371-5dbf2470d939",
+      "name": "pita",
+      "title": "Pita Bread",
+      "tools": "Large Bowl, Medium Bowl, Plastic Bench Scraper",
+      "formulas": [
+        {
+          "id": "b66fdf74-ac91-43ab-9c84-069805c4cfd0",
+          "ingredient": "Flour",
+          "value": "530g - 540g"
+        },
+        {
+          "id": "aec9e0c3-a9f6-4543-83dd-b75d41dfd438",
+          "ingredient": "Water",
+          "value": "385g - 390g"
+        },
+        {
+          "id": "73b4f5b4-0953-4803-820c-e7becec09ebe",
+          "ingredient": "Others",
+          "value": "Salt, Yeast, Olive Oil, Honey"
+        }
+      ],
+      "description": "I've been making this once a week for the past 3 years. It can ferment in the fridge for days - one to two is best - so the workflow is easy to integrate into a day. This has a great floavor and structure. I love the Angel brand Pita, but this is better.",
+      "imageNames": ["pita1", "pita2", "pita3"]
+    },
+    {
+      "id": "61f7ae57-bb72-45b0-a371-5dbf2470d939",
+      "name": "babka",
+      "title": "Chocolate Babka",
+      "tools": "Large Bowl, Medium Bowl (2), Plastic Bench Scraper, Sharp Knife 8in",
+      "formulas": [
+        {
+          "id": "b66fdf74-ac91-43ab-9c84-069805c4cfd0",
+          "ingredient": "Flour",
+          "value": "750g"
+        },
+        {
+          "id": "aec9e0c3-a9f6-4543-83dd-b75d41dfd438",
+          "ingredient": "Water",
+          "value": "240g - 260g"
+        },
+        {
+          "id": "152448ef-978c-45cb-9b97-c4d147433a08",
+          "ingredient": "Butter",
+          "value": "142g"
+        },
+        {
+          "id": "73b4f5b4-0953-4803-820c-e7becec09ebe",
+          "ingredient": "Others",
+          "value": "2 Eggs, Yeast, Sugar, Dry Milk, Cinnamon, Vanilla, Filling Ingredients"
+        }
+      ],
+      "description": "I've been wanting to make one of these since my brother sent me one from NYC on my birthday a couple years ago.",
+      "imageNames": ["Babka2", "Babka1", "Babka0"]
+    }
+  ]
+}
