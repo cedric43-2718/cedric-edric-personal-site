@@ -108,7 +108,7 @@ main{
 		grid-column: 3 / span 1;
 
 		.wrapper{
-			--element-max-width: var(--fluid-400-1000);
+			--element-max-width: var(--fluid-400-1200);
 		}
 	}
 
