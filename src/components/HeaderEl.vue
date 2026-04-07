@@ -98,10 +98,11 @@ const handleMouseLeave = (event) => {
 
 	& h1 {
 		color: var(--ultramarine-8);
+		transition: color .5s ease-in-out;
 	}
 
 	& h1:is(:hover, :focus){
-		color: var(--deep-forest);
+		color: var(--monza-7);
 	}
 
 	& .logo{

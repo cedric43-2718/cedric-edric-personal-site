@@ -198,7 +198,7 @@ console.log(route.name)
 .gallery-nav .project-icon{
 	aspect-ratio: 1;
 	width: var(--space-l);
-	color: var(--teak);
+	color: var(--young-orange-5);
 }
 
 .fluid-grid-container{
@@ -303,7 +303,7 @@ main{
 		isolation: isolate;
 		width: 100%;
 		height: auto;
-		padding: var(--fluid-14-32) var(--fluid-14-32);
+		padding: var(--fluid-14-32a) var(--fluid-14-32a);
 		background: 
 			linear-gradient(var(--moon-papper) 0 0) padding-box,
 			conic-gradient(from var(--radiate-deg), var(--gradient-glow)) border-box;
@@ -315,7 +315,7 @@ main{
 		transition: filter .5s ease-in-out, --gradient-glow .5s ease-in-out;
 
 		a svg {
-			width: var(--fluid-20-48);
+			width: var(--fluid-20-48a);
 			color: var(--young-orange-5);
 		}
 

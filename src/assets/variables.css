@@ -102,8 +102,15 @@
 --fluid-400-1200: clamp(25rem, 9.6919rem + 30.6162vw, 75rem);
 
 --fluid-14-32: clamp(0.875rem, 0.125rem + 1.5625vw, 2rem);
+/* defined from 800 to 3413 */
+--fluid-14-32a: clamp(0.875rem, 0.5306rem + 0.6889vw, 2rem);
 --fluid-20-48: clamp(1.25rem, 0.0833rem + 2.4306vw, 3rem);
+/* defined from 800 to 3413 */
+--fluid-20-48a: clamp(1.25rem, 0.7142rem + 1.0716vw, 3rem);
 --fluid-640-1600: clamp(40rem, 0rem + 83.3333vw, 100rem);
+/* defined from 800 to 3413 */
+--fluid-640-1600a: clamp(40rem, 21.6303rem + 36.7394vw, 100rem);
+--fluid-640-1800: clamp(40rem, 17.8033rem + 44.3934vw, 112.5rem);
 
 /* Fluid Grid */
 

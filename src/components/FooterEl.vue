@@ -80,7 +80,7 @@
 }
 
 .footer-container{
-	--max-width: var(--fluid-640-1600);
+	--max-width: var(--fluid-640-1800);
 	--padding: 1rem;
 
 	width: min(var(--max-width), 100% - (var(--padding) * 2));
