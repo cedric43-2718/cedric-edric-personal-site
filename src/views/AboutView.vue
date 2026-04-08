@@ -60,6 +60,7 @@
 					<li>Apache Spark / Databricks</li>
 					<li>Javascript - Vue</li>
 					<li>CSS</li>
+					<li v-if="message">{{ message }}</li>
 				</ul>
 				</p>
 			</div>
@@ -73,7 +74,20 @@
 
 <script setup>
 
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+
+const message = ref('Loading...')
+
+onMounted(async () => {
+	try {
+		const response = await fetch("/api/message");
+		const data = await response.json();
+    	message.value = data.text; 
+  } catch (error) {
+    	console.error('Error fetching data:', error);
+    	message.value = 'Backend Not Deployed';
+  } 
+})
 
 </script>
 
@@ -108,7 +122,7 @@ main{
 		grid-column: 3 / span 1;
 
 		.wrapper{
-			--element-max-width: var(--fluid-400-1200);
+			--element-max-width: var(--fluid-400-1400);
 		}
 	}
 

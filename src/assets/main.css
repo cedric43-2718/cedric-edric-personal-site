@@ -44,6 +44,10 @@ span {
 	display: inline;
 }
 
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
 /* universal styles and layout*/
 
 html{
@@ -93,7 +97,7 @@ footer{
 
 p {
 	a:is(:hover, :focus){
-		color: var(--monza-5);
+		color: var(--monza-6);
 	}
 }
 
@@ -134,7 +138,7 @@ p {
 
 	a{
 		text-decoration-line: underline;
-  		text-decoration-color: var(--carrot-4);
+  		text-decoration-color: var(--young-orange-4);
   		text-decoration-style: double;
   		text-decoration-thickness: .5px;
   		text-underline-offset: 2px;

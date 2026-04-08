@@ -104,6 +104,7 @@
 --fluid-400-1700: clamp(25rem, 0.1244rem + 49.7512vw, 106.25rem);
 --fluid-400-1000a: clamp(25rem, 13.5189rem + 22.9621vw, 62.5rem);
 --fluid-400-1200: clamp(25rem, 9.6919rem + 30.6162vw, 75rem);
+--fluid-400-1400: clamp(25rem, 5.8649rem + 38.2702vw, 87.5rem);
 
 --fluid-14-32: clamp(0.875rem, 0.125rem + 1.5625vw, 2rem);
 /* defined from 800 to 3413 */
