@@ -60,7 +60,7 @@
 					<li>Apache Spark / Databricks</li>
 					<li>Javascript - Vue</li>
 					<li>CSS</li>
-					<li v-if="message">{{ message }}</li>
+					<li v-if="message" class="server">{{ message }}</li>
 				</ul>
 				</p>
 			</div>
@@ -123,6 +123,12 @@ main{
 		.wrapper{
 			--element-max-width: var(--fluid-400-1400);
 		}
+	}
+
+	.server{
+		font-weight: var(--fw-semi-bold);
+		font-family: "Source Code Pro", monospace;
+		color: var(--lime-6);
 	}
 
 }
