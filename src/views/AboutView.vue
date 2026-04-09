@@ -93,7 +93,6 @@ onMounted(async () => {
 
 <style scoped>
 
-
 main{
 
 	display: grid;
@@ -126,15 +125,6 @@ main{
 		}
 	}
 
-
-}
-
-p > a {
-	text-decoration-line: underline;
-  	text-decoration-color: var(--carrot-4);
-  	text-decoration-style: double;
-  	text-decoration-thickness: .5px;
-  	text-underline-offset: 2px;
 }
 
 ul li {
