@@ -85,7 +85,7 @@ onMounted(async () => {
     	message.value = data.text; 
   } catch (error) {
     	console.error('Error fetching data:', error);
-    	message.value = 'Backend Not Deployed';
+    	message.value = 'Backend Not Deployed!';
   } 
 })
 
