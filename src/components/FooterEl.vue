@@ -60,7 +60,7 @@
 				<div class="footer-info fs-note">
 					<span class="name">Jason Rudokas</span>
 					<span class="location">Waltham, Massachusetts</span>
-					<span class="email">jrudokas@gmail.com</span>
+					<span class="email">jrudokas@cedricedric.net</span>
 				</div>
 			</div>
 		</div>
