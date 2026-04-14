@@ -1,0 +1,6 @@
+add this to the local.settings.json file for testing locally in a manual mode...not the swa clim
+
+"Host": {
+    "CORS": "*",
+    "CORSCredentials": false
+  }
