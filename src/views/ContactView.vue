@@ -72,7 +72,7 @@ const handleSubmit = async  () => {
 	isSent.value = false
 
 	try{
-		const response = await fetch("http://localhost:7071/api/handleContact", {
+		const response = await fetch("/api/handleContact", {
 			method: 'POST',
 			headers: {"Content-Type": "application/json"},
 			body: JSON.stringify({firstName: firstName.value, lastName: lastName.value, email: email.value, message: message.value }) 
