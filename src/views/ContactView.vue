@@ -2,7 +2,6 @@
 
 	<main class="contact">
 		<div class="form-container">
-			
 			<div v-if="isSending" class="status sending"></div>
 			<div v-if="isSent" class="status sent"></div>
 			<div v-if="emailError" class="email-error" style="margin-bottom: 2rem;">
@@ -109,7 +108,13 @@ main{
 	grid-template-rows: 15vh 1fr 25vh;
 	grid-template-columns: repeat(2, 1fr);
 	column-gap: 1rem;
-	/* justify-items: center; */
+	
+	@media(width < 1100px){
+		grid-template-rows: repeat(2, 1fr);
+		grid-template-columns: 1fr;
+		justify-items: center;
+		align-items: center;
+	}
 }
 
 .message-container{
@@ -121,6 +126,12 @@ main{
 	justify-items: center;
 	gap: 2rem;
 	max-inline-size: 600px;
+	
+	@media(width < 1100px){
+		grid-row: 1 / 2;
+		grid-column: 1;
+		margin-block: unset;
+	}
 
 }
 
@@ -140,6 +151,13 @@ main{
 	/* margin-inline: auto; */
 	justify-self: center;
 	margin-block: auto;
+
+	@media(width < 1100px){
+		grid-row: 2 / 3;
+		grid-column: 1;
+		margin-bottom: 6rem;
+		/* margin-block: unset;  */
+	}
 
 	h1{
 		margin-bottom: 2rem;
