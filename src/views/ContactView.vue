@@ -7,7 +7,7 @@
 			<div v-if="emailError" class="email-error" style="margin-bottom: 2rem;">
 				<p>There was a problem sending your email.</p>
 			</div>
-			<div v-else class="email-success" style="margin-bottom: 2rem;">
+			<div v-if="isSent" class="email-success" style="margin-bottom: 2rem;">
 				<p>Your email was sent.</p>
 			</div>
 
@@ -256,7 +256,7 @@ main{
 		}
 	}
 
-	.email-error{
+	.email-success{
 		padding: 1rem;
 		border: 1px solid var(--lime-7);
 		background: hsla(118, 95%, 30%, .2);
