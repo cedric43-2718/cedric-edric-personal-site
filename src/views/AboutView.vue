@@ -44,7 +44,7 @@
 				<p>I started learning about building websites during the pandemic and I've been dabbling with various projects ever since. 
 				It's about time I've got one of these pushed live. This site is 
 				built entirely using <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">Vue 3</a> in the composition dialect. The layout and design is all custom css. The current site is a 
-				Single Page Application that uses client side routing. It is hosted on Azure and uses github actions to implement CI/CD. A few notable integrations are <a href="https://css-doodle.com/" target="_blank" rel="noopener noreferrer">css-doodle</a> 
+				Single Page Application that uses client side routing and implements a serverless backend with Azure Functions. It is hosted on Azure and uses github actions to implement CI/CD (Continuous Integration/Continuous Deployment). A few notable integrations are <a href="https://css-doodle.com/" target="_blank" rel="noopener noreferrer">css-doodle</a> 
 				and <a href="https://observablehq.com/plot/" target="_blank" rel="noopener noreferrer">Observable Plot </a>. My plan is to recast this project into a Nuxt site that includes a blogging feature
 				using Nuxt/Content and also incorporates some features that rely on server side rendering. The testing I've done with Nuxt so far makes me really excited to continue exploring this meta-framework.
 				</p>

@@ -1,12 +1,15 @@
 <template>
 	<main class="reading-layout">
-		<div class="s-1-color"></div>
+		<div class="s-1-color" :class="{'section-hilight': isSec1}"></div>
 		<div class="subject s-1">
 			<p class="subject-title">Science</p>
 			<span>&</span>
 			<p class="subject-title">Computation</p>
 		</div>
-		<div class="articles-grid ag-1">
+		<div class="articles-grid ag-1" 
+			@mouseenter="handleSection1Color"
+			@mouseleave="handleSection1Color"
+		>
 			<ul class="articles-list">
 				<li class="article-title">A Mathematical Theory of Computation
 					<ul class="article-info">
@@ -23,11 +26,14 @@
 				
 			</ul>
 		</div>
-		<div class="s-2-color"></div>
+		<div class="s-2-color" :class="{'section-hilight': isSec2}"></div>
 		<div class="subject s-2">
 			<p class="subject-title">Economics</p>
 		</div>
-		<div class="articles-grid ag-2">
+		<div class="articles-grid ag-2"
+			@mouseenter="handleSection2Color"
+			@mouseleave="handleSection2Color"
+		>
 			<ul class="articles-list">
 				<li class="article-title">Political Aspects of Full Employment
 					<ul class="article-info">
@@ -60,13 +66,16 @@
 				</li>
 			</ul>
 		</div>
-		<div class="s-3-color"></div>
+		<div class="s-3-color" :class="{'section-hilight': isSec3}"></div>
 		<div class="subject s-3">
 			<p class="subject-title">Climate</p>
 			<span>&</span>
 			<p class="subject-title">Energy</p>
 		</div>
-		<div class="articles-grid ag-3">
+		<div class="articles-grid ag-3"
+			@mouseenter="handleSection3Color"
+			@mouseleave="handleSection3Color"
+		>
 			<ul class="articles-list">
 				<li class="article-title">Global Warming of 1.5 &deg;C
 					<ul class="article-info">
@@ -110,13 +119,16 @@
 				</li>
 			</ul>
 		</div>
-		<div class="s-4-color"></div>
+		<div class="s-4-color" :class="{'section-hilight': isSec4}"></div>
 		<div class="subject s-4">
 			<p class="subject-title">Mathematics</p>
 			<span>&</span>
 			<p class="subject-title">Forecasting</p>
 		</div>
-		<div class="articles-grid ag-4">
+		<div class="articles-grid ag-4"
+			@mouseenter="handleSection4Color"
+			@mouseleave="handleSection4Color"
+		>
 			<ul class="articles-list">
 				<li class="article-title">Forecasting at Scale
 					<ul class="article-info">
@@ -140,6 +152,33 @@
 		</div>
 	</main>
 </template>
+
+<script setup>
+
+import { ref } from 'vue'
+
+const isSec1 = ref(false)
+const isSec2 = ref(false)
+const isSec3 = ref(false)
+const isSec4 = ref(false)
+
+const handleSection1Color = () => {
+	isSec1.value = !isSec1.value
+}
+
+const handleSection2Color = () => {
+	isSec2.value = !isSec2.value
+}
+
+const handleSection3Color = () => {
+	isSec3.value = !isSec3.value
+}
+
+const handleSection4Color = () => {
+	isSec4.value = !isSec4.value
+}
+
+</script>
 
 <style scoped>
 
@@ -200,7 +239,9 @@
 	grid-column: 1 / 2;
 	margin-top: 2rem;
 	background-color: var(--deep-forest);
-	opacity: 40%;
+	/* opacity: 40%; */
+	transition: background-color .5s ease-in-out;
+	border-radius: 0 8px 8px 0;
 }
 
 .s-1{
@@ -218,7 +259,9 @@
 	grid-column: 1 / 2;
 	margin-top: 2rem;
 	background-color: var(--lemon-burst-2);
-	opacity: 40%;
+	/* opacity: 40%; */
+	transition: background-color .5s ease-in-out;
+	border-radius: 0 8px 8px 0;
 }
 
 .s-2{
@@ -236,6 +279,8 @@
 	grid-column: 1 / 2;
 	margin-top: 2rem;
 	background-color: var(--bluemaine-filter);
+	transition: background-color .5s ease-in-out;
+	border-radius: 0 8px 8px 0;
 }
 
 .s-3{
@@ -253,6 +298,8 @@
 	grid-column: 1 / 2;
 	margin-top: 2rem;
 	background-color: var(--monza-filter);
+	transition: background-color .5s ease-in-out;
+	border-radius: 0 8px 8px 0;
 }
 
 .s-4{
@@ -264,6 +311,28 @@
 	grid-row: 4;
 	grid-column: 3 / 4;
 }
+
+.s-1-color.section-hilight{
+	background-color: var(--lime-3);
+	filter: saturate(1.5);
+}
+
+.s-2-color.section-hilight{
+	background-color: var(--lime-3);
+	filter: saturate(1.5);
+}
+
+.s-3-color.section-hilight{
+	background-color: var(--lime-3);
+	filter: saturate(1.5);
+}
+
+.s-4-color.section-hilight{
+	background-color: var(--lime-3);
+	filter: saturate(1.5);
+}
+
+
 
 </style>
 
