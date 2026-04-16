@@ -258,13 +258,13 @@ main{
 
 	.email-success{
 		padding: 1rem;
-		border: 1px solid var(--lime-7);
-		background: hsla(118, 95%, 30%, .2);
+		border: 1px solid var(--lime-6);
+		background: hsla(118, 95%, 30%, .1);
 		border-radius: 10px;
 		margin: auto;
 
 		p{
-			color: var(--deepslate-0);
+			color: white;
 			text-align: center;
 		}
 	}
