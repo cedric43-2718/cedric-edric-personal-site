@@ -4,3 +4,4 @@ add this to the local.settings.json file for testing locally in a manual mode...
     "CORS": "*",
     "CORSCredentials": false
   }
+

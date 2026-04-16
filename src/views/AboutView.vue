@@ -80,7 +80,7 @@ const message = ref('Loading...')
 
 onMounted(async () => {
 	try {
-		const response = await fetch("/api/message");
+		const response = await fetch("https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/message");
 		const data = await response.json();
     	message.value = data.text; 
   } catch (error) {

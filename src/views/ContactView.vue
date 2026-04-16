@@ -71,7 +71,7 @@ const handleSubmit = async  () => {
 	isSent.value = false
 
 	try{
-		const response = await fetch("/api/handleContact", {
+		const response = await fetch("https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/handlecontact", {
 			method: 'POST',
 			headers: {"Content-Type": "application/json"},
 			body: JSON.stringify({firstName: firstName.value, lastName: lastName.value, email: email.value, message: message.value }) 
