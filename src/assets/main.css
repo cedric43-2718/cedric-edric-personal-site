@@ -98,7 +98,7 @@ footer{
 
 p {
 	a:is(:hover, :focus){
-		color: var(--old-orange-2a);
+		color: var(--old-orange-3);
 	}
 }
 

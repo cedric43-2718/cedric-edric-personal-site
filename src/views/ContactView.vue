@@ -75,6 +75,7 @@ const handleSubmit = async  () => {
 
 	try{
 		const response = await fetch("https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/handlecontact", {
+			// "https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/handlecontact"
 			method: 'POST',
 			headers: {"Content-Type": "application/json"},
 			body: JSON.stringify({firstName: firstName.value, lastName: lastName.value, email: email.value, message: message.value }) 
@@ -113,25 +114,30 @@ main{
 	column-gap: 1rem;
 	
 	@media(width < 1100px){
-		grid-template-rows: repeat(2, 1fr);
+		grid-template-rows: 10vh repeat(2, auto) 10vh;
 		grid-template-columns: 1fr;
 		justify-items: center;
 		align-items: center;
+		/* row-gap: 4rem; */
 	}
 }
 
 .message-container{
 	grid-row: 2;
-	grid-column: 2;
+	grid-column: 1;
 	justify-self: center;
 	margin-block: auto;
 	display: grid;
 	justify-items: center;
-	gap: 2rem;
+	gap: 1rem;
 	max-inline-size: 600px;
+
+	p{
+		text-align: center;
+	}
 	
 	@media(width < 1100px){
-		grid-row: 1 / 2;
+		grid-row: 2 / 3;
 		grid-column: 1;
 		margin-block: unset;
 	}
@@ -144,7 +150,7 @@ main{
 
 .form-container{
 	grid-row: 2;
-	grid-column: 1;
+	grid-column: 2;
 	padding: 2rem;
 	position: relative;
 	background: var(--young-orange-0);
@@ -156,10 +162,9 @@ main{
 	margin-block: auto;
 
 	@media(width < 1100px){
-		grid-row: 2 / 3;
+		grid-row: 3 / 4;
 		grid-column: 1;
-		margin-bottom: 6rem;
-		/* margin-block: unset;  */
+		margin-top: 4rem;
 	}
 
 	h1{
@@ -264,7 +269,7 @@ main{
 		margin: auto;
 
 		p{
-			color: white;
+			color: var(--deepslate-8);
 			text-align: center;
 		}
 	}
