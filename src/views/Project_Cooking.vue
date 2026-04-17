@@ -2,27 +2,27 @@
 	<main class="cooking-layout">
 		<div
 			class="project" 
-			v-for="article in articleStore.articleItems.articles"
-			:key="article.id"
+			v-for="recipe in articleStore.recipeItems.recipes"
+			:key="recipe.id"
 		>
 			<div class="project-info">
-				<h2 class="project-title fs-secondary-heading">{{ article.title }}</h2>
+				<h2 class="project-title fs-secondary-heading">{{ recipe.title }}</h2>
 				<div class="project-items">
-					<p class="tools"><span>Tools:</span> {{ article.tools }}</p>
+					<p class="tools"><span>Tools:</span> {{ recipe.tools }}</p>
 					<ul class="ratios">
 						<li
-							v-for="formula in article.formulas"
+							v-for="formula in recipe.formulas"
 							:key="formula.id"
 						>
 							<span>{{ formula.ingredient }}:</span> {{ formula.value }}
 						</li>
 					</ul>
 				</div>
-				<p>{{ article.description }}</p>
+				<p>{{ recipe.description }}</p>
 			</div>
 			<div class="project-image">
 				<CycleInstance
-					:imageArray="getImageArray(article.imageNames)"
+					:imageArray="getImageArray(recipe.imageNames)"
 				/>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import articleData from '@/data/articles.json'
+import recipesData from '@/data/recipes.json'
 
 export const useGeneralStore = defineStore('content', () => {
 
@@ -23,18 +23,17 @@ export const useGeneralStore = defineStore('content', () => {
     }
   ])
 
-  const articleItems = ref(articleData)
+  const recipeItems = ref(recipesData)
 
-  function addArticle(article){
-    articleItems.value.data.push({
-      name: article,
-    })
-  }
+  // function addArticle(article){
+  //   articleItems.value.data.push({
+  //     name: article,
+  //   })
+  // }
 
   return {
     sections,
-    articleItems,
-    addArticle
+    recipeItems
   }
 
 })
