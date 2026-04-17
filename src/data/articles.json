@@ -3,39 +3,52 @@
 	"subjects": [
 		{
 			"id": "07ea17dc-d480-4aa6-bb01-e788f1e605bf",
-			"color": "red",
+			"color": "bg-science",
 			"subject": ["Science", "Computation"],
 			"articles": [
 				{
 					"id": "12207e99-2416-4aa9-8947-3d1f971e5213",
 					"title": "A Mathematical Theory of Computation",
-					"info": [
-						{
-							"author": "Shannon, Claude E.",
-							"date": "1948"
-						}
-					]
+					"info": ["Shannon, Claude E.", 1948]
 				},
 				{
 					"id": "a48bab81-3397-4979-aea4-9fd64dd05621",
 					"title": "On the Decrease of Entropy in a Thermodynamic System by the Intervention of Intelligent Beings",
-					"info": [
-						{
-							"author": "Szilard, Leo",
-							"date": "1929"
-						}
-					]
+					"info": ["Szilard, Leo", 1929]	
 				}
 			]
 		},
 		{
-
-		},
-		{
-
-		},
-		{
-
+			"id": "666400f6-044a-4828-bc3e-8a527d941ad7",
+			"color": "bg-economis",
+			"subject": ["Economics"],
+			"articles": [
+				{
+					"id": "4dbb86d8-d1b3-4268-ad08-32badd53e371",
+					"title": "Political Aspects of Full Employment",
+					"info": ["Kalecki, Michal", 1943]
+				},
+				{
+					"id": "de05e3cf-e7e5-439b-9f3c-376b5499d559",
+					"title": "Increasing Returns and Economic Geography",
+					"info": ["Krugman, Paul", 1991]
+				},
+				{
+					"id": "dfb28a7f-777f-47f7-8e76-8de741aeff3c",
+					"title": "The Two Growth Rates of the Economy",
+					"info": ["Adamou, A., Berman, Y., Peters, O.", 2020] 
+				},
+				{
+					"id": "22514421-8076-41df-b394-97cdc2837393",
+					"title": "The Ergodicity Problem in Economics",
+					"info": ["Peters, Ole", 2019]
+				},
+				{
+					"id": "6e98a7b7-3224-4824-8f52-923d811900ef",
+					"title": "The Role of Entropy in the Development of Economics",
+					"info": ["Jakimowicz, Aleksander",2020]
+				}
+			]
 		}
 	]
 }

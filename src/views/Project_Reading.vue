@@ -1,27 +1,32 @@
 <template>
 	<main class="reading-layout">
-		<section class="article-section">
-			<div class="article-color" data-background="bg-science" :class="{'section-hilight': isSec}"></div>
+		<section 
+			class="article-section"
+			v-for="(subject, index) in articleStore.articleItems.subjects"
+			:key="index"
+		>
+			<div class="article-color" :data-background="subject.color" :class="{'section-hilight': activeIndex === index}"></div>
 			<div class="article-subject">
-				<p class="subject-title">Science</p>
-				<span>&</span>
-				<p class="subject-title">Computation</p>
+				<div v-if="getSubjectLen(subject.subject)">
+					<p class="subject-title">{{ subject.subject[0] }}</p>
+					<span>&</span>
+					<p class="subject-title">{{ subject.subject[1] }}</p>
+				</div>
+				<p v-else class="subject-title">{{ subject.subject[0] }}</p>
 			</div>
 			<div class="article-grid"
-				@mouseenter="handleSectionColor"
-				@mouseleave="handleSectionColor"
+				@mouseenter="handleMouseEnter(index)"
+				@mouseleave="handleMouseLeave"
 			>
-				<ul class="articles-list">
-					<li class="article-title">A Mathematical Theory of Computation
+				<ul 
+					class="articles-list"
+					v-for="article in subject.articles"
+					:key="article.id"
+				>
+					<li class="article-title">{{ article.title }}
 						<ul class="article-info">
-							<li>Shannon, Claude E.</li>
-							<li>1948</li>
-						</ul>
-					</li>
-					<li class="article-title">On the Decrease of Entropy in a Thermodynamic System by the Intervention of Intelligent Beings
-						<ul class="article-info">
-							<li>Szilard, Leo</li>
-							<li>1929</li>
+							<li>{{ article.info[0] }}</li>
+							<li>{{ article.info[1] }}</li>
 						</ul>
 					</li>
 				</ul>
@@ -33,11 +38,29 @@
 <script setup>
 
 import { ref } from 'vue'
+import { useGeneralStore } from '@/stores/appStore'
 
-const isSec = ref(false)
+const articleStore = useGeneralStore()
+console.log(articleStore.articleItems.subjects.articles)
 
-const handleSectionColor = () => {
-	isSec.value = !isSec.value
+// logic to handle subject title cases
+
+const isTwoElement = ref(false)
+
+function getSubjectLen(subjectEl){
+	return subjectEl.length === 2
+}
+
+// dynamic colors
+
+const activeIndex = ref(null)
+
+const handleMouseEnter = (index) => {
+  activeIndex.value = index
+}
+
+const handleMouseLeave = () => {
+  activeIndex.value = null
 }
 
 </script>

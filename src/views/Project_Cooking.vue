@@ -2,7 +2,7 @@
 	<main class="cooking-layout">
 		<div
 			class="project" 
-			v-for="recipe in articleStore.recipeItems.recipes"
+			v-for="recipe in recipeStore.recipeItems.recipes"
 			:key="recipe.id"
 		>
 			<div class="project-info">
@@ -36,7 +36,7 @@ import CycleInstance  from '@/components/CycleInstance.vue'
 
 // Store 
 
-const articleStore = useGeneralStore()
+const recipeStore = useGeneralStore()
 
 // Image Carosel
 
