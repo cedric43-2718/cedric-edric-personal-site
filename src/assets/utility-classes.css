@@ -88,6 +88,8 @@
 
 .fs-secondary-heading{
 	font-size: var(--fs-secondary-heading);
+	text-transform: none;
+	font-weight: 700;
 }
 
 .fs-tertiary-heading{

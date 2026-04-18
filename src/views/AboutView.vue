@@ -6,7 +6,7 @@
 		</div>
 		<div class="flow">
 			<div class="wrapper">
-				<h2>Education</h2>
+				<h1 class="fs-secondary-heading">Education</h1>
 				<p>When I encountered ways to bring partial equilibrium systems into a general framework while studying economics at The University of New Hampshire
 				- using tools like IS-LM - I realized that a deep interest of mine was building models of complex systems. The language of model building and dynamics being mathematics I decided to 
 				pursue a second undergraduate degree in mathematics with a concentration in statistics. Complexity and dynamic systems remained an interest throughout college and does
@@ -100,6 +100,7 @@ main{
 	/* place-items: center; */
 	margin: 2rem 0;
 
+
 	.info{
 
 		display: grid;
@@ -122,6 +123,11 @@ main{
 
 		.wrapper{
 			--element-max-width: var(--fluid-400-1400);
+
+			h1{
+				line-height: 1.05;
+				margin-bottom: .5rem;
+			}
 		}
 	}
 

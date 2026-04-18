@@ -70,7 +70,7 @@ const handleMouseLeave = () => {
 .reading-layout{
 	display: grid;
 	grid-template-columns: 2rem 20ch 1fr;
-	gap: 2rem;
+	gap: 4rem;
 	margin-top: 0;
 	margin-bottom: var(--space-m-l);
 
@@ -128,7 +128,19 @@ const handleMouseLeave = () => {
 }
 
 [data-background="bg-science"]{
+	background-color: var(--deep-forest);
+}
+
+[data-background="bg-economics"]{
+	background-color: var(--bluemaine);
+}
+
+[data-background="bg-climate"]{
 	background-color: var(--lemon-burst-2);
+}
+
+[data-background="bg-math"]{
+	background-color: var(--monza-filter);
 }
 
 
@@ -136,6 +148,7 @@ const handleMouseLeave = () => {
 	background-color: var(--lime-3);
 	filter: saturate(1.5);
 }
+
 
 
 </style>
