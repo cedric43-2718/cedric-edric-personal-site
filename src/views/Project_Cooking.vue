@@ -77,6 +77,9 @@ main{
 	/* background-color: var(--young-orange-0); */
 	border: .5px solid var(--young-orange-4);
 	border-radius: 20px;
+	box-shadow: 2px 4px 15px 5px rgba(0,0,0,0.1);
+	cursor: pointer;
+	transition: transform .5s ease-in-out;
 
 	.project-info{
 		display: grid;
@@ -119,5 +122,9 @@ main{
 		}
 	}
 
+}
+
+.project:hover{
+	transform: scale(1.025);
 }
 </style>
