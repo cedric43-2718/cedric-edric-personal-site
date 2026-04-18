@@ -57,7 +57,7 @@ const isSent = ref(false)
 const emailError = ref(false)
 
 const isInvalid = computed(() => {
-  return firstName.value.trim() === '' || lastName.value.trim() === '' || email.value.trim() === '' || message.value.trim() === '';
+  return firstName.value.trim() === '' || lastName.value.trim() === '' || email.value.trim() === '';
 });
 
 // const formData = reactive(
