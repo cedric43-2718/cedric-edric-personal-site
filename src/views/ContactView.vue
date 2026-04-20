@@ -37,7 +37,7 @@
 		</div>
 		<div class="message-container">
 			<h1>Drop Me A Line!</h1>
-			<p>Definately interested in chatting about web design, climate and energy policy, forecasting, baking...
+			<p>Definitely interested in chatting about web design, climate and energy policy, forecasting, baking...
 			I'll get back to you soon to keep the conversation going.</p>
 			<p>Cheers, Jason</p>
 		</div>

@@ -16,9 +16,8 @@
 		<div class="flow scroll-wrapper">
 			<h1 class="wrapper fs-secondary-heading">A bit about my work:</h1>
 			<p class="wrapper">Hi. My name is Jason. I'm an integrated resources analyst at the <a href="https://www.rmld.com/" target="_blank" rel="noopener noreferrer">Reading Municipal Light Department</a>. I develop forecasting methodologies and workflows
-				to predict hourly, monthly and long-term patterns in electricity demand and distributed energy resources. I also build integrated revenue and energy supply forecasting frameworks. 
-				I've been working in the energy and climate field for over 15 years and began my professional career at the <a href="https://www.nescaum.org/" target="_blank" rel="noopener noreferrer">Northeast States for Coordinated Air Use
-				Management</a> where I developed economy-wide energy models used to identify patterns of technology adoption consistent with state and regional climate 
+				to predict hourly, monthly and long-term patterns in electricity demand and distributed energy resources. I've been working in the energy and climate field for over 15 years and began my professional career at the <a href="https://www.nescaum.org/" target="_blank" rel="noopener noreferrer">Northeast States for Coordinated Air Use
+				Management</a> where I built economy-wide energy models used to identify patterns of technology adoption consistent with state and regional climate 
 				mitigation targets. If you are interested, a detailed overview of my professional career can be found on my <a href="https://www.linkedin.com/in/jason-rudokas-08856610/" target="_blank" rel="noopener noreferrer">linkedin</a> page. 
 			</p>
 			<h2 class="wrapper">A bit about this site:</h2>
