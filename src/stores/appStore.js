@@ -42,7 +42,7 @@ export const useGeneralStore = defineStore('content', () => {
 
     try{
 
-      const response = await fetch('/public/data/recipes-public.json')
+      const response = await fetch('/data/recipes-public.json')
       if(!response.ok) throw new Error('Failed to get data from public folder')
 
       const data = await response.json()
@@ -65,14 +65,17 @@ export const useGeneralStore = defineStore('content', () => {
     isLoading.value = true
     isError.value = null
 
+    console.log("the id", id)
+
     try{
 
-      const response = await fetch('/public/data/recipes-public.json')
+      const response = await fetch('/data/recipes-public.json')
       if(!response.ok) throw new Error('Failed to get data from public folder')
 
       const data = await response.json()
       // i might not need to parse this
-      recipe.value = JSON.parse(data).find(recipe.id === id)
+      // recipe.value = JSON.parse(data).find(recipe.id === id)
+      return data.recipes.find(recipe => recipe.id === id)
 
     } catch(err) {
 

@@ -1,9 +1,10 @@
 <template>
-	<main class="cooking-layout">
+	<main v-if="isProjectCooking" class="cooking-layout">
 		<div
 			class="project" 
 			v-for="recipe in recipeStore.recipeItems.recipes"
 			:key="recipe.id"
+			@click.self="navToArticle"
 		>
 			<div class="project-info">
 				<h2 class="project-title fs-secondary-heading">{{ recipe.title }}</h2>
@@ -27,9 +28,12 @@
 			</div>
 		</div>
 	</main>
+	<RouterView/>
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useCycleList } from '@vueuse/core'
 import { useGeneralStore } from '@/stores/appStore'
 import CycleInstance  from '@/components/CycleInstance.vue'
@@ -37,6 +41,17 @@ import CycleInstance  from '@/components/CycleInstance.vue'
 // Store 
 
 const recipeStore = useGeneralStore()
+
+// Routing to specific ids
+
+const router = useRouter()
+const route = useRoute()
+
+const navToArticle = () => {
+	router.push('/projects/cooking/61f7ae57-bb72-45b0-a371-5dbf2470d939')
+}
+
+const isProjectCooking = computed(() => route.path === '/projects/cooking')
 
 // Image Carosel
 

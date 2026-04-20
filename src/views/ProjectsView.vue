@@ -149,7 +149,7 @@ const displayArt = computed(() => route.path === '/projects/aci-explorer')
 const displayKnowledge = computed(() => route.path === '/projects/knowledge')
 const displayCooking = computed(() => route.path === '/projects/cooking')
 
-console.log(route.name)
+// console.log(route.name)
 
 </script>
 
