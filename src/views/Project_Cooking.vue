@@ -4,7 +4,8 @@
 			class="project" 
 			v-for="recipe in recipeStore.recipeItems.recipes"
 			:key="recipe.id"
-			@click.self="navToArticle(article.id)"
+			:id="recipe.id"
+			@click.self="navToArticle(recipe.id)"
 		>
 			<div class="project-info">
 				<h2 class="project-title fs-secondary-heading">{{ recipe.title }}</h2>
@@ -32,6 +33,7 @@
 </template>
 
 <script setup>
+
 import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useCycleList } from '@vueuse/core'
@@ -44,12 +46,12 @@ const recipeStore = useGeneralStore()
 
 // Routing to specific ids
 
-defineProps( {
-	article: {
-		type: Object,
-		required: true
-	}
-})
+// defineProps( {
+// 	article: {
+// 		type: Object,
+// 		required: true
+// 	}
+// })
 
 const router = useRouter()
 const route = useRoute()

@@ -45,13 +45,17 @@ onMounted(() => {
 
 .article-details{
 	display: grid;
-	place-content: center;
+	place-items: center;
+	margin-inline: auto;
+	height: 100vh;
+	margin-block: 0;
+	max-inline-size: 1100px;
 	border: .5px solid var(--carrot-5);
 
 	.details-container{
 		display: grid;
 		padding: 2rem;
-		max-inline-size: 800px;
+		
 	}
 }
 
