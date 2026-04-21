@@ -40,6 +40,8 @@ const router = createRouter({
           children: [
             {
               path: ':id',
+              name: 'article-details',
+              props: true,
               component: ArticleDetails
             }
           ]

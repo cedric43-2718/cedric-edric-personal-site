@@ -4,7 +4,7 @@
 			class="project" 
 			v-for="recipe in recipeStore.recipeItems.recipes"
 			:key="recipe.id"
-			@click.self="navToArticle"
+			@click.self="navToArticle(article.id)"
 		>
 			<div class="project-info">
 				<h2 class="project-title fs-secondary-heading">{{ recipe.title }}</h2>
@@ -44,11 +44,21 @@ const recipeStore = useGeneralStore()
 
 // Routing to specific ids
 
+defineProps( {
+	article: {
+		type: Object,
+		required: true
+	}
+})
+
 const router = useRouter()
 const route = useRoute()
 
-const navToArticle = () => {
-	router.push('/projects/cooking/61f7ae57-bb72-45b0-a371-5dbf2470d939')
+const navToArticle = (articleId) => {
+	router.push({
+		name: 'article-details',
+		params: { id: articleId}
+	})
 }
 
 const isProjectCooking = computed(() => route.path === '/projects/cooking')

@@ -18,11 +18,17 @@ import { useGeneralStore } from '@/stores/appStore'
 
 const recipeStore = useGeneralStore()
 
+const props = defineProps({
+	id: {
+		required: true
+	}
+})
+
 const article = ref(null)
-const id = ref("61f7ae57-bb72-45b0-a371-5dbf2470d939")
+// const id = ref("61f7ae57-bb72-45b0-a371-5dbf2470d939")
 
 onMounted(() => {
-	recipeStore.fetchRecipe(id.value)
+	recipeStore.fetchRecipe(props.id)
 		.then((response) => {
 			console.log("response", response)
 			article.value = response
@@ -40,6 +46,7 @@ onMounted(() => {
 .article-details{
 	display: grid;
 	place-content: center;
+	border: .5px solid var(--carrot-5);
 
 	.details-container{
 		display: grid;
