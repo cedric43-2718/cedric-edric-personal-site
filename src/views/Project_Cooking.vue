@@ -13,8 +13,12 @@
 						<p class="fs-tertiary-heading">{{ recipe.author }}</p>
 						<p class="fs-note">{{ recipe.date }}</p>
 					</div>
-					<ul v-for="tag in recipe.tags" :key="tag" class="recipe-tags">
-          				<li class="tag">{{ tag }}</li>
+					<ul class="recipe-tags">
+          				<li class="tag fs-note"
+							v-for="tag in recipe.tags"
+							:key="tag"
+						>
+						{{ tag }}</li>
         			</ul>
 				</div>
 				<p>{{ recipe.description }}</p>
@@ -118,15 +122,16 @@ main{
 
 			.recipe-tags{
 				display: flex;
-				/* grid-auto-flow: column; */
 				gap: 1rem;
-				/* justify-content: flex-start;
-				flex-wrap: wrap; */
+				justify-content: flex-start;
+				margin: 0;
+				padding: 0;
+				/* flex-wrap: wrap; */
 
 				.tag{
 					background: var(--deepslate-5);
 					color: var(--mountain-0);
-					width: 8rem;
+					width: 6rem;
 					border-radius: 20px;
 					text-align: center;
 				}
