@@ -70,9 +70,7 @@
 				<p class="p1-description fs-note wrapper">This was a lot of fun to build. It's an application that reaches out
 				to API endpoints developed by the Art Institute of Chicago. You can search the full text of all the peices
 				in their digital collection and the app will return a subset of results and display a picture, artist name, title and a description of the selected piece. 
-				I made the the core parts of this a long time ago when I was first learning how to use async / await functions. 
-				I'm glad it's finally been put to good use. Be sure to fool around with the scatterplot. 
-				I made it interactive as a way to "scroll" through a subset of the returned art peices.
+			    You can click on the scatterplot to view different works.
 				</p>
 			<!-- Books -->
 				<div class="link-container p2-link">
@@ -99,7 +97,7 @@
 					<h2 class="fs-tertiary-heading">Knowledge</h2>
 				</div>
 				<p class="p2-description fs-note wrapper">This section is a list of articles, books and essays that have made a lasting impression in the course of my thought.
-				Each domain operates differently of course. Books are just books I've really enjoyed while some of the articles - particularly ones related to climate and energy - impact how I think about my professional work on a day to day basis.
+				Many impact how I think about my professional work on a day to day basis - particularly ones related to climate and energy and forecasting.
 				</p>
 			<!-- Cooking -->
 				<div class="link-container p3-link">
@@ -126,9 +124,7 @@
 				</div>
 				<p class="p3-description fs-note wrapper">I've been cooking and baking since I was a kid and grew up working in
 				kitchens. It's been a real joy to live with and continue learning about such a delicoius domain of knowledge.
-				A few recent projects displayed here. I want to make this into an area where friends and family
-				can log in to and post recipes and have their own collections of recipes - the King Arthur Baking 
-				website is an incredibly well designed example of this.</p>
+				A few recent projects displayed here.</p>
 		</main>
 	</div>
 
@@ -205,7 +201,7 @@ console.log(route.name)
 	max-width: var(--grid-max-width);
 	padding-inline: var(--grid-gutter);
 	margin-inline: auto;
-	margin-block: var(--space-xl-2xl);
+	margin-block: auto;
 }
 
 
@@ -214,7 +210,7 @@ main{
 	display: grid;
 	/* grid-template-columns: minmax(1rem, 1fr) repeat(var(--grid-columns), minmax(0, 10rem)) minmax(1rem, 1fr); */
 	grid-template-columns: repeat(var(--grid-columns), minmax(0, 10rem));
-	grid-template-rows: auto auto auto;
+	grid-template-rows: auto auto auto 5vh;
 	column-gap: var(--grid-gutter);
 	row-gap: calc(var(--grid-gutter) * (1 + var(--grid-scale-factor)));
 
