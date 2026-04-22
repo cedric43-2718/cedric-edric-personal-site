@@ -70,6 +70,7 @@ const handleMouseLeave = () => {
 .reading-layout{
 	display: grid;
 	grid-template-columns: 2rem 20ch 1fr;
+	grid-template-rows: auto;
 	gap: 4rem;
 	margin-top: 0;
 	margin-bottom: var(--space-m-l);
