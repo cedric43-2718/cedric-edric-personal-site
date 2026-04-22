@@ -40,7 +40,7 @@ const handleNextImage = () => {
 		justify-content: center;
 		align-items: center;
 		margin-top: .5rem;
-		background: var(--goldenrod-1);
+		background: var(--goldenrod-0);
 		color: var(--deepslate-7);
 		border: none;
 		padding-inline: .5rem;

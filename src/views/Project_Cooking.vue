@@ -5,22 +5,24 @@
 			v-for="recipe in recipeStore.recipeItems.recipes"
 			:key="recipe.id"
 			:id="recipe.id"
-			@click.self="navToArticle(recipe.id)"
 		>
-			<div class="project-info">
-				<h2 class="project-title fs-secondary-heading">{{ recipe.title }}</h2>
+			<div class="project-preview">
 				<div class="project-items">
-					<p class="tools"><span>Tools:</span> {{ recipe.tools }}</p>
-					<ul class="ratios">
-						<li
-							v-for="formula in recipe.formulas"
-							:key="formula.id"
-						>
-							<span>{{ formula.ingredient }}:</span> {{ formula.value }}
-						</li>
-					</ul>
+					<h2 class="project-title fs-primary-heading">{{ recipe.title }}</h2>
+					<div class="project-info">
+						<p class="fs-tertiary-heading">{{ recipe.author }}</p>
+						<p class="fs-note">{{ recipe.date }}</p>
+					</div>
+					<ul v-for="tag in recipe.tags" :key="tag" class="recipe-tags">
+          				<li class="tag">{{ tag }}</li>
+        			</ul>
 				</div>
 				<p>{{ recipe.description }}</p>
+				<button 
+					class="button-more" 
+					data-icon="newspaper"
+					@click.self="navToArticle(recipe.id)"
+					>Read More</button>
 			</div>
 			<div class="project-image">
 				<CycleInstance
@@ -45,13 +47,6 @@ import CycleInstance  from '@/components/CycleInstance.vue'
 const recipeStore = useGeneralStore()
 
 // Routing to specific ids
-
-// defineProps( {
-// 	article: {
-// 		type: Object,
-// 		required: true
-// 	}
-// })
 
 const router = useRouter()
 const route = useRoute()
@@ -101,39 +96,42 @@ main{
 	grid-column: 2 / span 7;
 	gap: 1rem;
 	padding: 1rem;
-	/* background-color: var(--young-orange-0); */
 	border: .5px solid var(--young-orange-4);
 	border-radius: 20px;
 	box-shadow: 2px 4px 15px 5px rgba(0,0,0,0.1);
 	cursor: pointer;
 	transition: transform .5s ease-in-out;
 
-	.project-info{
+	.project-preview{
 		display: grid;
-		grid-auto-flow: row;
+		align-items: center;
 		grid-column: 1 / span 4;
-		gap: 1rem;
+		/* gap: 1rem; */
 		padding-right: 1rem;
 		border-right: .5px solid var(--young-orange-4);
 
 		.project-items{
 			display: grid;
 			grid-auto-flow: row;
-			gap: .5rem;
+			align-items: center;
+			gap: 1rem;
 
-			span{
-				font-weight: 600;
-				color: var(--monza-8);
+			.recipe-tags{
+				display: flex;
+				/* grid-auto-flow: column; */
+				gap: 1rem;
+				/* justify-content: flex-start;
+				flex-wrap: wrap; */
+
+				.tag{
+					background: var(--deepslate-5);
+					color: var(--mountain-0);
+					width: 8rem;
+					border-radius: 20px;
+					text-align: center;
+				}
 			}
 
-			ul{
-				margin: 0;
-				padding: 0;
-			}
-
-			> * {
-				font-size: var(--fs-note);
-			}
 		}
 	}
 
@@ -143,15 +141,44 @@ main{
 
 		img{
 			width: 100%;
-			height: 100%;
+			height: 80%;
 			object-fit: cover;
 			/* padding: 0 .5rem; */
+		}
+	}
+
+	.button-more{
+		justify-self: center;
+		align-self: end;
+		display: inline-flex;
+		gap: .5rem;
+		justify-content: center;
+		align-items: center;
+		background: var(--goldenrod-0);
+		color: var(--deepslate-7);
+		border: none;
+		padding-inline: 1.5rem;
+		padding-block: .5rem;
+		border-radius: 20px;
+		cursor: pointer;
+		transition: background .5s ease;
+
+		&:hover, &:focus{
+			background: var(--goldenrod-2);
+		}
+
+		&[data-icon="newspaper"]::before{
+			content: '';
+			background-image: url("../assets/images/newspaper.svg");
+			width: 32px;
+			height: 32px;
+
 		}
 	}
 
 }
 
 .project:hover{
-	transform: scale(1.025);
+	transform: scale(1.01);
 }
 </style>
