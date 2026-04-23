@@ -1,6 +1,6 @@
 <template>
 	
-	<nav class="gallery-nav" :class="{ project: isProjectRoot}">
+	<nav v-if="!$route.meta.hideNav" class="gallery-nav" :class="{ project: isProjectRoot}">
 		<ul v-if="!isProjectRoot">
 			<router-link class="aci" v-if="!displayArt" to="/projects/aci-explorer">
 				<svg class="project-icon palette">
@@ -148,8 +148,6 @@ const isProjectRoot = computed(() => route.path === '/projects/')
 const displayArt = computed(() => route.path === '/projects/aci-explorer')
 const displayKnowledge = computed(() => route.path === '/projects/knowledge')
 const displayCooking = computed(() => route.path === '/projects/cooking')
-
-// console.log(route.name)
 
 </script>
 

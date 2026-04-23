@@ -42,7 +42,8 @@ const router = createRouter({
               path: ':id',
               name: 'article-details',
               props: true,
-              component: ArticleDetails
+              component: ArticleDetails,
+              meta: { hideNav: true } 
             }
           ]
         }

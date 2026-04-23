@@ -1,5 +1,4 @@
 <template>
-
 	<main v-if="article" class="article-details">
 		<div class="details-container">
 			<h1>{{ article.title }}</h1>
@@ -17,6 +16,8 @@ import { storeToRefs } from 'pinia'
 import { useGeneralStore } from '@/stores/appStore'
 
 const recipeStore = useGeneralStore()
+
+// console.log("is Article", isArticle)
 
 const props = defineProps({
 	id: {
