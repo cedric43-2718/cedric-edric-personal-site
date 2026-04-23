@@ -102,7 +102,7 @@ const handleMouseLeave = (event) => {
 	}
 
 	& h1:is(:hover, :focus){
-		color: var(--monza-7);
+		color: var(--old-orange-3);
 	}
 
 	& .logo{

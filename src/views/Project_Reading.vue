@@ -83,7 +83,7 @@ const handleMouseLeave = () => {
 
 		.article-color{
 			grid-column: 1 / 2;
-			transition: background-color .5s ease-in-out;
+			transition: background-color 1s ease-in-out;
 			border-radius: 0 8px 8px 0;
 		}
 
