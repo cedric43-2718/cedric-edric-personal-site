@@ -93,7 +93,7 @@ main{
 .cooking-layout{
 	/* --col-count: 8; */
 	display: grid;
-	grid-template-rows: min-content;
+	/* grid-template-rows: max-content; */
 	/* grid-template-columns: minmax(6rem, 1.25fr) repeat(var(--col-count), minmax(0, 6rem)) minmax(1rem, 1fr); */
 	justify-items: center;
 	align-items: center;
@@ -108,6 +108,7 @@ main{
 	/* grid-template-columns: subgrid; */
 	/* grid-column: 2 / span 7; */
 	grid-template-columns: repeat(var(--col-count), minmax(0, 6rem));
+	/* grid-template-rows: repeat(3, minmax(0, 1fr)); */
 	gap: 1rem;
 	padding: 1rem;
 	border: .5px solid var(--young-orange-4);
@@ -118,16 +119,16 @@ main{
 
 	.project-preview{
 		display: grid;
-		grid-template-rows: repeat(3, 1fr);
+		grid-template-rows: 1fr minmax(0, 300px) 4rem;
 		align-items: start;
 		grid-column: 1 / span 4;
 		/* gap: 1rem; */
 		padding-right: 1rem;
 		border-right: .5px solid var(--young-orange-4);
 
+
 		.project-items{
 			display: grid;
-			grid-auto-flow: row;
 			align-self: start;
 			gap: 1rem;
 
@@ -136,12 +137,13 @@ main{
 				gap: 1rem;
 				justify-content: flex-start;
 				margin: 0;
-				padding: 0;
+				padding-block: .5rem;
 		
 				.tag{
 					background: var(--deepslate-5);
 					color: var(--mountain-0);
 					width: 6rem;
+					margin: 0;
 					border-radius: 20px;
 					text-align: center;
 				}
@@ -154,10 +156,8 @@ main{
 		}
 
 		.nav-button{
-			height: 100%;
-			width: 100%;
-			/* align-self: end;
-			justify-self: center; */
+			display: flex;
+			justify-content: center;
 		}
 
 	}
@@ -165,6 +165,10 @@ main{
 	.project-image{
 		grid-column: span 3;
 		cursor: pointer;
+
+		.image-container{
+			height: 100%;
+		}
 
 		img{
 			width: 100%;
