@@ -21,12 +21,16 @@
 						{{ tag }}</li>
         			</ul>
 				</div>
-				<p>{{ recipe.description }}</p>
-				<button 
-					class="button-more" 
-					data-icon="newspaper"
-					@click.self="navToArticle(recipe.id)"
-					>Read More</button>
+				<div class="description">
+					<p>{{ recipe.description }}</p>
+				</div>
+				<div class="nav-button">
+					<button
+						class="button-more"
+						data-icon="newspaper"
+						@click.self="navToArticle(recipe.id)"
+						>Read More</button>
+				</div>
 			</div>
 			<div class="project-image">
 				<CycleInstance
@@ -87,17 +91,23 @@ main{
 }
 
 .cooking-layout{
-	--col-count: 8;
+	/* --col-count: 8; */
 	display: grid;
-	grid-template-columns: minmax(6rem, 1.25fr) repeat(var(--col-count), minmax(0, 6rem)) minmax(1rem, 1fr);
-	gap: 2rem;
-	margin: var(--space-m-l) 0;
+	grid-template-rows: min-content;
+	/* grid-template-columns: minmax(6rem, 1.25fr) repeat(var(--col-count), minmax(0, 6rem)) minmax(1rem, 1fr); */
+	justify-items: center;
+	align-items: center;
+	grid-auto-flow: column;
+	gap: 1rem;
+	margin: auto 0;
 }
 
 .project{
+	--col-count: 7;
 	display: grid;
-	grid-template-columns: subgrid;
-	grid-column: 2 / span 7;
+	/* grid-template-columns: subgrid; */
+	/* grid-column: 2 / span 7; */
+	grid-template-columns: repeat(var(--col-count), minmax(0, 6rem));
 	gap: 1rem;
 	padding: 1rem;
 	border: .5px solid var(--young-orange-4);
@@ -108,7 +118,8 @@ main{
 
 	.project-preview{
 		display: grid;
-		align-items: center;
+		grid-template-rows: repeat(3, 1fr);
+		align-items: start;
 		grid-column: 1 / span 4;
 		/* gap: 1rem; */
 		padding-right: 1rem;
@@ -117,7 +128,7 @@ main{
 		.project-items{
 			display: grid;
 			grid-auto-flow: row;
-			align-items: center;
+			align-self: start;
 			gap: 1rem;
 
 			.recipe-tags{
@@ -126,8 +137,7 @@ main{
 				justify-content: flex-start;
 				margin: 0;
 				padding: 0;
-				/* flex-wrap: wrap; */
-
+		
 				.tag{
 					background: var(--deepslate-5);
 					color: var(--mountain-0);
@@ -138,6 +148,18 @@ main{
 			}
 
 		}
+
+		.description{
+			margin-top: 1rem;
+		}
+
+		.nav-button{
+			height: 100%;
+			width: 100%;
+			/* align-self: end;
+			justify-self: center; */
+		}
+
 	}
 
 	.project-image{
@@ -146,15 +168,13 @@ main{
 
 		img{
 			width: 100%;
-			height: 80%;
+			height: 100%;
 			object-fit: cover;
 			/* padding: 0 .5rem; */
 		}
 	}
 
 	.button-more{
-		justify-self: center;
-		align-self: end;
 		display: inline-flex;
 		gap: .5rem;
 		justify-content: center;
