@@ -29,10 +29,13 @@ const handleNextImage = () => {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	
+
 
 	img{
 		border-radius: 10px;
+		width: 100%;
+		height: 80%;
+		object-fit: cover;
 	}
 
 	.next-image{

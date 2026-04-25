@@ -91,24 +91,24 @@ main{
 }
 
 .cooking-layout{
-	/* --col-count: 8; */
 	display: grid;
-	/* grid-template-rows: max-content; */
-	/* grid-template-columns: minmax(6rem, 1.25fr) repeat(var(--col-count), minmax(0, 6rem)) minmax(1rem, 1fr); */
-	justify-items: center;
-	align-items: center;
 	grid-auto-flow: column;
-	gap: 1rem;
-	margin: auto 0;
+	grid-template-columns: (auto-fit, minmax(250px, 1fr));
+	justify-content: center;
+	gap: 4rem;
+	margin: auto 2rem;
+	
+	@media (width <= 1480px) {
+		grid-auto-flow: row;
+		margin: 2rem auto;
+		gap: 2rem;
+	}
 }
 
 .project{
 	--col-count: 7;
 	display: grid;
-	/* grid-template-columns: subgrid; */
-	/* grid-column: 2 / span 7; */
 	grid-template-columns: repeat(var(--col-count), minmax(0, 6rem));
-	/* grid-template-rows: repeat(3, minmax(0, 1fr)); */
 	gap: 1rem;
 	padding: 1rem;
 	border: .5px solid var(--young-orange-4);
@@ -122,18 +122,17 @@ main{
 		grid-template-rows: 1fr minmax(0, 300px) 4rem;
 		align-items: start;
 		grid-column: 1 / span 4;
-		/* gap: 1rem; */
 		padding-right: 1rem;
 		border-right: .5px solid var(--young-orange-4);
 
 
 		.project-items{
 			display: grid;
-			align-self: start;
 			gap: 1rem;
 
 			.recipe-tags{
 				display: flex;
+				flex-wrap: wrap;
 				gap: 1rem;
 				justify-content: flex-start;
 				margin: 0;
@@ -156,26 +155,22 @@ main{
 		}
 
 		.nav-button{
-			display: flex;
-			justify-content: center;
+			display: grid;
+			place-self: center;
 		}
 
 	}
 
 	.project-image{
+		display: grid;
+
 		grid-column: span 3;
 		cursor: pointer;
 
 		.image-container{
-			height: 100%;
+			justify-content: space-between;
 		}
 
-		img{
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			/* padding: 0 .5rem; */
-		}
 	}
 
 	.button-more{
