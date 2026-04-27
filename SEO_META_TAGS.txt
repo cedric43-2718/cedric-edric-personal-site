@@ -1,0 +1,83 @@
+<!-- BASIC SEO META TAGS -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Jason Rudokas - Integrated Resources Analyst specializing in energy forecasting, renewable energy integration, and climate policy. Explore projects on cooking, articles, and more.">
+<meta name="keywords" content="energy analyst, forecasting, renewable energy, climate policy, electricity demand, distributed energy resources, integrated resources">
+<meta name="author" content="Jason Rudokas">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="language" content="English">
+
+<!-- OPEN GRAPH META TAGS (Social Media Sharing) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yoursite.com">
+<meta property="og:title" content="Jason Rudokas - Energy Analyst & Developer">
+<meta property="og:description" content="Integrated resources analyst specializing in energy forecasting, renewable energy integration, and building interactive web projects.">
+<meta property="og:image" content="https://yoursite.com/og-image.jpg">
+<meta property="og:site_name" content="Jason Rudokas">
+<meta property="og:locale" content="en_US">
+
+<!-- TWITTER CARD META TAGS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://yoursite.com">
+<meta name="twitter:title" content="Jason Rudokas - Energy Analyst & Developer">
+<meta name="twitter:description" content="Integrated resources analyst specializing in energy forecasting and interactive web development.">
+<meta name="twitter:image" content="https://yoursite.com/twitter-image.jpg">
+<meta name="twitter:creator" content="@yourhandle">
+
+<!-- ADDITIONAL SEO META TAGS -->
+<meta name="theme-color" content="#0f172a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Jason Rudokas">
+
+<!-- CANONICAL URL (Update with your actual domain) -->
+<link rel="canonical" href="https://yoursite.com">
+
+<!-- FAVICON -->
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- PRECONNECT TO EXTERNAL RESOURCES (if using any) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- JSON-LD STRUCTURED DATA (Schema Markup) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jason Rudokas",
+  "jobTitle": "Integrated Resources Analyst",
+  "url": "https://yoursite.com",
+  "image": "https://yoursite.com/profile-image.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/jason-rudokas-08856610/",
+    "https://github.com/cedric43-2718"
+  ],
+  "description": "Integrated resources analyst specializing in energy forecasting, renewable energy integration, and climate policy.",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Reading Municipal Light Department"
+  }
+}
+</script>
+
+<!-- INSTRUCTIONS FOR IMPLEMENTATION -->
+
+To use these meta tags:
+
+1. Replace "https://yoursite.com" with your actual domain
+2. Replace "@yourhandle" with your Twitter handle
+3. Create og-image.jpg (1200x630px recommended) and twitter-image.jpg (1200x675px) for social sharing
+4. Create a profile image for the JSON-LD structured data
+5. Add an apple-touch-icon.png (180x180px) for Apple devices
+6. Update the theme-color to match your site's primary color
+7. All meta tags should be placed in the <head> section of your index.html
+
+Additional recommendations:
+- Ensure your site has fast load times (Core Web Vitals optimization)
+- Add a sitemap.xml and robots.txt to your public folder
+- Submit your site to Google Search Console and Bing Webmaster Tools
+- Create descriptive alt text for all images
+- Use header tags (H1, H2, H3) properly throughout your pages
+- Ensure mobile responsiveness (you're already using viewport meta tag)
