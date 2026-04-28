@@ -9,6 +9,7 @@
       "title": "Pita Bread",
       "tools": "Large Bowl, Medium Bowl, Plastic Bench Scraper",
       "tags": ["Flatbread", "Medium", "Plain"],
+      "hasArticle": true,
       "long-description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus repudiandae dolore aperiam iure labore modi, itaque earum porro corporis repellendus cumque inventore qui minima aspernatur voluptatibus! Recusandae eveniet corrupti atque corporis. Cum eum autem ratione magni. Fuga minima rerum impedit ut officiis quis, adipisci, iste asperiores labore ea accusantium laboriosam.",
       "formulas": [
         {
@@ -33,11 +34,12 @@
     {
       "id": "id-a3889380-fe13-4cf6-8e93-31bb5a7dc47a",
       "name": "babka",
-      "author": "Michael Rudokas",
+      "author": "Jason Rudokas",
       "date": "Dec 15, 2025",
       "title": "Chocolate Babka",
       "tools": "Large Bowl, Medium Bowl (2), Plastic Bench Scraper, Sharp Knife 8in",
       "tags": ["Enriched", "Difficult", "Celebration"],
+      "hasArticle": false,
       "long-description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus repudiandae dolore aperiam iure labore modi, itaque earum porro corporis repellendus cumque inventore qui minima aspernatur voluptatibus! Recusandae eveniet corrupti atque corporis. Cum eum autem ratione magni. Fuga minima rerum impedit ut officiis quis, adipisci, iste asperiores labore ea accusantium laboriosam.",
       "formulas": [
         {

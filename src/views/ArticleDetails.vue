@@ -29,7 +29,7 @@
 				</p>
 				<p><span class="tips">A few tips:</span> This is a fairly wet dough. If you are kneading / strengthening the dough by hand - my prefered method - your hands are meant to get sticky with dough. Just go with it and use the bench scraper to shape the dough into a ball frequently.
 				Place a heavy-duty baking sheet upside down on the bottom rack of the oven and remove all the other racks when starting the pre-heat. The Pita will be baked right on this. Before dividing the dough 
-				spread vegtable oil with a silicone brush all over the work surface you will place the pita on to proof.</p>
+				spread vegetable oil with a silicone brush all over the work surface you will place the pita on to proof.</p>
 			</div>
 		</section>
 		<section class="full-width article-content">
@@ -59,8 +59,8 @@
 					<li>Let the dough rest under the bowl for 10 - 15 minutes.</li>
 					<li>Work the dough into a ball with the plastic bench scraper.</li>
 					<li>Strengthen the dough using the slap and fold method for 5 - 7 minutes. Shape the dough dough back into a ball with the bench scraper periodically.</li>
-					<li>Coat the inside of a 3 - 4 quart container with about 3 tablespoons of vegtable oil.</li>
-					<li>Place the dough in the container, brush with the oil in the container, press it down and refregirate the dough for at least 4 hours.</li>
+					<li>Coat the inside of a 3 - 4 quart container with about 3 tablespoons of vegetable oil.</li>
+					<li>Place the dough in the container, brush with the oil in the container, press it down and refrigerate the dough for at least 4 hours.</li>
 					<img :src="pitaImages['pita-kneading']" alt="pita dough after kneading" class="pita-kneading">
 				</ol>
 			</div>
@@ -70,7 +70,7 @@
 				<h2>Shaping & Baking</h2>
 				<ol class="shaping-list">
 					<li>Divide and shape the dough into 8 portions between 120 and 128 grams each. Work one portion at a time.</li>
-					<li>Lightly dust an area near your scale with flour and roll each piece of dough into a ball under a cupped hand. Place each dough ball onto the oiled counter space evenly with as much space between the balls as possible.</li>
+					<li>Lightly dust an area near your scale with flour and roll each piece of dough into a ball under a cupped hand. Place each dough ball onto the oiled counter and space evenly with as much space between the balls as possible.</li>
 					<img :src="pitaImages['pita-dividing1']" alt="" class="pita-dividing-1">
 					<li>After all the dough is divided and shaped lightly oil one hand and flatten each ball into a rough disc. I do this in two passes.</li>
 					<li>Let the dough rest on the counter for 20 min. Preheat the oven now with the overturned baking sheet on the bottom rack.</li>

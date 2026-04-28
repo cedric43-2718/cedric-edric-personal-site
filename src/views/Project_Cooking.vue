@@ -29,6 +29,7 @@
 						class="button-more"
 						data-icon="newspaper"
 						@click.self="navToArticle(recipe.id)"
+						:disabled="hasArticle(recipe.hasArticle)"
 						>Read More</button>
 				</div>
 			</div>
@@ -58,6 +59,7 @@ const recipeStore = useGeneralStore()
 
 const router = useRouter()
 const route = useRoute()
+// const hasArticle = ref(true)
 
 const navToArticle = (articleId) => {
 	router.push({
@@ -67,6 +69,10 @@ const navToArticle = (articleId) => {
 }
 
 const isProjectCooking = computed(() => route.path === '/projects/cooking')
+
+const hasArticle = (article) => {
+	return article === false
+}
 
 // Image Carosel
 
