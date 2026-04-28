@@ -244,6 +244,14 @@ section img{
 	justify-self: center;
 }
 
+h2{
+	font-weight: 500;
+
+	&:not(.article-author){
+		margin-bottom: 1ch;
+	}
+}
+
 
 /*  main layout */
 
@@ -348,6 +356,11 @@ section img{
 	}
 
 	.full-width-right{
+
+		& p:first-of-type {
+    		margin-bottom: 2ch;
+		}
+
 		span {
 			color: var(--ultramarine-5);
 			font-weight: 500;
@@ -409,11 +422,6 @@ section img{
 			display: inline;
 		}
 
-		h2{
-			font-weight: 500;
-			margin-bottom: 1ch;
-		}
-
 		span{
 			margin: 0;
 		}
@@ -460,12 +468,6 @@ section img{
 
 	.shaping{
 		align-content: start;
-
-		h2{
-			font-weight: 500;
-			margin-bottom: 1ch;
-		}
-		
 	}
 }
 

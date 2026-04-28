@@ -76,9 +76,9 @@
 
 .footer{
 	margin-top: auto;
-	padding: 2rem 0;
+	padding: 1rem 0;
 	background-color: var(--deepslate-7);
-	opacity: .9;
+	opacity: .8;
 	color: var(--mountain-0);
 }
 
@@ -92,7 +92,7 @@
 
 .footer-layout{
 	display: grid;
-	gap: 1rem;
+	gap: .5rem;
 	grid-auto-flow: column;
 	grid-auto-columns: 1fr;
 }

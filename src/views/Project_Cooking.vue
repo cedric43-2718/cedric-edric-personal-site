@@ -99,14 +99,15 @@ main{
 .cooking-layout{
 	display: grid;
 	grid-auto-flow: column;
-	grid-template-columns: (auto-fit, minmax(250px, 1fr));
+	grid-template-columns: (auto-fit, minmax(200px, 1fr));
+	align-content: center;
 	justify-content: center;
 	gap: 4rem;
-	margin: auto 2rem;
+	margin-inline: 2rem;
 	
 	@media (width <= 1480px) {
 		grid-auto-flow: row;
-		margin: 2rem auto;
+		margin: 2rem;
 		gap: 2rem;
 	}
 }
@@ -120,12 +121,11 @@ main{
 	border: .5px solid var(--young-orange-4);
 	border-radius: 20px;
 	box-shadow: 2px 4px 15px 5px rgba(0,0,0,0.1);
-	cursor: pointer;
 	transition: transform .5s ease-in-out;
 
 	.project-preview{
 		display: grid;
-		grid-template-rows: 1fr minmax(0, 300px) 4rem;
+		grid-template-rows: 1fr minmax(0, 250px) 2rem;
 		align-items: start;
 		grid-column: 1 / span 4;
 		padding-right: 1rem;
@@ -169,9 +169,7 @@ main{
 
 	.project-image{
 		display: grid;
-
 		grid-column: span 3;
-		cursor: pointer;
 
 		.image-container{
 			justify-content: space-between;

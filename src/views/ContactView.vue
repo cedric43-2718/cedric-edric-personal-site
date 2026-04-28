@@ -109,7 +109,7 @@ const handleSubmit = async  () => {
 
 main{
 	display: grid;
-	grid-template-rows: 15vh 1fr 25vh;
+	grid-template-rows: 20vh 1fr 30vh;
 	grid-template-columns: repeat(2, 1fr);
 	column-gap: 1rem;
 	
