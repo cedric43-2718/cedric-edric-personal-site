@@ -24,19 +24,81 @@ export const useGeneralStore = defineStore('content', () => {
     }
   ])
 
+  // production getters for recipe and store items
+
   const recipeItems = ref(recipesData)
   const articleItems = ref(articlesData)
 
-  // function addArticle(article){
-  //   articleItems.value.data.push({
-  //     name: article,
-  //   })
-  // }
+  // simulate an api call for dynamic routing experiment
+
+  const recipes = ref([])
+  const recipe = ref({})
+  const isLoading = ref(false)
+  const isError = ref(null)
+
+  async function fetchRecipes() {
+    isLoading.value = true
+    isError.value = null
+
+    try{
+
+      const response = await fetch('/data/recipes-public.json')
+      if(!response.ok) throw new Error('Failed to get data from public folder')
+
+      const data = await response.json()
+      recipes.value = data
+
+    } catch(err) {
+
+      isError.value = err.message
+      console.error("Fetch Error:", err);
+
+    } finally {
+
+      isLoading.value = false
+
+    }
+
+  }
+
+  async function fetchRecipe(id) {
+    isLoading.value = true
+    isError.value = null
+
+    console.log("the id", id)
+
+    try{
+
+      const response = await fetch('/data/recipes-public.json')
+      if(!response.ok) throw new Error('Failed to get data from public folder')
+
+      const data = await response.json()
+      // i might not need to parse this
+      // recipe.value = JSON.parse(data).find(recipe.id === id)
+      return data.recipes.find(recipe => recipe.id === id)
+
+    } catch(err) {
+
+      isError.value = err.message
+      console.error("Fetch Error:", err);
+
+    } finally {
+
+      isLoading.value = false
+
+    }
+
+  }
+
+  // returns from the store
 
   return {
     sections,
     recipeItems,
-    articleItems
+    articleItems,
+    fetchRecipes,
+    fetchRecipe
+
   }
 
 })

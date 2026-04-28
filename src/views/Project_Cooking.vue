@@ -1,24 +1,37 @@
 <template>
-	<main class="cooking-layout">
+	<main v-if="isProjectCooking" class="cooking-layout">
 		<div
 			class="project" 
 			v-for="recipe in recipeStore.recipeItems.recipes"
 			:key="recipe.id"
+			:id="recipe.id"
 		>
-			<div class="project-info">
-				<h2 class="project-title fs-secondary-heading">{{ recipe.title }}</h2>
+			<div class="project-preview">
 				<div class="project-items">
-					<p class="tools"><span>Tools:</span> {{ recipe.tools }}</p>
-					<ul class="ratios">
-						<li
-							v-for="formula in recipe.formulas"
-							:key="formula.id"
+					<h2 class="project-title fs-primary-heading">{{ recipe.title }}</h2>
+					<div class="project-info">
+						<p class="fs-tertiary-heading">{{ recipe.author }}</p>
+						<p class="fs-note">{{ recipe.date }}</p>
+					</div>
+					<ul class="recipe-tags">
+          				<li class="tag fs-note"
+							v-for="tag in recipe.tags"
+							:key="tag"
 						>
-							<span>{{ formula.ingredient }}:</span> {{ formula.value }}
-						</li>
-					</ul>
+						{{ tag }}</li>
+        			</ul>
 				</div>
-				<p>{{ recipe.description }}</p>
+				<div class="description">
+					<p>{{ recipe.description }}</p>
+				</div>
+				<div class="nav-button">
+					<button
+						class="button-more"
+						data-icon="newspaper"
+						@click.self="navToArticle(recipe.id)"
+						:disabled="hasArticle(recipe.hasArticle)"
+						>Read More</button>
+				</div>
 			</div>
 			<div class="project-image">
 				<CycleInstance
@@ -27,9 +40,13 @@
 			</div>
 		</div>
 	</main>
+	<RouterView/>
 </template>
 
 <script setup>
+
+import { ref, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useCycleList } from '@vueuse/core'
 import { useGeneralStore } from '@/stores/appStore'
 import CycleInstance  from '@/components/CycleInstance.vue'
@@ -37,6 +54,25 @@ import CycleInstance  from '@/components/CycleInstance.vue'
 // Store 
 
 const recipeStore = useGeneralStore()
+
+// Routing to specific ids
+
+const router = useRouter()
+const route = useRoute()
+// const hasArticle = ref(true)
+
+const navToArticle = (articleId) => {
+	router.push({
+		name: 'article-details',
+		params: { id: articleId}
+	})
+}
+
+const isProjectCooking = computed(() => route.path === '/projects/cooking')
+
+const hasArticle = (article) => {
+	return article === false
+}
 
 // Image Carosel
 
@@ -61,63 +97,118 @@ main{
 }
 
 .cooking-layout{
-	--col-count: 8;
 	display: grid;
-	grid-template-columns: minmax(6rem, 1.25fr) repeat(var(--col-count), minmax(0, 6rem)) minmax(1rem, 1fr);
-	gap: 2rem;
-	margin: var(--space-m-l) 0;
+	grid-auto-flow: column;
+	grid-template-columns: (auto-fit, minmax(250px, 1fr));
+	justify-content: center;
+	gap: 4rem;
+	margin: auto 2rem;
+	
+	@media (width <= 1480px) {
+		grid-auto-flow: row;
+		margin: 2rem auto;
+		gap: 2rem;
+	}
 }
 
 .project{
+	--col-count: 7;
 	display: grid;
-	grid-template-columns: subgrid;
-	grid-column: 2 / span 7;
+	grid-template-columns: repeat(var(--col-count), minmax(0, 6rem));
 	gap: 1rem;
 	padding: 1rem;
-	/* background-color: var(--young-orange-0); */
 	border: .5px solid var(--young-orange-4);
 	border-radius: 20px;
+	box-shadow: 2px 4px 15px 5px rgba(0,0,0,0.1);
+	cursor: pointer;
+	transition: transform .5s ease-in-out;
 
-	.project-info{
+	.project-preview{
 		display: grid;
-		grid-auto-flow: row;
+		grid-template-rows: 1fr minmax(0, 300px) 4rem;
+		align-items: start;
 		grid-column: 1 / span 4;
-		gap: 1rem;
 		padding-right: 1rem;
 		border-right: .5px solid var(--young-orange-4);
 
+
 		.project-items{
 			display: grid;
-			grid-auto-flow: row;
-			gap: .5rem;
+			gap: 1rem;
 
-			span{
-				font-weight: 600;
-				color: var(--monza-8);
-			}
-
-			ul{
+			.recipe-tags{
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+				justify-content: flex-start;
 				margin: 0;
-				padding: 0;
+				padding-block: .5rem;
+		
+				.tag{
+					background: var(--deepslate-5);
+					color: var(--mountain-0);
+					width: 6rem;
+					margin: 0;
+					border-radius: 20px;
+					text-align: center;
+				}
 			}
 
-			> * {
-				font-size: var(--fs-note);
-			}
 		}
+
+		.description{
+			margin-top: 1rem;
+		}
+
+		.nav-button{
+			display: grid;
+			place-self: center;
+		}
+
 	}
 
 	.project-image{
+		display: grid;
+
 		grid-column: span 3;
 		cursor: pointer;
 
-		img{
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			/* padding: 0 .5rem; */
+		.image-container{
+			justify-content: space-between;
+		}
+
+	}
+
+	.button-more{
+		display: inline-flex;
+		gap: .5rem;
+		justify-content: center;
+		align-items: center;
+		background: var(--goldenrod-0);
+		color: var(--deepslate-7);
+		border: none;
+		padding-inline: 1.5rem;
+		padding-block: .5rem;
+		border-radius: 20px;
+		cursor: pointer;
+		transition: background .5s ease;
+
+		&:hover, &:focus{
+			background: var(--goldenrod-2);
+		}
+
+		&[data-icon="newspaper"]::before{
+			content: '';
+			background-image: url("../assets/images/newspaper.svg");
+			width: 32px;
+			height: 32px;
+
 		}
 	}
 
+}
+
+.project:hover{
+	transform: scale(1.01);
 }
 </style>

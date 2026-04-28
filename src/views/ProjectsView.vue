@@ -1,6 +1,6 @@
 <template>
 	
-	<nav class="gallery-nav" :class="{ project: isProjectRoot}">
+	<nav v-if="!$route.meta.hideNav" class="gallery-nav" :class="{ project: isProjectRoot}">
 		<ul v-if="!isProjectRoot">
 			<router-link class="aci" v-if="!displayArt" to="/projects/aci-explorer">
 				<svg class="project-icon palette">
@@ -47,6 +47,33 @@
 	</nav>
 	<div v-if="isProjectRoot" class="fluid-grid-container">
 		<main v-if="isProjectRoot" >
+		<!-- Books -->
+				<div class="link-container p2-link">
+					<div class="frosted-circle">
+						<router-link class="reading" to="/projects/knowledge">
+							<svg class="project-icon book">
+								<!-- <use href="../assets/images/project-icons.svg#books"></use> -->
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-books">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+									<path d="M5 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" />
+									<path d="M9 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" />
+									<path d="M5 8h4" />
+									<path d="M9 16h4" />
+									<path d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041" />
+									<path d="M14 9l4 -1" />
+									<path d="M16 16l3.923 -.98" />
+								</svg>
+							</svg>
+						</router-link>
+					</div>
+				</div>
+				<div class="p2-title title">
+					<h2 class="fs-tertiary-heading">Reading</h2>
+				</div>
+				<p class="p2-description fs-note wrapper">This section is a list of articles, books and essays that have made a lasting impression in the course of my thought.
+				Each domain operates differently of course. Books are just books I've really enjoyed while some of the articles - particularly ones related to climate and energy - impact how I think about my professional work on a day to day basis.
+				</p>
 			<!-- Art -->
 				<div class="link-container p1-link">
 					<div class="frosted-circle">
@@ -72,33 +99,7 @@
 				in their digital collection and the app will return a subset of results and display a picture, artist name, title and a description of the selected piece. 
 			    You can click on the scatterplot to view different works.
 				</p>
-			<!-- Books -->
-				<div class="link-container p2-link">
-					<div class="frosted-circle">
-						<router-link class="reading" to="/projects/knowledge">
-							<svg class="project-icon book">
-								<!-- <use href="../assets/images/project-icons.svg#books"></use> -->
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-								stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-books">
-									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-									<path d="M5 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" />
-									<path d="M9 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" />
-									<path d="M5 8h4" />
-									<path d="M9 16h4" />
-									<path d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041" />
-									<path d="M14 9l4 -1" />
-									<path d="M16 16l3.923 -.98" />
-								</svg>
-							</svg>
-						</router-link>
-					</div>
-				</div>
-				<div class="p2-title title">
-					<h2 class="fs-tertiary-heading">Knowledge</h2>
-				</div>
-				<p class="p2-description fs-note wrapper">This section is a list of articles, books and essays that have made a lasting impression in the course of my thought.
-				Many impact how I think about my professional work on a day to day basis - particularly ones related to climate and energy and forecasting.
-				</p>
+			
 			<!-- Cooking -->
 				<div class="link-container p3-link">
 					<div class="frosted-circle">
@@ -144,8 +145,6 @@ const isProjectRoot = computed(() => route.path === '/projects/')
 const displayArt = computed(() => route.path === '/projects/aci-explorer')
 const displayKnowledge = computed(() => route.path === '/projects/knowledge')
 const displayCooking = computed(() => route.path === '/projects/cooking')
-
-console.log(route.name)
 
 </script>
 

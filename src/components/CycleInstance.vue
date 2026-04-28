@@ -30,8 +30,12 @@ const handleNextImage = () => {
 	flex-direction: column;
 	align-items: center;
 
+
 	img{
 		border-radius: 10px;
+		width: 100%;
+		height: 80%;
+		object-fit: cover;
 	}
 
 	.next-image{
@@ -40,7 +44,7 @@ const handleNextImage = () => {
 		justify-content: center;
 		align-items: center;
 		margin-top: .5rem;
-		background: var(--goldenrod-1);
+		background: var(--goldenrod-0);
 		color: var(--deepslate-7);
 		border: none;
 		padding-inline: .5rem;
