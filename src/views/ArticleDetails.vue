@@ -9,7 +9,7 @@
 				<h1 class="article-title">Pita Bread</h1>
 			</div>
 		</section>
-		<img src="https://unsplash.it/1600/400" alt="">
+		<img :src="pitaImages['pita-done']" alt="" class="pita-main">
 		<section class="full-width article-intro">
 			<div class="full-width-left js-end">
 				<div class="equipment">
@@ -28,7 +28,8 @@
 				The shaping and baking part is a bit of a process, but if you keep thing tight and organized it moves right along and there isn't really any multi-thing corrdination to juggle.
 				</p>
 				<p><span class="tips">A few tips:</span> This is a fairly wet dough. If you are kneading / strengthening the dough by hand - my prefered method - your hands are meant to get sticky with dough. Just go with it and use the bench scraper to shape the dough into a ball frequently.
-				Place a heavy-duty baking sheet upside down on the bottom rack of the oven and remove all the other racks when starting the pre-heat. The Pita will be baked right on this.</p>
+				Place a heavy-duty baking sheet upside down on the bottom rack of the oven and remove all the other racks when starting the pre-heat. The Pita will be baked right on this. Before dividing the dough 
+				spread vegtable oil with a silicone brush all over the work surface you will place the pita on to proof.</p>
 			</div>
 		</section>
 		<section class="full-width article-content">
@@ -54,19 +55,35 @@
 				</ol>
 				<h2>Mixing & Fermentation</h2>
 				<ol class="mixing">
-					<li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, blanditiis.</li>
-					<li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
-					<li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
-				</ol>
-				<h2>Shaping & Baking</h2>
-				<ol class="shaping">
-					<li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus tenetur quae, non eum cum quo nulla nesciunt adipisci unde ut autem, asperiores dolores accusamus aliquid facere esse tempora. Quo, exercitationem.</li>
-					<li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
-					<li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
+					<li>Use a plastic bench scraper to mix the ingredients in the large mixing bowl until the dough comes together into a rough mass.</li>
+					<li>Let the dough rest under the bowl for 10 - 15 minutes.</li>
+					<li>Work the dough into a ball with the plastic bench scraper.</li>
+					<li>Strengthen the dough using the slap and fold method for 5 - 7 minutes. Shape the dough dough back into a ball with the bench scraper periodically.</li>
+					<li>Coat the inside of a 3 - 4 quart container with about 3 tablespoons of vegtable oil.</li>
+					<li>Place the dough in the container, brush with the oil in the container, press it down and refregirate the dough for at least 4 hours.</li>
+					<img :src="pitaImages['pita-kneading']" alt="pita dough after kneading" class="pita-kneading">
 				</ol>
 			</div>
 		</section>
-		
+		<section class="article-directions">
+			<div class="shaping">
+				<h2>Shaping & Baking</h2>
+				<ol class="shaping-list">
+					<li>Divide and shape the dough into 8 portions between 120 and 128 grams each. Work one portion at a time.</li>
+					<li>Lightly dust an area near your scale with flour and roll each piece of dough into a ball under a cupped hand. Place each dough ball onto the oiled counter space evenly with as much space between the balls as possible.</li>
+					<img :src="pitaImages['pita-dividing1']" alt="" class="pita-dividing-1">
+					<li>After all the dough is divided and shaped lightly oil one hand and flatten each ball into a rough disc. I do this in two passes.</li>
+					<li>Let the dough rest on the counter for 20 min. Preheat the oven now with the overturned baking sheet on the bottom rack.</li>
+					<img :src="pitaImages['pita-dividing2']" alt="" class="pita-dividing-2">
+					<li>Brush a rolling pin with oil and roll each rough disc into a more refined disc shape - doesn't have to be perfect. The discs should be around 1/8th of an inch thick. Let the discs rest for 15 min.</li>
+					<li>Transfer the dough to the baking sheet 2 or three pieces at a time by picking one up and placing it in the plam of an upturned hand and turning it over onto the baking sheet in the oven. Make sure you brush that hand with a bit of oil.</li>
+					<li>Bake the pitas for 4:45 - 5:30 minutes. I use an 8 inch offset spatchula to slide under the dough and get out of the oven. The first batch will probably stick a bit, but the offset spatchula gets right under them if you work with the tool at a brisk pace with just a little bit of force.</li>
+					<li>Transfer to a cooling rack.</li>
+					<img :src="pitaImages['pita-dividing3']" alt="" class="pita-dividing-3">
+					<li>Enjoy those pita after 30 minutes or so.</li>
+				</ol>
+			</div>
+		</section>
 	</main>
 	
 </template>
@@ -82,13 +99,23 @@ const recipeStore = useGeneralStore()
 const props = defineProps({
 	id: {
 		required: true
-	},
-	author: {
-		required: true
-	},
-	date: {
-		required: true
 	}
+	// author: {
+	// 	required: true
+	// },
+	// date: {
+	// 	required: true
+	// }
+})
+
+// image rendering
+
+const pitaImages = ref({
+	'pita-done': new URL('../assets/images/pita-done.jpeg', import.meta.url).href,
+	'pita-kneading': new URL('../assets/images/pita-kneading.jpeg', import.meta.url).href,
+	'pita-dividing1': new URL('../assets/images/pita-dividing1.jpeg', import.meta.url).href,
+	'pita-dividing2': new URL('../assets/images/pita-dividing2.jpeg', import.meta.url).href,
+	'pita-dividing3': new URL('../assets/images/pita-dividing3.jpeg', import.meta.url).href
 })
 
 const article = ref(null)
@@ -189,6 +216,35 @@ onMounted(() => {
 	}
 }
 
+ol li{
+	line-height: 1.5;
+	list-style-type: decimal-leading-zero;
+	margin-bottom: 1.5ch;
+}
+
+ol li::marker{
+	font-size: var(--fs-700);
+	font-weight: 200;
+}
+
+section img{
+	border-radius: 3px;
+	justify-self: center;
+}
+
+.pita-main{
+	max-width: 100%;
+	max-height: 35vh;
+	object-fit: cover;
+	border-radius: 3px;
+	justify-self: center;
+}
+
+.end{
+	justify-self: center;
+}
+
+
 /*  main layout */
 
 .article-grid{
@@ -208,18 +264,10 @@ onMounted(() => {
 	align-content: start;
 	margin-top: 2em;
 	
-	/* height: 100vh; */
-	
 }
 
 .article-grid > *{
 	grid-column: content;
-}
-
-img.full-width {
-  width: 100%;
-  max-height: 45vh;
-  object-fit: cover;
 }
 
 /* article styles */
@@ -357,26 +405,19 @@ img.full-width {
 	.full-width-right{
 		align-content: start;
 
+		img{
+			display: inline;
+		}
+
 		h2{
 			font-weight: 500;
 			margin-bottom: 1ch;
 		}
 
-		ol li{
-			line-height: 1.5;
-			list-style-type: decimal-leading-zero;
-			margin-bottom: 1.5ch;
-		}
-
-		ol li::marker{
-			font-size: var(--fs-700);
-			font-weight: 200;
-		}
-
 		span{
 			margin: 0;
 		}
-		
+
 	}
 
 	.full-width-right{
@@ -409,6 +450,23 @@ img.full-width {
 		border: 1.5px solid var(--old-orange-4);
 	}
 
+}
+
+.article-directions{
+
+	img{
+		display: inline;
+	}
+
+	.shaping{
+		align-content: start;
+
+		h2{
+			font-weight: 500;
+			margin-bottom: 1ch;
+		}
+		
+	}
 }
 
 </style>
