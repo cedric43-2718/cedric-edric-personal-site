@@ -77,6 +77,10 @@ body > *{
 
 	width: min(var(--element-max-width), 100% - (var(--inline-padding) * 2));
 	margin-inline: auto;
+
+	@media(width <= 800px){
+		--element-max-width: var(--fluid-180-400);
+	}
 }
 
 .flow > * + * {

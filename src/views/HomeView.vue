@@ -81,6 +81,13 @@ main{
 	margin-top: var(--space-l-xl);
 	width: var(--fluid-400-1200);
 	height: var(--fluid-400-1200);
+
+	@media(width <= 800px){
+		margin-top: var(--space-s-m);
+		width: var(--fluid-180-400);
+		height: var(--fluid-180-400);
+		margin-inline: auto;
+	}
 }
 
 .doodle-leaves{

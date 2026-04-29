@@ -96,6 +96,10 @@ const handleMouseLeave = (event) => {
 	padding: .5rem 0;
 	transition: background 500ms;
 
+	@media(width <= 800px){
+		justify-content: center;
+	}
+
 	& h1 {
 		color: var(--ultramarine-8);
 		transition: color .5s ease-in-out;
@@ -107,6 +111,13 @@ const handleMouseLeave = (event) => {
 
 	& .logo{
 		padding-left: 2rem;
+
+		@media(width <= 800px){
+			padding-left: 0;
+			margin-right: 1rem;
+			margin-left: .5rem;
+		}	
+
 	}
 
 	a:hover,
@@ -173,6 +184,11 @@ nav {
 		padding: 0 2rem;
 		color: var(--ultramarine-8);
 		transition: all 500ms;
+
+		@media(width <= 800px){
+			padding: 0 .5rem;
+			font-size: var(--fs-500);
+		}
 	}
 
 	& ul>li.sticking {

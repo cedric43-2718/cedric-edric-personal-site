@@ -117,6 +117,10 @@
 --fluid-640-1600a: clamp(40rem, 21.6303rem + 36.7394vw, 100rem);
 --fluid-640-1800: clamp(40rem, 17.8033rem + 44.3934vw, 112.5rem);
 
+/* mobile doodle size */
+--fluid-180-400: clamp(11.25rem, 0rem + 50vw, 25rem);
+--fluid-160-320: clamp(10rem, 1.8182rem + 36.3636vw, 20rem);
+
 /* Fluid Grid */
 
 --grid-scale-factor: 2;
