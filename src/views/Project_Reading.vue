@@ -148,9 +148,7 @@ const handleMouseLeave = () => {
 .article-color.section-hilight{
 	background-color: var(--lime-3);
 	filter: saturate(1.5);
+	z-index: -1;
 }
-
-
-
 </style>
 
