@@ -2,11 +2,11 @@
 	<main v-if="article" class="flow article-grid">
 		<section class="full-width article-info">
 			<div class="full-width-left js-center">
-				<h2 class="article-author">Jason Rudokas</h2>
-				<p>Oct 12, 2025</p>
+				<h2 class="article-author">{{article.author}}</h2>
+				<p>{{ article.date }}</p>
 			</div>
 			<div class="full-width-content as-start js-start">
-				<h1 class="article-title">Pita Bread</h1>
+				<h1 class="article-title">{{ article.title }}</h1>
 			</div>
 		</section>
 		<img :src="pitaImages['pita-done']" alt="" class="pita-main">
@@ -14,12 +14,7 @@
 			<div class="full-width-left js-end">
 				<div class="equipment">
 					<ul class="equipment-list fs-note">
-						<li>Large Mixing Bowl</li>
-						<li>Medium Eating Bowl</li>
-						<li>3 - 4 Quart Container</li>
-						<li>Plastic Bench Scraper</li>
-						<li>475 deg Oven</li>
-						<li>Heavy-Duty Half Sheet Pan</li>
+						<li v-for="tool in article.tools" :key="tool">{{ tool }}</li>
 					</ul>
 				</div>
 			</div>
@@ -73,9 +68,9 @@
 					<li>Lightly dust an area near your scale with flour and roll each piece of dough into a ball under a cupped hand. Place each dough ball onto the oiled counter and space evenly with as much space between the balls as possible.</li>
 					<img :src="pitaImages['pita-dividing1']" alt="" class="pita-dividing-1">
 					<li>After all the dough is divided and shaped lightly oil one hand and flatten each ball into a rough disc. I do this in two passes.</li>
-					<li>Let the dough rest on the counter for 20 min. Preheat the oven now with the overturned baking sheet on the bottom rack.</li>
+					<li>Let the dough rest on the counter for 20 min. Preheat the oven now (475&deg;) with the overturned baking sheet on the bottom rack.</li>
 					<img :src="pitaImages['pita-dividing2']" alt="" class="pita-dividing-2">
-					<li>Brush a rolling pin with oil and roll each rough disc into a more refined disc shape - doesn't have to be perfect. The discs should be around 1/8th of an inch thick. Let the discs rest for 15 min.</li>
+					<li>Brush a rolling pin with oil and roll each rough disc into a more refined disc shape - doesn't have to be perfect. The discs should be around 1/8<sup>th</sup> of an inch thick. Let the discs rest for 15 min.</li>
 					<li>Transfer the dough to the baking sheet 2 or three pieces at a time by picking one up and placing it in the plam of an upturned hand and turning it over onto the baking sheet in the oven. Make sure you brush that hand with a bit of oil.</li>
 					<li>Bake the pitas for 4:45 - 5:30 minutes. I use an 8 inch offset spatchula to slide under the dough and get out of the oven. The first batch will probably stick a bit, but the offset spatchula gets right under them if you work with the tool at a brisk pace with just a little bit of force.</li>
 					<li>Transfer to a cooling rack.</li>
@@ -119,6 +114,8 @@ const pitaImages = ref({
 })
 
 const article = ref(null)
+
+console.log(article)
 
 onMounted(() => {
 	recipeStore.fetchRecipe(props.id)

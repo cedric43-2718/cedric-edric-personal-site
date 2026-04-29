@@ -7,8 +7,15 @@
       "author": "Jason Rudokas",
       "date": "Oct 12, 2025",
       "title": "Pita Bread",
-      "tools": "Large Bowl, Medium Bowl, Plastic Bench Scraper",
       "tags": ["Flatbread", "Medium", "Plain"],
+      "tools": [
+        "Large Bowl",
+        "Medium Bowl",
+        "3 - 4 Quart Container",
+        "Plastic Bench Scraper",
+        "Rolling Pin",
+        "Heavy-Duty Sheet Pan"
+      ],
       "long-description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus repudiandae dolore aperiam iure labore modi, itaque earum porro corporis repellendus cumque inventore qui minima aspernatur voluptatibus! Recusandae eveniet corrupti atque corporis. Cum eum autem ratione magni. Fuga minima rerum impedit ut officiis quis, adipisci, iste asperiores labore ea accusantium laboriosam.",
       "formulas": [
         {
