@@ -79,7 +79,8 @@ body > *{
 	margin-inline: auto;
 
 	@media(width <= 800px){
-		--element-max-width: var(--fluid-180-400);
+		--element-max-width: var(--fluid-200-480);
+		--inline-padding: .5rem;
 	}
 }
 

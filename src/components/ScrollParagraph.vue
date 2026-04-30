@@ -11,46 +11,69 @@ import { ref, onMounted, onUnmounted, computed } from 'vue'
 const target = ref(null)
 const animateParagraph = ref(false)
 const emit = defineEmits(['paragraph-visible'])
+const windowWidth = ref(window.innerWidth)
+let observer = null
 
-// const isMobile = ref(false)
+// create a rective threshold based on screen size 
 
-// const threshold = computed(() => {
-// 	return isMobile.value ? 0.5 : 0.2
-// })
+const threshold = computed(() => (windowWidth.value < 800 ? 0 : 0.5))
 
-// observer callback, the square brackets are for destructuring
+// inittiate observer. this will be called when the component is monted and will test for the screen size
 
-const observerCallback = ([entry]) => {
-	if (entry.isIntersecting){
-		animateParagraph.value = true
-		emit('paragraph-visible', animateParagraph.value)
-		// stop observing after appearence
-		// observer.unobserve(entry.target)
-	} else{
-		animateParagraph.value = false
-		emit('paragraph-visible', animateParagraph.value)
-	}
+const initObserver = () => { 
+
+	if (observer) observer.disconnect()
+	
+	observer = new IntersectionObserver(
+		([entry]) => {
+			if (entry.isIntersecting){
+				animateParagraph.value = true
+				emit('paragraph-visible', animateParagraph.value)
+			} else{
+				animateParagraph.value = false
+				emit('paragraph-visible', animateParagraph.value)
+			}
+		},
+		{
+			root: null,
+			rootMargin: '0px',
+			threshold: threshold.value
+		}
+	)
+
+	if(target.value) observer.observe(target.value)
 }
+
+
+
+// const observerCallback = ([entry]) => {
+// 	if (entry.isIntersecting){
+// 		animateParagraph.value = true
+// 		emit('paragraph-visible', animateParagraph.value)
+// 		// stop observing after appearence
+// 		// observer.unobserve(entry.target)
+// 	} else{
+// 		animateParagraph.value = false
+// 		emit('paragraph-visible', animateParagraph.value)
+// 	}
+// }
 
 // observer options
 
-const observerOptions = {
-	root: null,
-	rootMargin: '0px',
-	threshold: .5
-}
+// const observerOptions = {
+// 	root: null,
+// 	rootMargin: '0px',
+// 	threshold: .5
+// }
 
 // create new observer
 
-const observer = new IntersectionObserver(observerCallback, observerOptions)
+// const observer = new IntersectionObserver(observerCallback, observerOptions)
 
 // initiate observer within lifecycle
 
 onMounted(() => {
-	// isMobile.value = window.innerWidth < 800
-	if(target.value){
-		observer.observe(target.value)
-	}
+	initObserver()
 })
 
 onUnmounted(() => {

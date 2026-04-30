@@ -120,6 +120,7 @@
 /* mobile doodle size */
 --fluid-180-400: clamp(11.25rem, 0rem + 50vw, 25rem);
 --fluid-160-320: clamp(10rem, 1.8182rem + 36.3636vw, 20rem);
+--fluid-200-480: clamp(12.5rem, -1.8182rem + 63.6364vw, 30rem);
 
 /* Fluid Grid */
 

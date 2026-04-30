@@ -74,7 +74,24 @@ main{
 	.arrow.is-visible{
 		opacity: 1;
 	}
+
+
+	@media(width <= 800px){
+		h1{
+			font-weight: 600;
+			font-size: var(--fs-600);
+		}
+
+		h2{
+			font-weight: 600;
+			font-size: var(--fs-600);
+		}
+	}
+
 }
+
+	
+
 
 .doodle-leaves
 {
