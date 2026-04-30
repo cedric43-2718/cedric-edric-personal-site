@@ -142,6 +142,10 @@ main{
 		margin-block: unset;
 	}
 
+	@media(width < 800px){
+		max-inline-size: 400px;
+	}
+
 }
 
 .grid-full-span{
@@ -167,6 +171,13 @@ main{
 		margin-top: 4rem;
 	}
 
+	@media(width < 800px){
+		grid-row: 3 / 4;
+		grid-column: 1;
+		margin-top: 2rem;
+		max-inline-size: 600px;
+	}
+
 	h1{
 		margin-bottom: 2rem;
 		font-weight: 400;
@@ -178,9 +189,9 @@ main{
 		grid-template-columns: repeat(2, 1fr);
 		gap: 2rem;
 
-	/* @media(width < 800px){
-		grid-template-columns: 1fr;
-	} */
+	@media(width < 800px){
+		grid-template-columns: auto;
+	}
   }
 
   .form-group{
@@ -189,12 +200,20 @@ main{
 
   input{
 	background: var(--young-orange-0);
+
+	@media(width < 800px){
+		max-inline-size: 400px;
+	}
   }
 
   textarea{
 	box-sizing: content-box;
 	height: 6lh;
 	margin-top: 1rem;
+
+	@media(width < 800px){
+		max-inline-size: 400px;
+	}
   }
 
   input, 
@@ -207,6 +226,8 @@ main{
 	&:focus-visible{
 		border-bottom: 2px solid var(--lime-7);
 	}
+
+
   }
 
   button{

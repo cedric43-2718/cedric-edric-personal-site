@@ -29,21 +29,18 @@
 
 			<div class="wrapper">
 				<h2>Climate Activisim</h2>
-				<p>Most of the work I was doing at NESCAUM was related to developing clean technology deployment pathways consistent net zero decarbonization 
-				goals. Needless to say we were then and still are today very far from decarbonization trajectories that are <a href="https://www.ipcc.ch/report/ar6/wg3/figures/summary-for-policymakers/figure-spm-5/" target="_blank" rel="noopener noreferrer">consistent</a>
-				with limiting global temperature increase to 1.5 or 2 degrees C over the next 75 years. I began to follow the  
-				work the IPCC was doing to track our progress towards limiting global temperature - especially <a href="https://www.ipcc.ch/sr15/" target="_blank" rel="noopener noreferrer">The Special Report</a> on 1.5 
+				<p>Most of the work I was doing at NESCAUM was related to developing clean technology deployment pathways consistent with net zero decarbonization 
+				goals. I began to follow the work the IPCC was doing to track our progress towards limiting global temperature - especially <a href="https://www.ipcc.ch/sr15/" target="_blank" rel="noopener noreferrer">The Special Report</a> on 1.5 
 				degrees C. I felt more and more pulled towards chaneling my energy into helping to make people aware of the alarming implications of the
 				trajectory our climate system is on. So I switched gears in my life and joined up with a group of friends to help build <a href="https://xrboston.org/" target="_blank" rel="noopener noreferrer">Extinction Rebellion Boston</a> as
-				the coordinator of the Art and Design Team. This was some of the most interesting and fufilling work of my life.  
+				the coordinator of the Art and Design Team. This was some of the most interesting and fufilling work of my life. 
 				</p>
 			</div>
 			
 			<div class="wrapper">
 				<h2>Website</h2>
 				<p>I started learning about building websites during the pandemic and I've been dabbling with various projects ever since. 
-				It's about time I've got one of these pushed live. This site is 
-				built entirely using <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">Vue 3</a> in the composition dialect. The layout and design is all custom css. The current site is a 
+				This site is built entirely using <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">Vue 3</a> in the composition dialect. The layout and design is all custom css. The current site is a 
 				Single Page Application that uses client side routing and implements a serverless backend with Azure Functions. It is hosted on Azure and uses github actions to implement CI/CD (Continuous Integration/Continuous Deployment). A few notable integrations are <a href="https://css-doodle.com/" target="_blank" rel="noopener noreferrer">css-doodle</a> 
 				and <a href="https://observablehq.com/plot/" target="_blank" rel="noopener noreferrer">Observable Plot </a>. My plan is to recast this project into a Nuxt site that includes a blogging feature
 				using Nuxt/Content and also incorporates some features that rely on server side rendering. The testing I've done with Nuxt so far makes me really excited to continue exploring this meta-framework.
