@@ -97,13 +97,25 @@ main{
 	/* place-items: center; */
 	margin: 2rem 0;
 
+	@media(width <= 800px){
+		grid-template-columns: 1fr;
+		grid-auto-flow: row;
+		margin: auto 2rem;
+	}
+
 
 	.info{
 
 		display: grid;
 		grid-column: 2 / span 1;
 		height: 100%;
-		
+
+		@media(width <= 800px){
+			grid-row: 1;
+			grid-column: 3 / span 1;
+			margin-bottom: 2rem;
+			place-items: center;
+		}
 
 		.photo{
 			height: var(--space-3xl);
@@ -117,6 +129,10 @@ main{
 	.flow {
 		display: grid;
 		grid-column: 3 / span 1;
+
+		@media(width <= 800px){
+			grid-row: 2;
+		}
 
 		.wrapper{
 			--element-max-width: var(--fluid-400-1400);

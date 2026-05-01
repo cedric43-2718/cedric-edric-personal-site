@@ -44,32 +44,6 @@ const initObserver = () => {
 	if(target.value) observer.observe(target.value)
 }
 
-
-
-// const observerCallback = ([entry]) => {
-// 	if (entry.isIntersecting){
-// 		animateParagraph.value = true
-// 		emit('paragraph-visible', animateParagraph.value)
-// 		// stop observing after appearence
-// 		// observer.unobserve(entry.target)
-// 	} else{
-// 		animateParagraph.value = false
-// 		emit('paragraph-visible', animateParagraph.value)
-// 	}
-// }
-
-// observer options
-
-// const observerOptions = {
-// 	root: null,
-// 	rootMargin: '0px',
-// 	threshold: .5
-// }
-
-// create new observer
-
-// const observer = new IntersectionObserver(observerCallback, observerOptions)
-
 // initiate observer within lifecycle
 
 onMounted(() => {

@@ -95,6 +95,22 @@
 	gap: .5rem;
 	grid-auto-flow: column;
 	grid-auto-columns: 1fr;
+
+	@media(width <= 800px){
+		grid-auto-flow: row;
+		grid-auto-rows: 1fr;
+		align-items: center;
+		justify-items: center;
+
+		.footer-nav{
+			ul {
+				display: flex;
+				gap: 1rem;
+				margin: auto;
+				padding: 0;
+			}
+		}
+	}
 }
 
 .footer-logo{
@@ -110,6 +126,12 @@
 	& h1:is(:hover, :focus){
 		color: var(--mountain-0);
 	}
+
+	@media(width <= 800px){
+		& h1 {
+			display: none;
+		}
+	}
 	
 }
 
@@ -117,12 +139,19 @@
 	padding: 0;
 	display: flex;
 	gap: .5rem;
+	@media(width <= 800px){
+		gap: 3rem;
+	}
 }
 
 .social-icon{
 	width: 2.5rem;
 	aspect-ratio: 1;
 	fill: var(--goldenrod-2);
+
+	@media(width <= 800px){
+		width: 3.5rem;
+	}
 }
 
 .social-list a:is(:hover, :focus) .social-icon{
