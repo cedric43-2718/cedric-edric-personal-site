@@ -51,7 +51,7 @@
 							<li>
 								<router-link :to="{name: 'about'}">About</router-link>
 							</li>
-							<li>
+							<li v-if="!isMobile">
 								<router-link :to="{name: 'projects'}">Projects</router-link>
 							</li>
 							<li>
@@ -70,7 +70,17 @@
 	</footer>
 </template>
 
+<script setup>
+import { ref, onMounted, computed} from 'vue'
 
+const windowWidth = ref(window.innerWidth)
+const isMobile = computed(() => (windowWidth.value < 800 ? true : false))
+
+onMounted(() => {
+	windowWidth.value = window.innerWidth
+})
+
+</script>
 
 <style scoped>
 

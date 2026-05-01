@@ -13,6 +13,7 @@ export const useGeneralStore = defineStore('content', () => {
     {
       id: 2,
       title: 'About'
+
     },
     {
       id: 3,

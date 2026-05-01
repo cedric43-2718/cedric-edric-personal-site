@@ -6,7 +6,7 @@
 		<nav>
 			<ul ref="ulRef">
 				<li v-for="section in store.sections" :key="section.id" class="fs-main-nav">
-					<router-link v-on:mouseleave="handleMouseLeave" v-on:mouseover="handleMouseOver" :to="{name: `${section.title.toLowerCase()}`}">
+					<router-link v-if="!renderRoute(section.title)" v-on:mouseleave="handleMouseLeave" v-on:mouseover="handleMouseOver" :to="{name: `${section.title.toLowerCase()}`}">
 						{{ section.title }}
 					</router-link>
 				</li>
@@ -29,6 +29,22 @@ const route = useRoute()
 
 const ulRef = ref(null)
 const primaryHeader = ref(null)
+
+// render routes based on screen size
+
+const windowWidth = ref(window.innerWidth)
+const isMobile = computed(() => (windowWidth.value < 800 ? true : false))
+// const displayValue = computed(() => (windowWidth.value < 800 ? 'none' : 'inline'))
+
+const renderRoute = (name) => {
+	return name === 'Projects' && isMobile.value
+}
+
+onMounted(() => {
+	windowWidth.value = window.innerWidth
+	console.log(isMobile.value)
+	console.log('render', !renderRoute('About'))
+})
 
 // current project 
 
@@ -171,9 +187,12 @@ nav {
 	}
 
 	ul{
+		/* --render-link: v-bind(displayValue); */
+
 		display: flex;
 		flex-grow: 1;
 		padding-inline: 0;
+
 	}
 
 	li:hover{
