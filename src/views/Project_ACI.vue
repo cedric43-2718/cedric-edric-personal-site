@@ -376,7 +376,10 @@ input::placeholder{
 
 }
 
-
+dialog::backdrop{
+	background-color: rgba(0, 0, 0, 0.1); 
+  	backdrop-filter: blur(8px) saturate(150%); 
+}
 
 
 
