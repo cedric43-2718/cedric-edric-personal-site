@@ -19,6 +19,7 @@
 						<p>Score: <span>{{ displayScore }}</span></p>
 						<p>Year: <span>{{ displayYear }}</span></p>
 					</div>
+					<button @click="modalTarget.show()">Open Notes</button>
 				</div>
 			</div>
 			<div class="gallery-display">
@@ -33,6 +34,12 @@
 				</section>	
 			</div>
 		</div>
+		<Modal ref="modalTarget">
+			<p>Dialog Message</p>
+			<form method="dialog">
+				<button>Close</button>
+			</form>
+		</Modal>
 	</main>
 </template>
 
@@ -42,8 +49,15 @@ import { ref, computed, inject, onMounted, onUnmounted, onUpdated, watchEffect, 
 import { useRoute } from 'vue-router'
 import * as Plot from "@observablehq/plot"
 import PlotEl from '../components/PlotEl.js'
+import Modal from '../components/Modal.vue'
 
 const route = useRoute()
+
+// modal 
+
+const modalTarget = ref(null)
+
+// ACI related variables and logic
 
 const searchTerm = ref('')
 const filteredDataContainer = ref([])
@@ -127,7 +141,7 @@ const getWorks = async (input, work_count) => {
 		return
 	}
 
-	console.log(filteredDataContainer.value)
+	// console.log(filteredDataContainer.value)
 	isLoading.value = true
 	error.value = null
 
@@ -300,5 +314,7 @@ input::placeholder{
 	}
 
 }
+
+
 
 </style>
