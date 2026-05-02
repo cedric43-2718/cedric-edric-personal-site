@@ -303,7 +303,7 @@ main{
 			linear-gradient(var(--moon-papper) 0 0) padding-box,
 			conic-gradient(from var(--radiate-deg), var(--gradient-glow)) border-box;
 		filter: saturate(75%);
-		box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 		border: 2px solid transparent; 
 		border-radius: 50%;
 		animation: radiate 7s infinite linear;
@@ -343,7 +343,7 @@ main{
 	.frosted-circle::before{
 		z-index: -1;
 		background: var(--moon-papper);
-		inset: .5rem;
+		inset: .75rem;
 		filter: blur(.75rem);
 		scale: 1.1;
 	}

@@ -14,12 +14,12 @@
 						<PlotEl v-if="loaded" :options="plotOptions" class="bee" @mousedown="handleSelect($event)"/>
 					</div>
 				</div>
-				<div class="plot-data">
-					<div>
+				<div class="button-container">
+					<!-- <div>
 						<p>Score: <span>{{ displayScore }}</span></p>
 						<p>Year: <span>{{ displayYear }}</span></p>
-					</div>
-					<button @click="modalTarget.show()">Open Notes</button>
+					</div> -->
+					<button class="button-more" @click="modalTarget.show()">Open Notes</button>
 				</div>
 			</div>
 			<div class="gallery-display">
@@ -34,12 +34,19 @@
 				</section>	
 			</div>
 		</div>
-		<Modal ref="modalTarget">
-			<p>Dialog Message</p>
-			<form method="dialog">
-				<button>Close</button>
-			</form>
-		</Modal>
+		<div class="modal-container">
+			<Modal ref="modalTarget">
+				<p class="fs-note"><span class="fw-semibold">Search:</span> The app searches the full text of all information stored on a very large collection of works and returns a set of results based on the search term. 
+				So, for example, it's not really meant to look up every work the ACI has in it's digital collection by Edward Ruscha. 
+				I think it's a fun way put in random words like "electric" or whatever and see what you get.
+				The results are limited to the first 20 works that also have an image.</p>
+				<p class="fs-note"><span class="fw-semibold">Graph:</span> The orange point is the first work displayed after a search term is submitted. 
+				The dots plotted represent other works returned by the search. If you click on one of the dots the work displayed will update.</p>
+				<form method="dialog">
+					<button class="close-button" data-icon="close"></button>
+				</form>
+			</Modal>
+		</div>
 	</main>
 </template>
 
@@ -91,7 +98,7 @@ function renderPlot(data) {
 			maxVal: i.score === maxScore ? 1 : 0
 		}
 	})
-	console.log(dataRev)
+	// console.log(dataRev)
 	plotOptions.value = {
 		data: data,
 		marks: [
@@ -149,7 +156,7 @@ const getWorks = async (input, work_count) => {
 		const url = `https://api.artic.edu/api/v1/artworks/search?q=${input}&limit=${work_count}&fields=id,title,artist_display,artist_title,category_titles,term_titles,subject_id,theme_titles,artwork_type_title,date_display,date_start,date_end,main_reference_number,image_id,description,short_description`;
 		const res = await fetch(url)
 		const data = await res.json()
-		console.log(data.pagination.total)
+		// console.log(data.pagination.total)
 		data.data.map((i, index) => {	
 			let obj = {}
 			obj["results"] = data.pagination.total
@@ -211,7 +218,7 @@ watchEffect(() => {
 
 onMounted(() => {
 	getWorks('window', 20)
-	console.log(route.path)
+	// console.log(route.path)
 })
 
 </script>
@@ -275,9 +282,28 @@ input::placeholder{
 			}
 		}
 		
-		.plot-data{
+		.button-container{
 			display: grid;
 			place-items: center;
+			align-content: start;
+
+			.button-more{
+				justify-self: center;
+				display: inline-flex;
+				justify-content: center;
+				align-items: center;
+				background: var(--goldenrod-1);
+				color: var(--deepslate-7);
+				border: none;
+				padding-inline: 1rem;
+				border-radius: 20px;
+				cursor: pointer;
+				transition: background .5s ease-in-out;
+
+				&:hover, &:focus{
+					background: var(--goldenrod-2);
+				}
+			}
 		}
 	}
 
@@ -314,6 +340,44 @@ input::placeholder{
 	}
 
 }
+
+.modal-container{
+
+	& > [open] {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 1rem;
+	
+	}
+	.modal-component{
+
+		p{
+			max-width: 50rem;
+		}
+
+		.close-button {
+			display: inline-flex;
+			border: 0;
+			background: none;
+			border-radius: 6px;
+			font-size: var(--fs-600);
+			cursor: pointer;
+			transition: background .5s ease-in-out;
+
+			&[data-icon="close"]::before{
+				content: '';
+				background-image: url("../assets/images/close.svg");
+				width: 32px;
+				height: 32px;
+			}
+		}
+	}
+
+}
+
+
+
 
 
 

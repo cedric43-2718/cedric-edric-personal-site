@@ -2,7 +2,7 @@
 
 	<dialog 
 		ref="modalRef" 
-		class="modal"
+		class="modal-component"
 		@click="handleClose"
 	>
 		<slot/>
@@ -28,6 +28,8 @@ function handleClose(e) {
 	if(e.currentTarget === e.target) {
 		closeModal()
 	}
+	console.log("current-target", e.currentTarget)
+	console.log("target", e.target)
 }
 
 </script>
@@ -35,30 +37,17 @@ function handleClose(e) {
 
 <style scoped>
 
-.modal{
+.modal-component{
+
 	background: var(--young-orange-0);
-	padding: 4rem;
+	padding: 1rem;
+	padding-bottom: 0;
 	border-radius: 10px;
 	border: 1px solid var(--young-orange-4);
 	position: fixed;
   	top: 50%;
   	left: 50%;
-  	transform: translate(-200%, -50%);
-
-	button{
-		background: var(--deepslate-6);
-		color: var(--young-orange-2);
-		border: 0;
-		border-radius: 6px;
-		font-size: var(--fs-600);
-		cursor: pointer;
-		transition: background .5s ease-in-out;
-
-		&:hover,
-		&:focus-visible{
-			background: var(--deepslate-5);
-		}
-	}
+  	transform: translate(-80%, -80%);
 }
 
 </style>
