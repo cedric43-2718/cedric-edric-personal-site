@@ -104,6 +104,8 @@ main{
 	justify-content: center;
 	gap: 4rem;
 	margin-inline: 2rem;
+	margin-top: 15vh;
+	margin-bottom: 35vh;
 	
 	@media (width <= 1480px) {
 		grid-auto-flow: row;
