@@ -1,118 +1,118 @@
 {
 	"name": "articleData",
 	"subjects": [
+    {
+      "id": "768ccb2d-9b97-4da6-a5be-3379854287bd",
+      "color": "bg-climate",
+      "subject": ["Climate", "Energy"],
+      "articles": [
+        {
+          "id": "59ec8ac9-ecdd-48aa-9a7c-50e359d95a37",
+          "title": "Pathways Study: Evaluation of Pathways to a Future Grid",
+          "info": ["Analysis Group, Inc.", 2022]
+        },
+        {
+          "id": "64a0c1a2-1812-473e-b8d4-b18154df9fde",
+          "title": "Time for a Market Upgrade? A Review of Wholesale Electricity Market Designs for the Future",
+          "info": ["Resources for the Future", 2024]
+        },
+        {
+          "id": "02673a5c-9642-4765-a9e4-a96114432f29",
+          "title": "Clean, Reliable, Affordable: The Value of Multi-Day Storage in New England",
+          "info": ["Form Energy", 2023]
+        },
+        {
+          "id": "3d485c40-0981-468c-8686-552d8ab3b2e9",
+          "title": "Economics of Grid-Scale Energy Storage in Wholesale Electricity Markets",
+          "info": ["Karaduman, Ömer", 2021]
+        },
+        {
+          "id": "8d279286-bba7-46f3-9648-888c16d99338",
+          "title": "Resource Adequacy for the Energy Transition: A Critical Periods Reliability Framework and its Applications in Planning and Markets",
+          "info": ["Energy + Environmental Economics", 2025]
+        },
 		{
-			"id": "07ea17dc-d480-4aa6-bb01-e788f1e605bf",
-			"color": "bg-science",
-			"subject": ["Science", "Computation"],
-			"articles": [
-				{
-					"id": "12207e99-2416-4aa9-8947-3d1f971e5213",
-					"title": "A Mathematical Theory of Computation",
-					"info": ["Shannon, Claude E.", 1948]
-				},
-				{
-					"id": "a48bab81-3397-4979-aea4-9fd64dd05621",
-					"title": "On the Decrease of Entropy in a Thermodynamic System by the Intervention of Intelligent Beings",
-					"info": ["Szilard, Leo", 1929]	
-				}
-			]
-		},
-		{
-			"id": "768ccb2d-9b97-4da6-a5be-3379854287bd",
-			"color": "bg-climate",
-			"subject": ["Climate", "Energy"],
-			"articles": [
-				{
-					"id": "82ffc66a-12b4-40a3-81ed-43c0c6397eb2",
-					"title": "Global Warming of 1.5 Degrees C",
-					"info": ["The Intergovernmental Panel on Climate Change", 2018]
-				},
-				{
-					"id": "67065be1-7713-401c-8600-040fea5332c2",
-					"title": "Trajectories of the Earth System in the Anthropocene",
-					"info": ["Steffen, Will, et al.", 2018]
-				},
-				{
-					"id": "59ec8ac9-ecdd-48aa-9a7c-50e359d95a37",
-					"title": "Pathways Study: Evaluation of Pathways to a Future Grid",
-					"info": ["Analysis Group, Inc.", 2022] 
-				},
-				{
-					"id": "64a0c1a2-1812-473e-b8d4-b18154df9fde",
-					"title": "Time for a Market Upgrade? A Review of Wholesale Electricity Market Designs for the Future",
-					"info": ["Resources for the Future", 2024]
-				},
-				{
-					"id": "02673a5c-9642-4765-a9e4-a96114432f29",
-					"title": "Clean, Reliable, Affordable: The Value of Multi-Day Storage in New England",
-					"info": ["Form Energy", 2023]
-				},
-				{
-					"id": "3d485c40-0981-468c-8686-552d8ab3b2e9",
-					"title": "Economics of Grid-Scale Energy Storage in Wholesale Electricity Markets",
-					"info": ["Karaduman, Ömer", 2021]
-				},
-				{
-					"id": "8d279286-bba7-46f3-9648-888c16d99338",
-					"title": "Resource Adequacy for the Energy Transition: A Critical Periods Reliability Framework and its Applications in Planning and Markets",
-					"info": ["Energy + Environmental Economics", 2025]
-				}
-			]
-		},
-		{
-			"id": "666400f6-044a-4828-bc3e-8a527d941ad7",
-			"color": "bg-economics",
-			"subject": ["Economics"],
-			"articles": [
-				{
-					"id": "4dbb86d8-d1b3-4268-ad08-32badd53e371",
-					"title": "Political Aspects of Full Employment",
-					"info": ["Kalecki, Michal", 1943]
-				},
-				{
-					"id": "de05e3cf-e7e5-439b-9f3c-376b5499d559",
-					"title": "Increasing Returns and Economic Geography",
-					"info": ["Krugman, Paul", 1991]
-				},
-				{
-					"id": "dfb28a7f-777f-47f7-8e76-8de741aeff3c",
-					"title": "The Two Growth Rates of the Economy",
-					"info": ["Adamou, A., Berman, Y., Peters, O.", 2020] 
-				},
-				{
-					"id": "22514421-8076-41df-b394-97cdc2837393",
-					"title": "The Ergodicity Problem in Economics",
-					"info": ["Peters, Ole", 2019]
-				},
-				{
-					"id": "6e98a7b7-3224-4824-8f52-923d811900ef",
-					"title": "The Role of Entropy in the Development of Economics",
-					"info": ["Jakimowicz, Aleksander",2020]
-				}
-			]
-		},
-		{
-			"id": "9859da30-9598-4fc9-9f0f-802043588e39",
-			"color": "bg-math",
-			"subject": ["Mathematics", "Forecasting"],
-			"articles": [
-				{
-					"id": "3fbd5f17-48cf-4bbb-8970-8f877caaad20",
-					"title": "Forecasting at Scale",
-					"info": ["Taylor, S. J., Letham, B.", 2017]
-				},
-				{
-					"id": "29586f14-21c3-43ed-ad6b-45fa65e80f14",
-					"title": "Short-term load forecasting based on a semi-parametric additive model",
-					"info": ["Fan, S., Hyndman, R. J.", 2010]
-				},
-				{
-					"id": "941d47e9-06f8-49ee-a90a-40ad8d278ada",
-					"title": "Density Forecasting for Long-Term Peak Electricity Demand",
-					"info": ["Hyndman, R. J., Fan, S.", 2009] 
-				}
-			]
-		}
-	]
+          "id": "82ffc66a-12b4-40a3-81ed-43c0c6397eb2",
+          "title": "Global Warming of 1.5 Degrees C",
+          "info": ["The Intergovernmental Panel on Climate Change", 2018]
+        },
+        {
+          "id": "67065be1-7713-401c-8600-040fea5332c2",
+          "title": "Trajectories of the Earth System in the Anthropocene",
+          "info": ["Steffen, Will, et al.", 2018]
+        }
+      ]
+    },
+	{
+      "id": "9859da30-9598-4fc9-9f0f-802043588e39",
+      "color": "bg-math",
+      "subject": ["Mathematics", "Forecasting"],
+      "articles": [
+        {
+          "id": "3fbd5f17-48cf-4bbb-8970-8f877caaad20",
+          "title": "Forecasting at Scale",
+          "info": ["Taylor, S. J., Letham, B.", 2017]
+        },
+        {
+          "id": "29586f14-21c3-43ed-ad6b-45fa65e80f14",
+          "title": "Short-term load forecasting based on a semi-parametric additive model",
+          "info": ["Fan, S., Hyndman, R. J.", 2010]
+        },
+        {
+          "id": "941d47e9-06f8-49ee-a90a-40ad8d278ada",
+          "title": "Density Forecasting for Long-Term Peak Electricity Demand",
+          "info": ["Hyndman, R. J., Fan, S.", 2009]
+        }
+      ]
+    },
+    {
+      "id": "07ea17dc-d480-4aa6-bb01-e788f1e605bf",
+      "color": "bg-science",
+      "subject": ["Science", "Computation"],
+      "articles": [
+        {
+          "id": "12207e99-2416-4aa9-8947-3d1f971e5213",
+          "title": "A Mathematical Theory of Computation",
+          "info": ["Shannon, Claude E.", 1948]
+        },
+        {
+          "id": "a48bab81-3397-4979-aea4-9fd64dd05621",
+          "title": "On the Decrease of Entropy in a Thermodynamic System by the Intervention of Intelligent Beings",
+          "info": ["Szilard, Leo", 1929]
+        }
+      ]
+    },
+    {
+      "id": "666400f6-044a-4828-bc3e-8a527d941ad7",
+      "color": "bg-economics",
+      "subject": ["Economics"],
+      "articles": [
+        {
+          "id": "4dbb86d8-d1b3-4268-ad08-32badd53e371",
+          "title": "Political Aspects of Full Employment",
+          "info": ["Kalecki, Michal", 1943]
+        },
+        {
+          "id": "de05e3cf-e7e5-439b-9f3c-376b5499d559",
+          "title": "Increasing Returns and Economic Geography",
+          "info": ["Krugman, Paul", 1991]
+        },
+        {
+          "id": "dfb28a7f-777f-47f7-8e76-8de741aeff3c",
+          "title": "The Two Growth Rates of the Economy",
+          "info": ["Adamou, A., Berman, Y., Peters, O.", 2020]
+        },
+        {
+          "id": "22514421-8076-41df-b394-97cdc2837393",
+          "title": "The Ergodicity Problem in Economics",
+          "info": ["Peters, Ole", 2019]
+        },
+        {
+          "id": "6e98a7b7-3224-4824-8f52-923d811900ef",
+          "title": "The Role of Entropy in the Development of Economics",
+          "info": ["Jakimowicz, Aleksander", 2020]
+        }
+      ]
+    }
+  ]
 }
