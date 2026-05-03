@@ -28,6 +28,10 @@
     {
       "route": "/logout",
       "redirect": "/.auth/logout"
+    },
+    {
+      "route": "/login-success",
+      "allowedRoles": ["authenticated"]
     }
   ]
 }
