@@ -1,6 +1,7 @@
 <template>
 	<main class="login-success">
 		<h1>You are logged in</h1>
+		<a href="/.auth/logout/google?post_login_redirect_uri=https://cedricedric.net">Login</a>
 	</main>
 </template>
 
