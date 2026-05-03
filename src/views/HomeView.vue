@@ -138,7 +138,7 @@ css-doodle{
 		}
 
 		@match((x > $(xval - range) && x < $(xval + range)) && (y > $(yval - range) && y < $(yval + range))){
-			background: var(--goldenrod-3);
+			background: var(--old-orange-5);
 			/* border-radius: 50%; */
 			opacity: .2; 
 			/* clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); */
