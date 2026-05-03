@@ -65,6 +65,10 @@
 					<span class="location">Waltham, Massachusetts</span>
 					<span class="email">jrudokas@cedricedric.net</span>
 				</div>
+				<div v-if="isArticleRoute" class="login">
+					<router-link :to="{name: 'login-success'}">Login</router-link>
+					<!-- <a href="/.auth/login/github?post_login_redirect_uri=https://zealous-water.azurestaticapps.net/success">Login</a> -->
+				</div>
 			</div>
 		</div>
 	</footer>
@@ -72,9 +76,15 @@
 
 <script setup>
 import { ref, onMounted, computed} from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const windowWidth = ref(window.innerWidth)
 const isMobile = computed(() => (windowWidth.value < 800 ? true : false))
+
+const isArticleRoute = computed(() => route.path === '/projects/cooking')
+console.log(isArticleRoute.value)
 
 onMounted(() => {
 	windowWidth.value = window.innerWidth
@@ -175,6 +185,12 @@ onMounted(() => {
 	justify-content: start;
 	gap: .5rem;
 
+}
+
+.login{
+	display: grid;
+	align-items: end;
+	justify-items: end;
 }
 
 
