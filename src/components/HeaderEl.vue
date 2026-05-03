@@ -42,8 +42,8 @@ const renderRoute = (name) => {
 
 onMounted(() => {
 	windowWidth.value = window.innerWidth
-	console.log(isMobile.value)
-	console.log('render', !renderRoute('About'))
+	// console.log(isMobile.value)
+	// console.log('render', !renderRoute('About'))
 })
 
 // current project 
