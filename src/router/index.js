@@ -5,6 +5,7 @@ import ProjectsView from '../views/ProjectsView.vue'
 import ContactView from '../views/ContactView.vue'
 import ArticleDetails from '../views/ArticleDetails.vue'
 import LoginSuccess from '@/views/LoginSuccess.vue'
+import EditArticles from '@/views/EditArticles.vue'
 import Project1 from '../views/Project_ACI.vue'
 import Project2 from '../views/Project_Reading.vue'
 import Project3 from '../views/Project_Cooking.vue'
@@ -59,6 +60,11 @@ const router = createRouter({
       path: '/login-success',
       name: 'login-success',
       component: LoginSuccess
+    },
+    {
+      path: '/create-edit-articles',
+      name: 'edit-articles',
+      component: EditArticles
     },
     
   ],
