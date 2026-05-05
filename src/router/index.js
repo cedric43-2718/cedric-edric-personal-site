@@ -72,12 +72,12 @@ const router = createRouter({
         console.log(authDetails)
         const isAdmin = authDetails.userDetails === 'ecedric311@gmail.com' ? true : false;
 
-        // if(isAdmin) {
-        //   next()
-        // } else {
-        //   alert('You need to be a site admin to access this page. Contact Jason to get access...')
-        //   next('/')
-        // }
+        if(isAdmin) {
+          next()
+        } else {
+          alert('You need to be a site admin to access this page. Contact Jason to get access...')
+          next('/')
+        }
       }
     },
     
