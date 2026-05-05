@@ -32,10 +32,10 @@
     {
       "route": "/login-success",
       "allowedRoles": ["authenticated"]
-    },
-    {
-      "route": "/create-edit-articles",
-      "allowedRoles": ["admin"]
     }
+    // {
+    //   "route": "/create-edit-articles",
+    //   "allowedRoles": ["admin"]
+    // }
   ]
 }
