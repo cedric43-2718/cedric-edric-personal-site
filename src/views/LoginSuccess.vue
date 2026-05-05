@@ -15,9 +15,9 @@ import { getUserInfo } from '@/composables/getAuthInfo';
 
 const route = useRoute()
 
-onMounted(async () => {
-	console.log(await getUserInfo())
-})
+// onMounted(async () => {
+// 	console.log(await getUserInfo())
+// })
 
 </script>
 

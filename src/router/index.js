@@ -9,6 +9,7 @@ import EditArticles from '@/views/EditArticles.vue'
 import Project1 from '../views/Project_ACI.vue'
 import Project2 from '../views/Project_Reading.vue'
 import Project3 from '../views/Project_Cooking.vue'
+import { getUserInfo } from '@/composables/getAuthInfo'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -64,7 +65,11 @@ const router = createRouter({
     {
       path: '/create-edit-articles',
       name: 'edit-articles',
-      component: EditArticles
+      component: EditArticles,
+      beforeEnter: (to, from, next) => {
+        const authDetails = await getUserInfo()
+        console.log(authDetails)
+      }
     },
     
   ],
