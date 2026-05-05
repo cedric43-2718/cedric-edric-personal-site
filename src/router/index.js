@@ -66,7 +66,7 @@ const router = createRouter({
       path: '/create-edit-articles',
       name: 'edit-articles',
       component: EditArticles,
-      beforeEnter: (to, from, next) => {
+      beforeEnter: async (to, from, next) => {
         
         const authDetails = await getUserInfo()
         console.log(authDetails)
