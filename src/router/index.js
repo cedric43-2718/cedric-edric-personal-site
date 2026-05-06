@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { ref } from 'vue'
+import { useGeneralStore } from '@/stores/appStore'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import ProjectsView from '../views/ProjectsView.vue'
@@ -67,17 +69,24 @@ const router = createRouter({
       name: 'edit-articles',
       component: EditArticles,
       beforeEnter: async (to, from, next) => {
-        
+
+        const generalStore = useGeneralStore()
+        const isAdmin = ref(false)
+
         const authDetails = await getUserInfo()
         console.log(authDetails)
-        const isAdmin = authDetails.userDetails === 'ecedric311@gmail.com' ? true : false;
+        isAdmin.value = authDetails.userDetails === 'ecedric311@gmail.com' ? true : false;
 
-        // if(isAdmin) {
-        //   next()
-        // } else {
-        //   alert('You need to be a site admin to access this page. Contact Jason to get access...')
-        //   next('/')
-        // }
+        generalStore.showAuthMessage = !isAdmin.value
+
+        if(isAdmin.value) {
+          next()
+        } else {
+            setTimeout(() => {
+              next('/login-success')
+              generalStore.showAuthMessage = false
+            }, 4000);
+        }
       }
     },
     

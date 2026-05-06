@@ -47,8 +47,8 @@
 	</nav>
 	<div v-if="isProjectRoot" class="fluid-grid-container">
 		<main v-if="isProjectRoot" >
-		<!-- Books -->
-				<div class="link-container p2-link">
+		<!-- Reading -->
+				<div class="link-container p1-link">
 					<div class="frosted-circle">
 						<router-link class="reading" to="/projects/knowledge">
 							<svg class="project-icon book">
@@ -68,14 +68,14 @@
 						</router-link>
 					</div>
 				</div>
-				<div class="p2-title title">
-					<h2 class="fs-tertiary-heading">Reading</h2>
+				<div class="p1-title title">
+					<h2 class="fs-tertiary-heading">Reading List</h2>
 				</div>
-				<p class="p2-description fs-note wrapper">This section is a list of articles, books and essays that have made a lasting impression in the course of my thought.
+				<p class="p1-description fs-note wrapper">This section is a list of articles, books and essays that have made a lasting impression in the course of my thought.
 				Each domain operates differently of course. Books are just books I've really enjoyed while some of the articles - particularly ones related to climate and energy - impact how I think about my professional work on a day to day basis.
 				</p>
 			<!-- Art -->
-				<div class="link-container p1-link">
+				<div class="link-container p3-link">
 					<div class="frosted-circle">
 						<router-link class="aci" to="/projects/aci-explorer">
 							<svg class="project-icon palette">
@@ -91,17 +91,17 @@
 						</router-link>
 					</div>
 				</div>
-				<div class="p1-title title">
+				<div class="p3-title title">
 					<h2 class="fs-tertiary-heading">Art Institute of Chicago Explorer</h2>
 				</div>
-				<p class="p1-description fs-note wrapper">This was a lot of fun to build. It's an application that reaches out
+				<p class="p3-description fs-note wrapper">This was a lot of fun to build. It's an application that reaches out
 				to API endpoints developed by the Art Institute of Chicago. You can search the full text of all the peices
 				in their digital collection and the app will return a subset of results and display a picture, artist name, title and a description of the selected piece. 
 			    You can click on the scatterplot to view different works.
 				</p>
 			
 			<!-- Cooking -->
-				<div class="link-container p3-link">
+				<div class="link-container p2-link">
 					<div class="frosted-circle">
 						<router-link class="cooking" to="/projects/cooking">
 							<!-- <svg class="project-icon tools">
@@ -120,12 +120,11 @@
 						</router-link>
 					</div>
 				</div>
-				<div class="p3-title title">
-					<h2 class="fs-tertiary-heading">Baking</h2>
+				<div class="p2-title title">
+					<h2 class="fs-tertiary-heading">Articles & Recipes</h2>
 				</div>
-				<p class="p3-description fs-note wrapper">I've been cooking and baking since I was a kid and grew up working in
-				kitchens. It's been a real joy to live with and continue learning about such a delicoius domain of knowledge.
-				A few recent projects displayed here.</p>
+				<p class="p2-description fs-note wrapper">This is a collection of articles and recipies on topics ranging from forecasting workflows to some of my favorite things to bake. 
+				I'm working on making this area into a blog with a live preview editor.</p>
 		</main>
 	</div>
 

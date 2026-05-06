@@ -66,10 +66,9 @@
 					<span class="email">jrudokas@cedricedric.net</span>
 				</div>
 				<div v-if="isArticleRoute" class="login">
-					<!-- <router-link :to="{name: 'login-success'}">Login</router-link> -->
+					<router-link :to="{name: 'login-success'}">Login</router-link>
 					<a href="/.auth/login/google?post_login_redirect_uri=https://cedricedric.net/login-success">Login</a>
 					<!-- <a href="/.auth/login/google">Login</a> -->
-					<!-- <a href="/.auth/login/github?post_login_redirect_uri=https://zealous-water.azurestaticapps.net/success">Login</a> -->
 				</div>
 			</div>
 		</div>

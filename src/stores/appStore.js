@@ -25,6 +25,10 @@ export const useGeneralStore = defineStore('content', () => {
     }
   ])
 
+  // auth related setings
+
+  const showAuthMessage = ref(false)
+
   // production getters for recipe and store items
 
   const recipeItems = ref(recipesData)
@@ -97,8 +101,9 @@ export const useGeneralStore = defineStore('content', () => {
     sections,
     recipeItems,
     articleItems,
+    showAuthMessage,
     fetchRecipes,
-    fetchRecipe
+    fetchRecipe,
 
   }
 
