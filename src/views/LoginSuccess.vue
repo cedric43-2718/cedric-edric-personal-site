@@ -3,7 +3,7 @@
 		<h1>You are logged in</h1>
 		<p>This page is here for testing an authentication flow for contributors to add content to this site.
 		The markdown editor route will post to a storage container which the articles list route will search and fetch from.</p>
-		<a href="https://cedricedric.net/.auth/logout?post_logout_redirect_uri=https://cedricedric.net">Logout</a>
+		<!-- <a href="https://cedricedric.net/.auth/logout?post_logout_redirect_uri=https://cedricedric.net">Logout</a> -->
 		<router-link :to="{name: 'edit-articles'}">Markdown Editor</router-link>
 		<div v-if="generalStore.showAuthMessage" class="auth-error">
 				<p>You need to be a site admin to access this page. Contact Jason to get access.</p>

@@ -95,6 +95,34 @@ export const useGeneralStore = defineStore('content', () => {
 
   }
 
+async function postContent(mkValue) {
+
+  try{
+
+    const response = await fetch('/data/post.md', {
+      method: 'POST',
+      headers: {
+        // 'Content-Type': 'text/markdown',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        // filename: 'post2.md',
+        content: mkValue
+      })
+    })
+
+    const mkObject = await response.json()
+    // const mkObject = await response.text()
+    // const mkObject = response.blob()
+    console.log('Saved successfully:', mkObject);
+    // return mkObject
+
+  } catch(err) {
+    console.error('failed to write markdown to database', err)
+  }
+
+}
+
   // returns from the store
 
   return {
@@ -104,6 +132,7 @@ export const useGeneralStore = defineStore('content', () => {
     showAuthMessage,
     fetchRecipes,
     fetchRecipe,
+    postContent
 
   }
 

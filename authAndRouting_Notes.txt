@@ -2,3 +2,5 @@
 	"route": "/*",
 	"allowedRoles": ["anonymous"]
 },
+
+vue saving the output of a markdown editor as a markdown file in a fetch post request to the public folder

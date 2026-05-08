@@ -71,11 +71,11 @@ const router = createRouter({
       beforeEnter: async (to, from, next) => {
 
         const generalStore = useGeneralStore()
-        const isAdmin = ref(false)
+        const isAdmin = ref(true)
 
-        const authDetails = await getUserInfo()
-        console.log(authDetails)
-        isAdmin.value = authDetails.userDetails === 'ecedric311@gmail.com' ? true : false;
+        // const authDetails = await getUserInfo()
+        // console.log(authDetails)
+        // isAdmin.value = authDetails.userDetails === 'ecedric311@gmail.com' ? true : false;
 
         generalStore.showAuthMessage = !isAdmin.value
 
