@@ -95,7 +95,28 @@ export const useGeneralStore = defineStore('content', () => {
 
   }
 
-async function postContent(mkValue) {
+// Methods related to article content these methods call backent apis to post and get articles
+// from an azure blob storage 
+
+// CallPostMkdToStorage - this method calls the backend api postMkdToStorage
+
+async function CallPostMkdToStorage(markdownString) {
+
+  try{
+
+  } catch(err) {
+    console.error('failed to pass content to and call backend api', err)
+  }
+  
+}
+
+
+
+
+
+// post content from editor to a local location for testing
+
+async function postContentLocal(mkValue) {
 
   try{
 

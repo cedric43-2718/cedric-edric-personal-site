@@ -12,19 +12,18 @@ import 'md-editor-v3/lib/style.css'
 
 const editorContent = ref('# Hello Editor')
 
-// store interface to emulate fetch api
+// store interface to to call postMkdToStorage
 
 const articleStore = useGeneralStore()
 
 const handleSave = async () => {
 	try {
-		await articleStore.postContent(editorContent.value)
+		await articleStore.postContentLocal(editorContent.value)
 		console.log('succesfully passed to store', editorContent)
 	} catch(error) {
 		console.error('passing to store failed', error)
 	}
 }
-
 
 </script>
 
