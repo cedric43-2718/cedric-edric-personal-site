@@ -90,6 +90,10 @@ main{
 			font-weight: 600;
 			font-size: var(--fs-600);
 		}
+
+		.flow{
+			margin-inline: 1.5rem;
+		}
 	}
 
 	.flow {
