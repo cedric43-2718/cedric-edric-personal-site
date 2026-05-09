@@ -93,17 +93,23 @@ main{
 
 		.flow{
 			margin-inline: 1.5rem;
+
+			.wrapper {
+				--element-max-width: var(--fluid-400-1400);
+			}
 		}
+
+		
 	}
 
 	.flow {
 
 		.wrapper{
-			--element-max-width: var(--fluid-400-1400);
+			--element-max-width: var(--fluid-400-1700);
 
-			h1{
+			h1, h2{
 				line-height: 1.05;
-				margin-bottom: .5rem;
+				margin-bottom: 1ch;
 			}
 		}
 	}
