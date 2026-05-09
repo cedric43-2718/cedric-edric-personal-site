@@ -18,7 +18,7 @@ const articleStore = useGeneralStore()
 
 const handleSave = async () => {
 	try {
-		await articleStore.postContentLocal(editorContent.value)
+		await articleStore.passContentToCall(editorContent.value)
 		console.log('succesfully passed to store', editorContent)
 	} catch(error) {
 		console.error('passing to store failed', error)
