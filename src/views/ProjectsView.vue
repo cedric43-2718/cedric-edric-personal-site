@@ -208,9 +208,11 @@ main{
 	display: grid;
 	/* grid-template-columns: minmax(1rem, 1fr) repeat(var(--grid-columns), minmax(0, 10rem)) minmax(1rem, 1fr); */
 	grid-template-columns: repeat(var(--grid-columns), minmax(0, 10rem));
-	grid-template-rows: auto auto auto 5vh;
+	grid-template-rows: auto auto auto;
 	column-gap: var(--grid-gutter);
 	row-gap: calc(var(--grid-gutter) * (1 + var(--grid-scale-factor)));
+	margin-bottom: var(--space-2xl-3xl);
+	margin-top: var(--space-s-m);
 
 	>  * {
 		display: grid;
