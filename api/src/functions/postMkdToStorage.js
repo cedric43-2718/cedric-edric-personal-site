@@ -4,14 +4,14 @@ const { app, output } = require('@azure/functions');
 
 const blobOutput = output.storageBlob({
     // connection: 'DefaultEndpointsProtocol=https;AccountName=cedricedricstorage;AccountKey=V939ptDXWskHR67p6rdr10gZPaOY5mNaZfN9gqFl1BiR4lUhbAP1puN8ofQzOc7ysdUha68mA3Dt+AStHUlIhg==;EndpointSuffix=core.windows.net',
-    connection: 'UseDevelopmentStorage',
-    path: 'markdown-files/file1.md' // this assumes a container in the blob storage container called markdown-files
+    // connection: 'UseDevelopmentStorage',
+    path: 'markdown-files/file4.md' // this assumes a container in the blob storage container called markdown-files
 })
 
 app.http('postMkdToStorage', {
     methods: ['POST'],
     authLevel: 'anonymous',
-    // extraOutputs: [blobOutput], // secondary output bindings
+    extraOutputs: [blobOutput], // secondary output bindings
     handler: async (request, context) => {
         
         // expects {content: "some markdown string"}

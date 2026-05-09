@@ -16,13 +16,17 @@ const editorContent = ref('# Hello Editor')
 
 const articleStore = useGeneralStore()
 
-const handleSave = async () => {
-	try {
-		await articleStore.passContentToCall(editorContent.value)
-		console.log('succesfully passed to store', editorContent)
-	} catch(error) {
-		console.error('passing to store failed', error)
-	}
+const handleSave = () => {
+
+	articleStore.passContentToCall(editorContent.value)
+	console.log(editorContent.value)
+
+	// try {
+	// 	await articleStore.passContentToCall(JSON.stringify(editorContent.value))
+	// 	console.log('succesfully passed to store', editorContent.value)
+	// } catch(error) {
+	// 	console.error('passing to store failed', error)
+	// }
 }
 
 </script>

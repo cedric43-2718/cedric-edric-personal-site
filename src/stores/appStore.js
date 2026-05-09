@@ -100,23 +100,26 @@ export const useGeneralStore = defineStore('content', () => {
 
 // CallPostMkdToStorage - this method calls the backend api postMkdToStorage
 
-const passContentToCall = async () => {
+const passContentToCall = async (mkContent) => {
+
+  const payload = {
+    content: JSON.stringify(mkContent)
+  }
 
   try{
 
     const response = await fetch("http://localhost:7071/api/postMkdToStorage", {
-			headers: {"Content-Type": "application/json"},
-			body: JSON.stringify({firstName: firstName.value, lastName: lastName.value, email: email.value, message: message.value }) 
+			method: ['POST'],
+      headers: {"Content-Type": "application/text"},
+			body: JSON.stringify({ content: mkContent})
 		})
 
-		const data = await response.json()
-    console.log('sending data:', data)
+    if(!response.ok){
+      throw new Error(`there was an error recieving content from the markdown dashboard: ${response.status}`)
+    }
 
-		if(response.ok){
-			console.log('content sent to api call')
-		} else {
-			console.log('email failed', data)
-		}
+		const content = await response.text()
+    console.log('sending data:', content)
 
   } catch(err) {
     console.error('failed to pass content to and call backend api', err)
@@ -167,7 +170,7 @@ async function postContentLocal(mkValue) {
     showAuthMessage,
     fetchRecipes,
     fetchRecipe,
-    postContent
+    passContentToCall
 
   }
 
