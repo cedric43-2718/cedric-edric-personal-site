@@ -1,5 +1,9 @@
 <template>
-	<MdEditor v-model="text" />
+	<main class="markdown-dashboard">
+		<MdEditor v-model="text" class="markdown"/>
+		<form @submit.prevent="handleSave"></form>
+	</main>
+	
 </template>
 
 <script setup>
