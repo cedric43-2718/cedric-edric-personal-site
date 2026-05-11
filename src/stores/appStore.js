@@ -98,13 +98,13 @@ export const useGeneralStore = defineStore('content', () => {
 // Methods related to article content these methods call backent apis to post and get articles
 // from an azure blob storage 
 
-// CallPostMkdToStorage - this method calls the backend api postMkdToStorage
+// this method calls the backend api postMkdToStorage
 
-const passContentToCall = async (mkContent) => {
+const passContentToApi = async (mkContent) => {
 
-  const payload = {
-    content: JSON.stringify(mkContent)
-  }
+  // const payload = {
+  //   content: JSON.stringify(mkContent)
+  // }
 
   try{
 
@@ -127,7 +127,22 @@ const passContentToCall = async (mkContent) => {
   
 }
 
+// this method calls the backend api postMkdToStorage
 
+const articles = ref([])
+
+const passSeachTermToApi = async (searchTerm) => {
+
+  try{
+
+    const response = await fetch(`http://localhost:7071/api/postMkdToStorage?search=${searchTerm}`)
+    articles.value = await response.json()
+
+  } catch (err) {
+    console.error('failed to pass search term and call backend api', err)
+  }
+
+}
 
 
 

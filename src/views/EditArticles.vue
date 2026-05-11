@@ -1,5 +1,30 @@
 <template>
-	<MdEditor v-model="editorContent" @on-save="handleSave"/>
+	<main class="dashboard-container">
+		<MdEditor v-model="editorContent" @on-save="handleSave" class="markdown-container"/>
+		<div class="form-container">
+			<form @submit.prevent="handleSubmit" class="form">
+				<div class="article-info">
+					<div class="form-group name-group">
+						<label for="name">Author Name</label>
+						<input type="text" required id="name" name="author_name" v-model.lazy="authorName">
+					</div>
+					<div class="form-group title-group">
+						<label for="title">Title</label>
+						<input type="text" required id="title" name="title" v-model.lazy="title">
+					</div>
+					<div class="form-group tags-group">
+						<label for="tags">Tags</label>
+						<input type="text" id="tags" name="tags" v-model.lazy="tags">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="description">Description</label>
+					<textarea name="description" id="description" v-model.lazy="description"></textarea>
+				</div>
+				<button :disabled="isInvalid" class="grid-full-span">Submit</button>
+			</form>
+		</div>
+	</main>
 </template>
 
 <script setup>
@@ -8,34 +33,100 @@ import { useGeneralStore } from '@/stores/appStore'
 import { MdEditor } from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css'
 
+const articleStore = useGeneralStore()
+
 // capturing editor values
 
 const editorContent = ref('# Hello Editor')
 
 // store interface to to call postMkdToStorage
 
-const articleStore = useGeneralStore()
-
-const handleSave = () => {
-
-	articleStore.passContentToCall(editorContent.value)
+const handleSubmit = () => {
+	articleStore.passContentToApi(editorContent.value)
 	console.log(editorContent.value)
-
-	// try {
-	// 	await articleStore.passContentToCall(JSON.stringify(editorContent.value))
-	// 	console.log('succesfully passed to store', editorContent.value)
-	// } catch(error) {
-	// 	console.error('passing to store failed', error)
-	// }
 }
 
 </script>
 
 <style scoped>
 
-main{
+.dashboard-container{
+	display: grid;
+	grid-template-rows: auto 1fr;
+	gap: 2rem;
 	min-height: 100vh;
-	margin: auto;
+	margin: 1rem;
+	
+	.form-container{
+		padding: 2rem;
+		/* position: relative; */
+		background: var(--young-orange-0);
+		border: .5px solid var(--young-orange-4);
+		border-radius: 15px;
+		/* max-inline-size: 1200px; */
+		inline-size: 40%;
+		/* margin-inline: auto; */
+		justify-self: center;
+		margin-block: auto;
+
+
+		.form{
+			display: grid;
+			gap: 2rem;
+			max-inline-size: 800px;
+			margin-inline: auto;
+
+			.form-group{
+				display: grid;
+
+				input{
+					background: var(--young-orange-0);
+				}
+
+				textarea{
+					box-sizing: content-box;
+					height: 6lh;
+					margin-top: 1rem;
+				}
+
+				input, 
+				textarea{
+					border: none;
+					outline: none;
+					border-bottom: 1px solid var(--deepslate-6);
+					padding: .5em 1em;
+
+					&:focus-visible{
+						border-bottom: 2px solid var(--lime-7);
+					}
+  				}	
+			}
+
+			.name-group,
+			.title-group,
+			.tags-group{
+				justify-self: center;	
+				inline-size: 50%;
+			}
+		}
+	}
+
+	button{
+		justify-self: end;
+		background: var(--deepslate-6);
+		color: var(--young-orange-2);
+		border: 0;
+		border-radius: 6px;
+		font-size: var(--fs-600);
+		cursor: pointer;
+		transition: background .5s ease-in-out;
+
+		&:hover,
+		&:focus-visible{
+			background: var(--deepslate-5);
+		}
+	}
+
 }
 
 </style>

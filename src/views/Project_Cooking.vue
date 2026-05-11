@@ -53,7 +53,7 @@ import CycleInstance  from '@/components/CycleInstance.vue'
 
 // Store 
 
-const recipeStore = useGeneralStore()
+const articleStore = useGeneralStore()
 
 // Routing to specific ids
 
@@ -84,6 +84,14 @@ function getImageArray(imageArray){
 	let renderArray = []
 	imageArray.forEach(image => renderArray.push(getImageUrl(image)))
 	return renderArray
+}
+
+// store interface to call getFilesFromStorage
+
+const searchTerm = ref('')
+
+const handleSearchSubmit = () => {
+	articleStore.passSearchTermToApi(searchTerm.value)
 }
 
 </script>
