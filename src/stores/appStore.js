@@ -106,6 +106,12 @@ const passContentToApi = async (mkContent) => {
   //   content: JSON.stringify(mkContent)
   // }
 
+  const metadata = {
+    author: 'JohnDoe',
+    projectId: '12345',
+    category: 'report'
+  };
+
   try{
 
     const response = await fetch("http://localhost:7071/api/postMkdToStorage", {

@@ -1,4 +1,5 @@
 const { app, output } = require('@azure/functions');
+import { BlockBlobClient } from "@azure/storage-blob";
 
 // create the structre of an output binding, this will change a bit but this is the basic immediate
 
@@ -29,3 +30,6 @@ app.http('postMkdToStorage', {
         return { status: 201, body: 'file pased and saved to blob storage' };
     }
 });
+
+
+
