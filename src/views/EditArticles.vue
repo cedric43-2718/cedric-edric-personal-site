@@ -1,25 +1,26 @@
 <template>
 	<main class="dashboard-container">
-		<MdEditor v-model="editorContent" @on-save="handleSave" class="markdown-container"/>
+		<!-- <MdEditor v-model="editorContent" @on-save="handleSave" class="markdown-container"/> -->
+		<MdEditor v-model="editorContent" class="markdown-container"/>
 		<div class="form-container">
 			<form @submit.prevent="handleSubmit" class="form">
 				<div class="article-info">
 					<div class="form-group name-group">
 						<label for="name">Author Name</label>
-						<input type="text" required id="name" name="author_name" v-model.lazy="authorName">
+						<input type="text" required id="name" name="author_name" v-model.lazy="articleData.metaData.authorName">
 					</div>
 					<div class="form-group title-group">
 						<label for="title">Title</label>
-						<input type="text" required id="title" name="title" v-model.lazy="title">
+						<input type="text" required id="title" name="title" v-model.lazy="articleData.metaData.title">
 					</div>
-					<div class="form-group tags-group">
+					<!-- <div class="form-group tags-group">
 						<label for="tags">Tags</label>
 						<input type="text" id="tags" name="tags" v-model.lazy="tags">
-					</div>
+					</div> -->
 				</div>
 				<div class="form-group">
 					<label for="description">Description</label>
-					<textarea name="description" id="description" v-model.lazy="description"></textarea>
+					<textarea name="description" id="description" v-model.lazy="articleData.metaData.description"></textarea>
 				</div>
 				<button :disabled="isInvalid" class="grid-full-span">Submit</button>
 			</form>
@@ -28,22 +29,39 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, reactive } from 'vue'
 import { useGeneralStore } from '@/stores/appStore'
 import { MdEditor } from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css'
 
 const articleStore = useGeneralStore()
 
+const isInvalid = computed(() => {
+  return articleData.metaData.authorName.trim() === '' || articleData.metaData.title.trim() === '' || articleData.metaData.description.trim() === '';
+});
+
+
 // capturing editor values
 
 const editorContent = ref('# Hello Editor')
 
+const articleData = reactive(
+	{ 
+		metaData: {
+			authorName: '',
+			title: '',
+			description: '',
+			date: new Date().toISOString()
+		},
+		fileName: 'file1a.md',		
+		content: editorContent.value
+	});
+
 // store interface to to call postMkdToStorage
 
 const handleSubmit = () => {
-	articleStore.passContentToApi(editorContent.value)
-	console.log(editorContent.value)
+	articleStore.passContentToApi(articleData)
+	console.log(articleData)
 }
 
 </script>
@@ -78,6 +96,7 @@ const handleSubmit = () => {
 
 			.form-group{
 				display: grid;
+				margin-bottom: 2ch;
 
 				input{
 					background: var(--young-orange-0);
@@ -125,6 +144,12 @@ const handleSubmit = () => {
 		&:focus-visible{
 			background: var(--deepslate-5);
 		}
+	}
+
+	button:disabled{
+		background: var(--deepslate-1);
+		color: var(--young-orange-0);
+		cursor: not-allowed;
 	}
 
 }

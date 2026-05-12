@@ -1,4 +1,4 @@
-const { app, output } = require('@azure/functions');
+import { app, output } from '@azure/functions'
 import { BlockBlobClient } from "@azure/storage-blob";
 
 // create the structre of an output binding, this will change a bit but this is the basic immediate

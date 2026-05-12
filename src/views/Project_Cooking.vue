@@ -2,7 +2,7 @@
 	<main v-if="isProjectCooking" class="cooking-layout">
 		<div
 			class="project" 
-			v-for="recipe in recipeStore.recipeItems.recipes"
+			v-for="recipe in articleStore.recipeItems.recipes"
 			:key="recipe.id"
 			:id="recipe.id"
 		>

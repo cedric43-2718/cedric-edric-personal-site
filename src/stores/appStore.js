@@ -100,31 +100,23 @@ export const useGeneralStore = defineStore('content', () => {
 
 // this method calls the backend api postMkdToStorage
 
-const passContentToApi = async (mkContent) => {
+const passContentToApi = async (article) => {
 
-  // const payload = {
-  //   content: JSON.stringify(mkContent)
-  // }
-
-  const metadata = {
-    author: 'JohnDoe',
-    projectId: '12345',
-    category: 'report'
-  };
+   console.log("store", JSON.stringify(article))
 
   try{
 
-    const response = await fetch("http://localhost:7071/api/postMkdToStorage", {
+    const response = await fetch("http://localhost:7071/api/uploadMkdToStorage", {
 			method: ['POST'],
       headers: {"Content-Type": "application/text"},
-			body: JSON.stringify({ content: mkContent})
+			body: JSON.stringify(article)
 		})
 
     if(!response.ok){
       throw new Error(`there was an error recieving content from the markdown dashboard: ${response.status}`)
     }
 
-		const content = await response.text()
+		const content = await response.json()
     console.log('sending data:', content)
 
   } catch(err) {
@@ -137,18 +129,18 @@ const passContentToApi = async (mkContent) => {
 
 const articles = ref([])
 
-const passSeachTermToApi = async (searchTerm) => {
+// const passSeachTermToApi = async (searchTerm) => {
 
-  try{
+//   try{
 
-    const response = await fetch(`http://localhost:7071/api/postMkdToStorage?search=${searchTerm}`)
-    articles.value = await response.json()
+//     const response = await fetch(`http://localhost:7071/api/postMkdToStorage?search=${searchTerm}`)
+//     articles.value = await response.json()
 
-  } catch (err) {
-    console.error('failed to pass search term and call backend api', err)
-  }
+//   } catch (err) {
+//     console.error('failed to pass search term and call backend api', err)
+//   }
 
-}
+// }
 
 
 
@@ -191,7 +183,7 @@ async function postContentLocal(mkValue) {
     showAuthMessage,
     fetchRecipes,
     fetchRecipe,
-    passContentToCall
+    passContentToApi
 
   }
 

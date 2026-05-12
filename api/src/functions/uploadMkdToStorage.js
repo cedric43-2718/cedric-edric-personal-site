@@ -1,5 +1,5 @@
-const { app } = require('@azure/functions');
-import { BlobServiceClient } from "@azure/storage-blob";
+import { app } from '@azure/functions'
+import { BlobServiceClient } from "@azure/storage-blob"
 
 app.http('uploadMkdToStorage', {
     methods: ['POST'],
@@ -29,13 +29,13 @@ app.http('uploadMkdToStorage', {
 
         const uploadOptions = {
             metadata: {
-                author: markdownMeta.author,
+                author: markdownMeta.authorName,
                 title: markdownMeta.title,
-                subject: markdownMeta.subject,
+                date: markdownMeta.date,
                 description: markdownMeta.description
             },
             blobHTTPHeaders: {
-                blobContentType: "text/markdown" // Optional: specify content type
+                blobContentType: "application/json" // Optional: specify content type
             }
         }
 
