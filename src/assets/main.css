@@ -96,18 +96,29 @@ body > *{
 /* general link styles */ 
 
 footer{
+
+	a{
+		transition: color .3s ease-in-out;
+	}
+
 	a:is(:hover, :focus){
 		color: var(--goldenrod-2);
 	}
 }
 
 p {
+
+	a{
+		transition: color .3s ease-in-out;
+	}
+
 	a:is(:hover, :focus){
 		color: var(--old-orange-3);
 	}
 }
 
 .gallery-nav{
+
 	a:is(:hover, :focus){
 		color: var(--young-orange-4);
 	}

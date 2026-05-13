@@ -138,6 +138,10 @@ onMounted(() => {
 
 	display: flex;
 	flex-direction: column;
+
+	h1 {
+		transition: color .3s ease-in-out;
+	}
 	
 	& h1 {
 		color: var(--goldenrod-2);
@@ -173,6 +177,10 @@ onMounted(() => {
 	@media(width <= 800px){
 		width: 3.5rem;
 	}
+}
+
+.social-list .social-icon{
+	transition: fill .3s ease-in-out;
 }
 
 .social-list a:is(:hover, :focus) .social-icon{
