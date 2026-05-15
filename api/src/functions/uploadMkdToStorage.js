@@ -2,7 +2,7 @@ import { app } from '@azure/functions'
 import { BlobServiceClient } from "@azure/storage-blob"
 
 app.http('uploadMkdToStorage', {
-    methods: ['POST'],
+    method: 'POST',
     authLevel: 'anonymous',
     handler: async (request, context) => {
     
@@ -12,7 +12,8 @@ app.http('uploadMkdToStorage', {
         
     // recieve data from frontend
     
-        const body = await request.json()
+        // const body = await request.json()
+        const body = await JSON.parse(request)
         const markdownContent = body.content
         const markdownMeta = body.metaData
         const fileName = body.fileName

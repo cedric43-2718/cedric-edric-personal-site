@@ -72,7 +72,7 @@ const handleSubmit = async () => {
 	// articleData.content = await handleSave(editorContent.value)
 	await handleSave()
 	articleStore.passContentToApi(articleData)
-	console.log(articleData)
+	console.log("template:", articleData)
 }
 
 </script>

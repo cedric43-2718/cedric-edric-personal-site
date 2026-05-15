@@ -102,7 +102,6 @@ export const useGeneralStore = defineStore('content', () => {
 
 const passContentToApi = async (article) => {
 
-   console.log("store", JSON.stringify(article))
    const bodyString = JSON.stringify(article)
    const body = JSON.parse(bodyString)
    console.log("markdownContent", body.content)
@@ -112,8 +111,8 @@ const passContentToApi = async (article) => {
   try{
 
     const response = await fetch("http://localhost:7071/api/uploadMkdToStorage", {
-			method: ['POST'],
-      headers: {"Content-Type": "application/text"},
+			method: 'POST',
+      headers: {"Content-Type": "application/json"},
 			body: JSON.stringify(article)
 		})
 
@@ -122,7 +121,7 @@ const passContentToApi = async (article) => {
     }
 
 		const content = await response.json()
-    console.log('sending data:', content)
+    return content
 
   } catch(err) {
     console.error('failed to pass content to and call backend api', err)
