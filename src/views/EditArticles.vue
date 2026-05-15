@@ -1,7 +1,7 @@
 <template>
 	<main class="dashboard-container">
 		<!-- <MdEditor v-model="editorContent" @on-save="handleSave" class="markdown-container"/> -->
-		<MdEditor v-model="editorContent" class="markdown-container"/>
+		<MdEditor v-model="articleData.content" @on-save="handleSave" class="markdown-container"/>
 		<div class="form-container">
 			<form @submit.prevent="handleSubmit" class="form">
 				<div class="article-info">
@@ -40,10 +40,20 @@ const isInvalid = computed(() => {
   return articleData.metaData.authorName.trim() === '' || articleData.metaData.title.trim() === '' || articleData.metaData.description.trim() === '';
 });
 
-
 // capturing editor values
 
-const editorContent = ref('# Hello Editor')
+const editorContent = ref('')
+const contentToSubmit = ref('')
+
+// update editorContent (v, h) could pass h for html as well
+
+const handleSave = async (v, h) => {
+	// editorContent.value = v
+	console.log("saving...")
+	return "Saved Markdown"
+}
+
+// store interface to to call postMkdToStorage
 
 const articleData = reactive(
 	{ 
@@ -54,12 +64,13 @@ const articleData = reactive(
 			date: new Date().toISOString()
 		},
 		fileName: 'file1a.md',		
-		content: editorContent.value
+		content: ''
 	});
 
-// store interface to to call postMkdToStorage
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
+	// articleData.content = await handleSave(editorContent.value)
+	await handleSave()
 	articleStore.passContentToApi(articleData)
 	console.log(articleData)
 }

@@ -103,6 +103,11 @@ export const useGeneralStore = defineStore('content', () => {
 const passContentToApi = async (article) => {
 
    console.log("store", JSON.stringify(article))
+   const bodyString = JSON.stringify(article)
+   const body = JSON.parse(bodyString)
+   console.log("markdownContent", body.content)
+   console.log("markdownMeta", body.metaData)
+   console.log("fileName", body.fileName)
 
   try{
 

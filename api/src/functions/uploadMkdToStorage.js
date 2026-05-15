@@ -7,7 +7,7 @@ app.http('uploadMkdToStorage', {
     handler: async (request, context) => {
     
     // const storageConnection = process.env.BLOB_STORAGE_CONNECTION_STRING
-        // const storageConnection = "UseDevelopmentStorage=True"
+        const storageConnection = "UseDevelopmentStorage=True"
         const containerName = 'markdown-files'
         
     // recieve data from frontend
@@ -38,13 +38,16 @@ app.http('uploadMkdToStorage', {
                 description: markdownMeta.description
             },
             blobHTTPHeaders: {
-                blobContentType: "application/json" // Optional: specify content type
+                blobContentType: "text/markdown" // Optional: specify content type "text/markdown" 
             }
         }  
 
-        await blockBlobClient.upload(markdownContent, markdownContent.length, uploadOptions) 
-    
-        return { status: 201, body: 'file pased and saved to blob storage' }
+        try {
+            await blockBlobClient.upload(markdownContent, markdownContent.length, uploadOptions)
+            return { status: 201, body: 'file pased and saved to blob storage' } 
+        } catch(err) {
+            console.error("file upload failed", err)
+        }
         
     }
     
