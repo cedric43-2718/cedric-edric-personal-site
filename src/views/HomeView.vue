@@ -67,7 +67,8 @@ main{
 	}
 
 	h1,h2{
-		color: var(--young-orange-1);
+		color: var(--young-orange-0);
+		font-weight: 600;
 	}
 
 	.arrow{

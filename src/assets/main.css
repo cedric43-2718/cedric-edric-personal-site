@@ -113,7 +113,7 @@ p {
 	}
 
 	a:is(:hover, :focus){
-		color: var(--old-orange-3);
+		color: var(--goldenrod-4);
 	}
 }
 

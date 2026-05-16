@@ -110,6 +110,7 @@ const handleMouseLeave = (event) => {
 	align-items: center;
 	justify-content: space-between;
 	padding: .5rem 0;
+	background-color: var(--deepslate-8);
 	transition: background 500ms;
 
 	@media(width <= 800px){
@@ -117,12 +118,12 @@ const handleMouseLeave = (event) => {
 	}
 
 	& h1 {
-		color: var(--ultramarine-8);
+		color: var(--goldenrod-4);
 		transition: color .5s ease-in-out;
 	}
 
 	& h1:is(:hover, :focus){
-		color: var(--old-orange-3);
+		color: var(--goldenrod-2);
 	}
 
 	& .logo{
@@ -167,7 +168,7 @@ nav {
 		right: calc(anchor(right) + 1rem);
 		bottom: calc(anchor(bottom) + 10px);
 		/* height: 4px; */
-		background: hsl(0 0% 0% / .05);
+		background: hsl(100 100% 100% / .2);
 		border-radius: 15px;
 
 		position-anchor: --hovered-navitem;
@@ -201,7 +202,7 @@ nav {
 
 	& ul>li {
 		padding: 0 2rem;
-		color: var(--ultramarine-8);
+		color: var(--lime-3);
 		transition: all 500ms;
 
 		@media(width <= 800px){

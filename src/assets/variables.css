@@ -247,9 +247,36 @@
 --mountain-5: hsl(168, 76%, 40%);
 --mountain-6: hsl(168, 76%, 30%);
 
+/* Light - Dark Mode Color Palette */
 
+	/* primary colors */
 
+		/* light */
 
-}
+		
+		
+
+		/* dark */
+
+		--deepslate-8
+		--young-orange-0
+		--lime-2
+	
+	/* doodle */
+
+		/* light */
+
+		--deep-forest
+		--emerald
+		--bluemaine
+		--old-orange-5
+
+		/* dark */
+
+		--lime-3
+		--moon-paper-0
+		--lime-0
+		--lemon-burst-0
+}	
 
 

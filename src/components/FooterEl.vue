@@ -98,9 +98,9 @@ onMounted(() => {
 .footer{
 	margin-top: auto;
 	padding: 1rem 0;
-	background-color: var(--scarlet-5);
-	opacity: .8;
+	background-color: var(--deepslate-8);
 	color: var(--carrot-4);
+	border-top: .5px solid var(--deepslate-7);
 }
 
 .footer-container{
