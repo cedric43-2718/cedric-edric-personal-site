@@ -6,8 +6,8 @@ app.http('uploadMkdToStorage', {
     authLevel: 'anonymous',
     handler: async (request, context) => {
     
-    // const storageConnection = process.env.BLOB_STORAGE_CONNECTION_STRING
-        const storageConnection = "UseDevelopmentStorage=True"
+        // const storageConnection = process.env.BLOB_STORAGE_CONNECTION_STRING
+        const storageConnection = process.env.DEV_BLOB_STORAGE_CONNECTION_STRING
         const containerName = 'markdown-files'
         
     // recieve data from frontend
@@ -39,7 +39,7 @@ app.http('uploadMkdToStorage', {
                 description: markdownMeta.description
             },
             blobHTTPHeaders: {
-                blobContentType: "text/markdown" // Optional: specify content type "text/markdown" 
+                blobContentType: "application/json" // Optional: specify content type "text/markdown" 
             }
         }  
 
