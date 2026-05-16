@@ -137,10 +137,10 @@ const handleMouseLeave = (event) => {
 
 	}
 
-	a:hover,
+	/* a:hover,
 	a:focus{
 		color: var(--goldenrod-4);
-	}
+	} */
 }
 
 .header.sticking {

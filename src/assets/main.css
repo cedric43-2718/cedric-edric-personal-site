@@ -58,8 +58,8 @@ html{
 
 body {
 	min-height: 100%;
-	background: var(--moon-papper);
-	color: var(--ultramarine-8);
+	background: var(--surface-1);
+	color: var(--text-1);
   	font-family: Montserrat;
   	line-height: 1.75;
   	font-size: var(--fs-body);
@@ -95,6 +95,7 @@ body > *{
 
 /* general link styles */ 
 
+header,
 footer{
 
 	a{
@@ -102,7 +103,7 @@ footer{
 	}
 
 	a:is(:hover, :focus){
-		color: var(--goldenrod-2);
+		color: var(--hover-2);
 	}
 }
 
@@ -113,7 +114,7 @@ p {
 	}
 
 	a:is(:hover, :focus){
-		color: var(--goldenrod-4);
+		color: var(--hover-1);
 	}
 }
 
@@ -134,7 +135,7 @@ h1,
 h2,
 h3,
 h4 {
-	color: var(--ultramarine-8);
+	color: var(--text-1);
 }
 
 h1 {
@@ -154,11 +155,33 @@ p {
 
 	a{
 		text-decoration-line: underline;
-  		text-decoration-color: var(--young-orange-4);
+  		text-decoration-color: var(--accent-1);
   		text-decoration-style: double;
   		text-decoration-thickness: .5px;
   		text-underline-offset: 2px;
 	}
+}
+
+.darkmode{
+	--surface-1: var(--deepslate-8);
+	--surface-2: var(--deepslate-8);
+	--text-1: var(--young-orange-0);
+	--text-2: var(--carrot-4);
+	--heading-1: var(--young-orange-0);
+	--heading-2: var(--goldenrod-4);
+	--accent-1: var(--lime-3);
+	--accent-2: var(--deepslate-7);
+	--accent-3: var(--lime-0);
+	--hover-1: var(--young-orange-3);
+	--hover-2: var(--goldenrod-2);
+
+	--doodle-1: var(--lime-3);
+	--doodle-2: var(--moon-paper-0);
+	--doodle-3: var(--lime-0);
+	--doodle-4: var(--lemon-burst-0);
+
+	--opacity-1: 1;
+	--nav-window: hsl(100 100% 100% / .2); 
 }
 
 

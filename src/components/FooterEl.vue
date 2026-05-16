@@ -98,9 +98,10 @@ onMounted(() => {
 .footer{
 	margin-top: auto;
 	padding: 1rem 0;
-	background-color: var(--deepslate-8);
-	color: var(--carrot-4);
-	border-top: .5px solid var(--deepslate-7);
+	background-color: var(--surface-2);
+	color: var(--text-2);
+	border-top: .5px solid var(--accent-2);
+	opacity: var(--opacity-1);
 }
 
 .footer-container{
@@ -144,12 +145,12 @@ onMounted(() => {
 	}
 	
 	& h1 {
-		color: var(--goldenrod-4);
+		color: var(--heading-2);
 		width: max-content;
 	}
 
 	& h1:is(:hover, :focus){
-		color: var(--goldenrod-2);
+		color: var(--hover-2);
 	}
 
 	@media(width <= 800px){
@@ -172,7 +173,7 @@ onMounted(() => {
 .social-icon{
 	width: 2.5rem;
 	aspect-ratio: 1;
-	fill: var(--young-orange-4);
+	fill: var(--heading-2);
 
 	@media(width <= 800px){
 		width: 3.5rem;
@@ -184,7 +185,7 @@ onMounted(() => {
 }
 
 .social-list a:is(:hover, :focus) .social-icon{
-	fill: var(--goldenrod-2);
+	fill: var(--hover-2);
 }
 
 .footer-info{

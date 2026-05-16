@@ -59,15 +59,12 @@ function consumeVisibility(value){
 main{
 	display: grid;
 	place-items: center;
-	background: var(--deepslate-8);
-	color: var(--young-orange-0);
 
 	p > a {
-		text-decoration-color: var(--lime-2);
+		text-decoration-color: var(--accent-1);
 	}
 
 	h1,h2{
-		color: var(--young-orange-0);
 		font-weight: 600;
 	}
 
@@ -80,7 +77,7 @@ main{
 			padding: 0;
 			aspect-ratio: 1;
 			width: var(--space-xl);
-			stroke: var(--lime-0);	
+			stroke: var(--accent-3);	
 		}
 	}
 
@@ -153,19 +150,6 @@ main{
 
 css-doodle{
 
-	--c1-light: var(--deep-forest);
-	--c2-light: var(--emerald);
-	--c3-light: var(--bluemaine);
-	--c4-light: var(--old-orange-5);
-
-	--c1-dark: var(--lime-3);
-	--c2-dark: var(--moon-paper-0);
-	--c3-dark: var(--lime-0);
-	--c4-dark: var(--lemon-burst-0);
-
-
-
-
 	--rule-leaves: (
 
 		--xval: 10;
@@ -179,16 +163,16 @@ css-doodle{
 		
 		@random(.6) {
 			background:
-				radial-gradient(20px 20px at @rand(10px) @rand(10px), @p(var(--c1-dark), var(--c2-dark),
-				var(--c3-dark)), #0000 @rand(10px, 30px));
+				radial-gradient(20px 20px at @rand(10px) @rand(10px), @p(var(--doodle-1), var(--doodle-2),
+				var(--doodle-3)), #0000 @rand(10px, 30px));
 			animation: move ease-in-out @r(5s, 10s) @r(-0.1s, -1s) infinite;
 			border-radius: 100%;
 		}
 
 		@match((x > $(xval - range) && x < $(xval + range)) && (y > $(yval - range) && y < $(yval + range))){
-			background: var(--c4-dark);
+			background: var(--doodle-4);
 			/* border-radius: 50%; */
-			opacity: .7; 
+			opacity: .5; 
 			/* clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); */
 		}
 		
