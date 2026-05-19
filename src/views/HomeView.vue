@@ -1,55 +1,59 @@
 <template>
 	
-	<main>
-		<css-doodle class="doodle-leaves" use="var(--rule-leaves)">
-		</css-doodle>
-		<div class="arrow" :class="{'is-visible': !isParagraphVisible}">
-			<div class="scroll-icon">
-				<!-- <use xlink:href="../assets/images/scroll-down.svg#caret-double-down"></use> -->
-				<svg xmlns="http://www.w3.org/2000/svg" fill="#0000" viewBox="0 0 256 256">
-					<path d="M213.66,130.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,204.69l74.34-74.35A8,8,0,0,1,213.66,130.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,124.69,53.66,50.34A8,8,0,0,0,42.34,61.66Z"></path>
-				</svg>
+		<div :key="themeKey">
+		<main>
+			<css-doodle class="doodle-leaves" use="var(--rule-leaves)"></css-doodle>
+			<div class="arrow" :class="{'is-visible': !isParagraphVisible}">
+				<div class="scroll-icon">
+					<!-- <use xlink:href="../assets/images/scroll-down.svg#caret-double-down"></use> -->
+					<svg xmlns="http://www.w3.org/2000/svg" fill="#0000" viewBox="0 0 256 256">
+						<path d="M213.66,130.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,204.69l74.34-74.35A8,8,0,0,1,213.66,130.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,124.69,53.66,50.34A8,8,0,0,0,42.34,61.66Z"></path>
+					</svg>
+				</div>
 			</div>
-		</div>
-
-	<ScrollParagraph class="scroll-paragraph" @paragraph-visible="consumeVisibility">
-		<div class="flow scroll-wrapper">
-			<div class="wrapper">
-				<h1 class="fs-secondary-heading">A bit about my work:</h1>
-				<p>Hi. My name is Jason. I'm an integrated resources analyst at the <a href="https://www.rmld.com/" target="_blank" rel="noopener noreferrer">Reading Municipal Light Department</a>. I develop forecasting methodologies and workflows
-					to predict hourly, monthly and long-term patterns in electricity demand and distributed energy resources. I've been working in the energy and climate field for over 15 years and began my professional career at the <a href="https://www.nescaum.org/" target="_blank" rel="noopener noreferrer">Northeast States for Coordinated Air Use
-					Management</a> where I built economy-wide energy models used to identify patterns of technology adoption consistent with state and regional climate
-					mitigation targets. If you are interested, a detailed overview of my professional career can be found on my <a href="https://www.linkedin.com/in/jason-rudokas-08856610/" target="_blank" rel="noopener noreferrer">linkedin</a> page and a list of articles that impact how I think about regional energy policy can be found on my <router-link to="/projects/knowledge" target="_blank" rel="noopener noreferrer">reading list</router-link>. 
-				</p>
+		<ScrollParagraph class="scroll-paragraph" @paragraph-visible="consumeVisibility">
+			<div class="flow scroll-wrapper">
+				<div class="wrapper">
+					<h1 class="fs-secondary-heading">A bit about my work:</h1>
+					<p>Hi. My name is Jason. I'm an integrated resources analyst at the <a href="https://www.rmld.com/" target="_blank" rel="noopener noreferrer">Reading Municipal Light Department</a>. I develop forecasting methodologies and workflows
+						to predict hourly, monthly and long-term patterns in electricity demand and distributed energy resources. I've been working in the energy and climate field for over 15 years and began my professional career at the <a href="https://www.nescaum.org/" target="_blank" rel="noopener noreferrer">Northeast States for Coordinated Air Use
+						Management</a> where I built economy-wide energy models used to identify patterns of technology adoption consistent with state and regional climate
+						mitigation targets. If you are interested, a detailed overview of my professional career can be found on my <a href="https://www.linkedin.com/in/jason-rudokas-08856610/" target="_blank" rel="noopener noreferrer">linkedin</a> page and a list of articles that impact how I think about regional energy policy can be found on my <router-link to="/projects/knowledge" target="_blank" rel="noopener noreferrer">reading list</router-link>.
+					</p>
+				</div>
+				<div class="wrapper">
+					<h2>A bit about this site:</h2>
+					<p>I've been learning about building websites for a few years now and this site is a project
+						I've been meaning to complete for a long time. It's such an interesting domain of knowledge.
+						The whole site is made from scratch - from the styling to the interactive elements used in other parts of the site.
+						I talk about the site in a little more detail in the about section. The code for this site is on <a href="https://github.com/cedric43-2718/cedric-edric-personal-site.git" target="_blank" rel="noopener noreferrer">github</a>. That said there really are
+						some masters of the craft out there and awesome teachers as well. <a href="https://www.youtube.com/kevinpowell" target="_blank" rel="noopener noreferrer">Kevin Powell's</a> resources on css and design have been incredibly helpful.
+					</p>
+				</div>
 			</div>
-			<div class="wrapper">
-				<h2>A bit about this site:</h2>
-				<p>I've been learning about building websites for a few years now and this site is a project
-					I've been meaning to complete for a long time. It's such an interesting domain of knowledge.
-					The whole site is made from scratch - from the styling to the interactive elements used in other parts of the site.
-					I talk about the site in a little more detail in the about section. The code for this site is on <a href="https://github.com/cedric43-2718/cedric-edric-personal-site.git" target="_blank" rel="noopener noreferrer">github</a>. That said there really are
-					some masters of the craft out there and awesome teachers as well. <a href="https://www.youtube.com/kevinpowell" target="_blank" rel="noopener noreferrer">Kevin Powell's</a> resources on css and design have been incredibly helpful.
-				</p>
-			</div>
-		</div>
-	</ScrollParagraph>
-
-	</main>
+		</ScrollParagraph>
+		</main>
+	</div>
 
 	
 </template>
 
 <script setup>
 
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useGeneralStore } from '@/stores/appStore'
 import 'css-doodle'
 import ScrollParagraph from '@/components/ScrollParagraph.vue';
 
 const isParagraphVisible = ref(false)
+const store = useGeneralStore()
+
+const themeKey = computed(() => store.keyCount)
 
 function consumeVisibility(value){
 	isParagraphVisible.value = value
 }
+
 
 </script>
 
@@ -122,9 +126,6 @@ main{
 
 }
 
-	
-
-
 .doodle-leaves
 {
 	margin-top: var(--space-l-xl);
@@ -172,7 +173,7 @@ css-doodle{
 		@match((x > $(xval - range) && x < $(xval + range)) && (y > $(yval - range) && y < $(yval + range))){
 			background: var(--doodle-4);
 			/* border-radius: 50%; */
-			opacity: .5; 
+			opacity: var(--opacity-2); 
 			/* clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); */
 		}
 		

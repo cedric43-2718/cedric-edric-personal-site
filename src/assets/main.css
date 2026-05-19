@@ -3,6 +3,31 @@
 @import './variables.css';
 @import './utility-classes.css';
 
+.darkmode{
+	--surface-1: var(--deepslate-8);
+	--surface-2: var(--deepslate-8);
+	--surface-3: var(--deepslate-8);
+	--surface-4: var(--young-orange-0);
+	--text-1: var(--young-orange-0);
+	--text-2: var(--carrot-4);
+	--heading-1: var(--young-orange-0);
+	--heading-2: var(--goldenrod-4);
+	--accent-1: var(--lime-3);
+	--accent-2: var(--deepslate-7);
+	--accent-3: var(--lime-0);
+	--hover-1: var(--young-orange-3);
+	--hover-2: var(--goldenrod-2);
+
+	--doodle-1: var(--lime-3);
+	--doodle-2: var(--moon-paper-0);
+	--doodle-3: var(--lime-0);
+	--doodle-4: var(--lemon-burst-0);
+
+	--opacity-1: 1;
+	--nav-window: hsl(100 100% 100% / .2);
+	--saturate: 120% 
+}
+
 
 /* Resets */
 
@@ -162,27 +187,7 @@ p {
 	}
 }
 
-.darkmode{
-	--surface-1: var(--deepslate-8);
-	--surface-2: var(--deepslate-8);
-	--text-1: var(--young-orange-0);
-	--text-2: var(--carrot-4);
-	--heading-1: var(--young-orange-0);
-	--heading-2: var(--goldenrod-4);
-	--accent-1: var(--lime-3);
-	--accent-2: var(--deepslate-7);
-	--accent-3: var(--lime-0);
-	--hover-1: var(--young-orange-3);
-	--hover-2: var(--goldenrod-2);
 
-	--doodle-1: var(--lime-3);
-	--doodle-2: var(--moon-paper-0);
-	--doodle-3: var(--lime-0);
-	--doodle-4: var(--lemon-burst-0);
-
-	--opacity-1: 1;
-	--nav-window: hsl(100 100% 100% / .2); 
-}
 
 
 

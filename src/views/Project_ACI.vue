@@ -3,7 +3,7 @@
 		<div class="gallery-fluid-grid">
 			<div class="gallery-info">
 				<div class="input-container">
-					<h2 class="text-accent-2001">Search For Art</h2>
+					<h2>Search For Art</h2>
 					<input v-model.lazy="searchTerm" type="text" placeholder="search term">
 				</div>
 				<div class="plot-wrapper">

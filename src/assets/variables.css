@@ -249,25 +249,29 @@
 
 /* Light - Dark Mode Color Palette */
 
-	--surface-1: var(--moon-papper);
-	--surface-2: var(--deepslate-7);
-	--text-1: var(--ultramarine-8);
-	--text-2: var(--mountain-0);
-	--heading-1: var(--ultramarine-8);
-	--heading-2: var(--goldenrod-4);
-	--accent-1: var(--young-orange-4);
-	--accent-2: var(--moon-papper);
-	--accent-3: var(--deepslate-5);
-	--hover-1: var(--old-orange-3);
-	--hover-2: var(--goldenrod-2);
+--surface-1: var(--moon-papper);
+--surface-2: var(--deepslate-7);
+--surface-3: var(--young-orange-0);
+--surface-4: hsl(100 100 100);
+--text-1: var(--ultramarine-8);
+--text-2: var(--mountain-0);
+--heading-1: var(--ultramarine-8);
+--heading-2: var(--goldenrod-4);
+--accent-1: var(--young-orange-4);
+--accent-2: var(--moon-papper);
+--accent-3: var(--deepslate-5);
+--hover-1: var(--old-orange-3);
+--hover-2: var(--goldenrod-2);
 
-	--doodle-1: var(--deep-forest);
-	--doodle-2: var(--emerald);
-	--doodle-3: var(--bluemaine);
-	--doodle-4: var(--old-orange-5);
+--doodle-1: var(--deep-forest);
+--doodle-2: var(--emerald);
+--doodle-3: var(--bluemaine);
+--doodle-4: var(--old-orange-5);
 
-	--opacity-1: .9;
-	--nav-window: hsl(0 0 0 / .05);
+--opacity-1: .9;
+--opacity-2: .2;
+--nav-window: hsl(0 0 0 / .05);
+--saturate: 150% 
 }	
 
 
