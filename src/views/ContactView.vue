@@ -157,8 +157,8 @@ main{
 	grid-column: 2;
 	padding: 2rem;
 	position: relative;
-	background: var(--young-orange-0);
-	border: .5px solid var(--young-orange-4);
+	background: var(--surface-3);
+	border: .5px solid var(--accent-1);
 	border-radius: 15px;
 	max-inline-size: 800px;
 	/* margin-inline: auto; */
@@ -208,6 +208,7 @@ main{
 
   textarea{
 	box-sizing: content-box;
+	background: var(--surface-4);
 	height: 6lh;
 	margin-top: 1rem;
 
@@ -219,12 +220,13 @@ main{
   input, 
   textarea{
 	border: none;
+	border-radius: 5px;
 	outline: none;
 	border-bottom: 1px solid var(--deepslate-6);
 	padding: .5em 1em;
 
 	&:focus-visible{
-		border-bottom: 2px solid var(--lime-7);
+		border-bottom: 2px solid var(--lime-6);
 	}
 
 

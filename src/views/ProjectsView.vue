@@ -312,7 +312,7 @@ main{
 
 		a svg {
 			width: var(--fluid-20-48a);
-			color: var(--young-orange-5);
+			color: var(--accent-1);
 		}
 
 		a {
@@ -324,12 +324,12 @@ main{
 
 	.frosted-circle:hover{
 		--gradient-glow: var(--lemon-burst-1), var(--young-orange-3), var(--old-orange-4), var(--scarlet-4), var(--lemon-burst-2);
-		filter: saturate(180%);	
+		filter: saturate(var(--saturate));	
 	}
 
 	.frosted-circle:hover a,
 	.frosted-circle:focus a{
-		color: var(--young-orange-5);
+		color: var(--accent-1);
 		opacity: 1;
 	}
 
@@ -343,7 +343,7 @@ main{
 
 	.frosted-circle::before{
 		z-index: -1;
-		background: var(--moon-papper);
+		background: var(--accent-2);
 		inset: .75rem;
 		filter: blur(.75rem);
 		scale: 1.1;

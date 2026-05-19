@@ -25,6 +25,10 @@ export const useGeneralStore = defineStore('content', () => {
     }
   ])
 
+  // dark mode
+
+  const keyCount = ref(0)
+
   // auth related setings
 
   const showAuthMessage = ref(false)
@@ -99,6 +103,7 @@ export const useGeneralStore = defineStore('content', () => {
 
   return {
     sections,
+    keyCount,
     recipeItems,
     articleItems,
     showAuthMessage,

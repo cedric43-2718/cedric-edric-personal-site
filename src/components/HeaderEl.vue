@@ -4,6 +4,18 @@
 			<h1 class="logo">J</h1>
 		</router-link>
 		<nav>
+			<button
+				v-if="!isDarkMode"
+				class="button-theme"
+				data-icon="theme-glasses"
+				@click="handleTheme"
+				></button>
+			<button
+				v-else
+				class="button-theme"
+				data-icon="theme-sun"
+				@click="handleTheme"
+				></button>
 			<ul ref="ulRef">
 				<li v-for="section in store.sections" :key="section.id" class="fs-main-nav">
 					<router-link v-if="!renderRoute(section.title)" v-on:mouseleave="handleMouseLeave" v-on:mouseover="handleMouseOver" :to="{name: `${section.title.toLowerCase()}`}">
@@ -17,7 +29,7 @@
 
 <script setup>
 
-import { ref, onMounted, inject, computed, watchEffect} from 'vue'
+import { ref, onMounted, inject, computed, watchEffect, watch} from 'vue'
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import { useGeneralStore } from '@/stores/appStore'
 import Project_ACI from '@/views/Project_ACI.vue'
@@ -34,7 +46,6 @@ const primaryHeader = ref(null)
 
 const windowWidth = ref(window.innerWidth)
 const isMobile = computed(() => (windowWidth.value < 800 ? true : false))
-// const displayValue = computed(() => (windowWidth.value < 800 ? 'none' : 'inline'))
 
 const renderRoute = (name) => {
 	return name === 'Projects' && isMobile.value
@@ -42,8 +53,6 @@ const renderRoute = (name) => {
 
 onMounted(() => {
 	windowWidth.value = window.innerWidth
-	// console.log(isMobile.value)
-	// console.log('render', !renderRoute('About'))
 })
 
 // current project 
@@ -52,6 +61,27 @@ const currentRoute = computed(() => route.path)
 
 watchEffect(() => {
 	console.log(currentRoute.value)
+})
+
+// theme selector
+
+const currentTheme = inject('theme')
+const isDarkMode = ref(false)
+
+const handleTheme = () => {
+	isDarkMode.value = !isDarkMode.value
+}
+
+watch(isDarkMode, (val) => {
+	if(val) {
+		document.body.classList.add('darkmode')
+		store.keyCount = store.keyCount += 1;
+		console.log("add", isDarkMode.value)
+	} else {
+		document.body.classList.remove('darkmode')
+		store.keyCount = store.keyCount += 1;
+		console.log("remove", isDarkMode.value)
+	}
 })
 
 
@@ -110,6 +140,7 @@ const handleMouseLeave = (event) => {
 	align-items: center;
 	justify-content: space-between;
 	padding: .5rem 0;
+	background-color: var(--surface-1);
 	transition: background 500ms;
 
 	@media(width <= 800px){
@@ -117,12 +148,12 @@ const handleMouseLeave = (event) => {
 	}
 
 	& h1 {
-		color: var(--ultramarine-8);
+		color: var(--heading-1);
 		transition: color .5s ease-in-out;
 	}
 
 	& h1:is(:hover, :focus){
-		color: var(--old-orange-3);
+		color: var(--hover-1);
 	}
 
 	& .logo{
@@ -138,7 +169,7 @@ const handleMouseLeave = (event) => {
 
 	a:hover,
 	a:focus{
-		color: var(--goldenrod-4);
+		color: var(--heading-2);
 	}
 }
 
@@ -157,6 +188,8 @@ nav {
 	width: fit-content;
 	anchor-name: --hovered-navitem;
 	isolation: isolate;
+	display: flex;
+
 
 	&::after{
 		content: '';
@@ -167,7 +200,7 @@ nav {
 		right: calc(anchor(right) + 1rem);
 		bottom: calc(anchor(bottom) + 10px);
 		/* height: 4px; */
-		background: hsl(0 0% 0% / .05);
+		background: var(--nav-window);
 		border-radius: 15px;
 
 		position-anchor: --hovered-navitem;
@@ -201,7 +234,7 @@ nav {
 
 	& ul>li {
 		padding: 0 2rem;
-		color: var(--ultramarine-8);
+		color: var(--text-1);
 		transition: all 500ms;
 
 		@media(width <= 800px){
@@ -215,5 +248,37 @@ nav {
 		font-size: var(--fs-small-note);
 	}
 }
+
+.button-theme{
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	background: transparent;
+	/* background: var(--goldenrod-0);
+	color: var(--deepslate-7); */
+	/* border: 1px sold var(--deepslate-1); */
+	padding-inline: 1.5rem;
+	padding-block: .5rem;
+	border-radius: 20px;
+	cursor: pointer;
+
+	&[data-icon="theme-glasses"]::before{
+		content: '';
+		background-image: url("../assets/images/sunglasses.svg");
+		width: 32px;
+		height: 32px;
+
+	}
+
+	&[data-icon="theme-sun"]::before{
+		content: '';
+		background-image: url("../assets/images/sun.svg");
+		width: 32px;
+		height: 32px;
+
+	}
+}
+
 
 </style>
