@@ -279,7 +279,7 @@ main{
 		margin: auto;
 
 		p{
-			color: var(--deepslate-8);
+			color: var(--text-1);
 			text-align: center;
 		}
 	}
@@ -292,7 +292,7 @@ main{
 		margin: auto;
 
 		p{
-			color: var(--deepslate-8);
+			color: var(--text-1);
 			text-align: center;
 		}
 	}

@@ -21,9 +21,10 @@
 	--doodle-1: var(--lime-3);
 	--doodle-2: var(--moon-paper-0);
 	--doodle-3: var(--lime-0);
-	--doodle-4: var(--lemon-burst-0);
+	--doodle-4: var(--ultramarine-1);
 
 	--opacity-1: 1;
+	--opacity-2: .4;
 	--nav-window: hsl(100 100% 100% / .2);
 	--saturate: 120% 
 }
