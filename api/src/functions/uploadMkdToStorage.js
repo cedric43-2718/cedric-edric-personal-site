@@ -23,6 +23,7 @@ app.http('uploadMkdToStorage', {
             } catch(err) {
                 context.log('error parsing request', err)
             }
+            return null
         }
 
         const body = await parseRequest(request)
@@ -43,35 +44,56 @@ app.http('uploadMkdToStorage', {
 
         // connect to blob storage
 
+       let blobServiceClient
+       try {
+        blobServiceClient = BlobServiceClient.fromConnectionString(storageConnection)
+       } catch(err) {
+        context.log('failed to create BlobServiceClient:', err.message)
+        return { status: 500, body: 'Storage connection failure. Check DEV_BLOB_STORAGE_CONNECTION_STRING.'}
+       }
         
+       // is the blobServiceClient null, undefined or empty
+       if(blobServiceClient === null) {
+            return { status: 400, body: 'the connection exists, but is not properly configured'}
+        }
 
-    // setup connection to storage
-
-        const blobServiceClient = BlobServiceClient.fromConnectionString(storageConnection)
         const containerClient = blobServiceClient.getContainerClient(containerName)
         const blockBlobClient = containerClient.getBlockBlobClient(fileName)
 
-    // create metadata 
-
-        const uploadOptions = {
-            metadata: {
-                author: markdownMeta.authorName,
-                title: markdownMeta.title,
-                date: markdownMeta.date,
-                description: markdownMeta.description
-            },
-            blobHTTPHeaders: {
-                blobContentType: "application/json" // Optional: specify content type "text/markdown" 
-            }
-        }  
-
-        try {
-            await blockBlobClient.upload(markdownContent, markdownContent.length, uploadOptions)
-            return { status: 201, body: 'file pased and saved to blob storage' } 
-        } catch(err) {
-            console.error("file upload failed", err)
-        }
-        
-    }
+        // create metadata object  and upload options
+        const metadata = {}
+        if (markdownMeta.authorName) metadata.author = String(markdownMeta.authorName)
+        if (markdownMeta.title) metadata.title = String(markdownMeta.title)
+        if (markdownMeta.date) metadata.date = String(markdownMeta.date)
+        if (markdownMeta.description) metadata.description = String(markdownMeta.description)
     
+        const uploadOptions = {
+            metadata,
+            blobHTTPHeaders: {
+                blobContentType: 'text/markdown' // maybe application/json
+            }
+        }
+
+        // upload data, the buffer temporarily stores chunks of data before upload
+        try {
+            const data = Buffer.from(markdownContent, 'utf8')
+            await blockBlobClient.uploadData(data, uploadOptions)
+
+            // return blob url so iy can be inspected in the azurite json containers
+            // im using azure storage explorer but a good fallback
+            return {
+                status: 201,
+                body: {
+                    message: 'Uploaded to blob storage',
+                    url: blockBlobClient.url,
+                    fileName,
+                    metadata  
+                }
+            }
+
+        } catch(err) {
+            context.log('Upload failed:', err)
+            return { status: 500, body: 'File upload failed: ' + (err.message || err)}
+        } 
+    }
 });
