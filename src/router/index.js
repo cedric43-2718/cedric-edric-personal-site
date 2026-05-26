@@ -8,6 +8,8 @@ import ContactView from '../views/ContactView.vue'
 import ArticleDetails from '../views/ArticleDetails.vue'
 import LoginSuccess from '@/views/LoginSuccess.vue'
 import EditArticles from '@/views/EditArticles.vue'
+import ListArticles from '@/views/ListArticles.vue'
+import Articles from '@/views/Articles.vue'
 import Project1 from '../views/Project_ACI.vue'
 import Project2 from '../views/Project_Reading.vue'
 import Project3 from '../views/Project_Cooking.vue'
@@ -55,6 +57,24 @@ const router = createRouter({
       ]
     },
     {
+      path: '/list-articles',
+      name: 'list-articles',
+      component: ListArticles,
+      children: [
+        {
+          path: ':articleId',
+          name: 'articles',
+          component: Articles,
+          meta: { hideNav: true } 
+        }
+      ]
+    },
+    // {
+    //   path: '/articles',
+    //   name: 'articles',
+    //   component: Articles
+    // },
+    {
       path: '/contact',
       name: 'contact',
       component: ContactView
@@ -88,8 +108,7 @@ const router = createRouter({
             }, 4000);
         }
       }
-    },
-    
+    }
   ],
   scrollBehavior(to, from, savedPosition) {
     return { top: 0 }

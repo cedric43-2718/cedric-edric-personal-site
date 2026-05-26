@@ -34,6 +34,12 @@ export const useGeneralStore = defineStore('content', () => {
   const recipeItems = ref(recipesData)
   const articleItems = ref(articlesData)
 
+  // when the markdown content data flow is set up for production I'm inclined to bring articles into the store
+  // first if implementing search... might be benificial
+  // articles would be a container for a get request
+
+  const articles = ref([])
+
   // simulate an api call for dynamic routing experiment
 
   const recipes = ref([])
@@ -90,48 +96,41 @@ export const useGeneralStore = defineStore('content', () => {
     } finally {
 
       isLoading.value = false
-
+ 
     }
 
   }
 
-// Methods related to article content these methods call backent apis to post and get articles
-// from an azure blob storage 
+  // Methods related to article content these methods call backent apis to post and get articles
+  // from an azure blob storage 
 
-// this method calls the backend api postMkdToStorage
+  // this method calls the backend api uploadMkdToStorage
 
-const passContentToApi = async (article) => {
+  const passContentToApi = async (article) => {
+    try{
 
-   const bodyString = JSON.stringify(article)
-   const body = JSON.parse(bodyString)
-   console.log("markdownContent", body.content)
-   console.log("markdownMeta", body.metaData)
-   console.log("fileName", body.fileName)
+      console.log("store", JSON.stringify(article))
 
-  try{
+      const response = await fetch("http://localhost:7071/api/uploadMkdToStorage", {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(article)
+      })
 
-    const response = await fetch("http://localhost:7071/api/uploadMkdToStorage", {
-			method: 'POST',
-      headers: {"Content-Type": "application/json"},
-			body: JSON.stringify(article)
-		})
+      if(!response.ok){
+        const errorText = await response.text()
+        throw new Error(`there was an error recieving content from the markdown dashboard: ${response.status} - ${errorText}`)
+      }
 
-    if(!response.ok){
-      throw new Error(`there was an error recieving content from the markdown dashboard: ${response.status}`)
+      // return await response.json()
+
+    } catch(err) {
+      console.error('failed to pass content to and call backend api', err)
     }
-
-		const content = await response.json()
-    return content
-
-  } catch(err) {
-    console.error('failed to pass content to and call backend api', err)
+    
   }
-  
-}
 
 // this method calls the backend api postMkdToStorage
-
-const articles = ref([])
 
 // const passSeachTermToApi = async (searchTerm) => {
 
@@ -146,37 +145,6 @@ const articles = ref([])
 
 // }
 
-
-
-// post content from editor to a local location for testing
-
-async function postContentLocal(mkValue) {
-
-  try{
-
-    const response = await fetch('/data/post.md', {
-      method: 'POST',
-      headers: {
-        // 'Content-Type': 'text/markdown',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        // filename: 'post2.md',
-        content: mkValue
-      })
-    })
-
-    const mkObject = await response.json()
-    // const mkObject = await response.text()
-    // const mkObject = response.blob()
-    console.log('Saved successfully:', mkObject);
-    // return mkObject
-
-  } catch(err) {
-    console.error('failed to write markdown to database', err)
-  }
-
-}
 
   // returns from the store
 

@@ -22,20 +22,23 @@
 					<label for="description">Description</label>
 					<textarea name="description" id="description" v-model.lazy="articleData.metaData.description"></textarea>
 				</div>
-				<button :disabled="isInvalid" class="grid-full-span">Submit</button>
+				<button :disabled="isInvalid || !isSaved" class="grid-full-span">Submit</button>
 			</form>
+			<router-link :to="{name: 'list-articles'}">Articles</router-link>
 		</div>
 	</main>
 </template>
 
 <script setup>
 import { ref, computed, reactive } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
 import { useGeneralStore } from '@/stores/appStore'
 import { MdEditor } from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css'
 
 const articleStore = useGeneralStore()
 
+const isSaved = ref(false)
 const isInvalid = computed(() => {
   return articleData.metaData.authorName.trim() === '' || articleData.metaData.title.trim() === '' || articleData.metaData.description.trim() === '';
 });
@@ -48,8 +51,9 @@ const contentToSubmit = ref('')
 // update editorContent (v, h) could pass h for html as well
 
 const handleSave = async (v, h) => {
-	// editorContent.value = v
-	console.log("saving...")
+	articleData.content = v
+	console.log("saving...", v)
+	isSaved.value = true
 	return "Saved Markdown"
 }
 
@@ -57,6 +61,7 @@ const handleSave = async (v, h) => {
 
 const articleData = reactive(
 	{ 
+		content: '',
 		metaData: {
 			authorName: '',
 			title: '',
@@ -64,14 +69,15 @@ const articleData = reactive(
 			date: new Date().toISOString()
 		},
 		fileName: 'file1a.md',		
-		content: ''
 	});
 
 
 const handleSubmit = async () => {
-	// articleData.content = await handleSave(editorContent.value)
-	await handleSave()
-	articleStore.passContentToApi(articleData)
+	if(!articleData.content || !articleData.content.trim()) {
+		console.error("Markdown content is empty")
+		return
+	}
+	await articleStore.passContentToApi(articleData)
 	console.log("template:", articleData)
 }
 
