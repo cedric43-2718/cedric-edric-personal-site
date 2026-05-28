@@ -2,13 +2,13 @@
 	<main v-if="isArticleList" class="article-container">
 		<ul class="article-list">
 			<li class="article">
-				<router-link :to="{name: 'articles', params: {articleId: 123}}">Article 1</router-link>
+				<router-link :to="{name: 'articles', params: {articleId: 'post-456.md'}}">Article 1</router-link>
 			</li>
 			<li class="article">
-				<router-link :to="{name: 'articles', params: {articleId: 456}}">Article 2</router-link>
+				<router-link :to="{name: 'articles', params: {articleId: 'post-456.md'}}">Article 2</router-link>
 			</li>
 			<li class="article">
-				<router-link :to="{name: 'articles', params: {articleId: 789}}">Article 3</router-link>
+				<router-link :to="{name: 'articles', params: {articleId: 'post-456.md'}}">Article 3</router-link>
 			</li>
 		</ul>
 	</main>

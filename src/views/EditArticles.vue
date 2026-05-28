@@ -77,7 +77,7 @@ const handleSubmit = async () => {
 		console.error("Markdown content is empty")
 		return
 	}
-	await articleStore.passContentToApi(articleData)
+	await articleStore.callUploadMkd(articleData)
 	console.log("template:", articleData)
 }
 

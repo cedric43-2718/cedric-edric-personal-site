@@ -2,15 +2,34 @@
 
 	<main class="article-grid">
 		<div class="article">
-			<h2>Article Title</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-			Non odit dignissimos quasi culpa est. Quae molestiae amet sapiente, ex ut pariatur? Sequi officiis obcaecati quod.</p>
+			<div v-if="htmlContentLoading">Loading...</div>
+			<div v-else v-html="htmlContent" class="markdown-container"></div>	
 		</div>
 	</main>
 
 </template>
 
 <script setup>
+
+import { ref, computed, reactive, onMounted } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
+import { useGeneralStore } from '@/stores/appStore'
+
+const articleStore = useGeneralStore()
+const htmlContentLoading = ref(true)
+const htmlContent = ref('')
+
+const props = defineProps({
+	articleId: String
+})
+
+onMounted(async () => {
+	await articleStore.callGetMkd(props.articleId)
+	htmlContent.value = articleStore.htmlFromMkdFile
+	htmlContentLoading.value = articleStore.isMkdLoading
+})
+
+console.log(props.articleId)
 
 </script>
 

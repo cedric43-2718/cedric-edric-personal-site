@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import { marked } from 'marked'
 import recipesData from '@/data/recipes.json'
 import articlesData from '@/data/articles.json'
 
@@ -106,7 +107,7 @@ export const useGeneralStore = defineStore('content', () => {
 
   // this method calls the backend api uploadMkdToStorage
 
-  const passContentToApi = async (article) => {
+  const callUploadMkd = async (article) => {
     try{
 
       console.log("store", JSON.stringify(article))
@@ -130,20 +131,38 @@ export const useGeneralStore = defineStore('content', () => {
     
   }
 
-// this method calls the backend api postMkdToStorage
+  // get markdown files from storage
 
-// const passSeachTermToApi = async (searchTerm) => {
+  const htmlFromMkdFile = ref('')
+  const isMkdLoading = ref(true)
 
-//   try{
+  const callGetMkd = async (file) => {
+
+    try {
+
+      const response = await fetch(`http://localhost:7071/api/getMkdFromStorage?fileName=${file}`, {
+        method: 'GET',
+        headers: {"Content-Type": "text/markdown"}
+      })
+
+      if(!response.ok) {
+        throw new Error('Error Getting Markdown from backend. Check you are passing the right filename.', response.statusText)
+      }
+
+      const markdownText = await response.text()
+
+      htmlFromMkdFile.value = await marked(markdownText)
+      isMkdLoading.value = false
+
+    } catch(err) {
+      console.log("from store: there was an error when calling backend api", err)
+      isMkdLoading.value = true
+    }
+    
+  }
+
 
 //     const response = await fetch(`http://localhost:7071/api/postMkdToStorage?search=${searchTerm}`)
-//     articles.value = await response.json()
-
-//   } catch (err) {
-//     console.error('failed to pass search term and call backend api', err)
-//   }
-
-// }
 
 
   // returns from the store
@@ -153,9 +172,12 @@ export const useGeneralStore = defineStore('content', () => {
     recipeItems,
     articleItems,
     showAuthMessage,
+    htmlFromMkdFile,
+    isMkdLoading,
     fetchRecipes,
     fetchRecipe,
-    passContentToApi
+    callUploadMkd,
+    callGetMkd
 
   }
 
