@@ -134,6 +134,7 @@ export const useGeneralStore = defineStore('content', () => {
   // get markdown files from storage
 
   const htmlFromMkdFile = ref('')
+  const articleMeta = ref(null)
   const isMkdLoading = ref(true)
 
   const callGetMkd = async (file) => {
@@ -142,17 +143,20 @@ export const useGeneralStore = defineStore('content', () => {
 
       const response = await fetch(`http://localhost:7071/api/getMkdFromStorage?fileName=${file}`, {
         method: 'GET',
-        headers: {"Content-Type": "text/markdown"}
+        headers: { "Content-Type": "application/json" }
       })
 
       if(!response.ok) {
         throw new Error('Error Getting Markdown from backend. Check you are passing the right filename.', response.statusText)
       }
 
-      const markdownText = await response.text()
+      const { markdown = '', metadata = 'none' } = await response.json()
+      console.log("markdown from storage", markdown)
+      console.log("metadata from storage", metadata)
 
-      htmlFromMkdFile.value = await marked(markdownText)
+      htmlFromMkdFile.value = await marked(markdown)
       isMkdLoading.value = false
+      articleMeta.value = metadata
 
     } catch(err) {
       console.log("from store: there was an error when calling backend api", err)
@@ -160,10 +164,6 @@ export const useGeneralStore = defineStore('content', () => {
     }
     
   }
-
-
-//     const response = await fetch(`http://localhost:7071/api/postMkdToStorage?search=${searchTerm}`)
-
 
   // returns from the store
 
@@ -174,6 +174,7 @@ export const useGeneralStore = defineStore('content', () => {
     showAuthMessage,
     htmlFromMkdFile,
     isMkdLoading,
+    articleMeta,
     fetchRecipes,
     fetchRecipe,
     callUploadMkd,
