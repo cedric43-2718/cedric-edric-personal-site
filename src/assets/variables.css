@@ -93,7 +93,8 @@
 
 /* Custom pairs */
 
---space-s-l: clamp(1rem, -0.3045rem + 2.5455vw, 2.75rem);
+--space-s-l: clamp(1rem, 0.5408rem + 0.9185vw, 2.5rem);
+--space-l-3xl: clamp(2rem, 0rem + 4vw, 7.5rem);
 --fluid-400-1000: clamp(25rem, 0rem + 52.0833vw, 62.5rem);
 /* defined from 800 to 3413 */
 --fluid-400-1000a: clamp(25rem, 13.5189rem + 22.9621vw, 62.5rem);
@@ -122,12 +123,19 @@
 --fluid-160-320: clamp(10rem, 1.8182rem + 36.3636vw, 20rem);
 --fluid-200-480: clamp(12.5rem, -1.8182rem + 63.6364vw, 30rem);
 
-/* Fluid Grid */
+/* Fluid Grid - projects */
 
 --grid-scale-factor: 2;
 --grid-max-width: calc(152.63rem * (1 + var(--grid-scale-factor)));
 --grid-gutter: var(--space-l-xl, clamp(2.25rem, 1.3898rem + 1.7921vw, 4.125rem));
 --grid-columns: 12;
+
+/* Fluid Grid - Article Dashboard */
+
+--grid-max-width-A: 187.50rem;
+--grid-gutter-A: var(--space-l-3xl, clamp(2rem, 0rem + 4vw, 7.5rem));
+--grid-columns-A: 12;
+
 
 /* Colors - singletons */
 

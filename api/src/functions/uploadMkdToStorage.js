@@ -21,9 +21,8 @@ app.http('uploadMkdToStorage', {
         // destructure the request into key variables expected by blob container
         // const markdownContent = body.content || body.markdown || ''
         const markdownContent = body.content
-        const markdownMeta = body.metaData 
-        const fileName = `post-${Date.now()}.md`
-        // const fileName = request.query.get('file')
+        const markdownMeta = body.metaData
+        const articleId = body.articleId
 
         if(!markdownContent) {
             context.log("markdown", markdownContent)
@@ -46,14 +45,14 @@ app.http('uploadMkdToStorage', {
         }
 
         const containerClient = blobServiceClient.getContainerClient(containerName)
-        const blockBlobClient = containerClient.getBlockBlobClient(fileName)
+        const blockBlobClient = containerClient.getBlockBlobClient(articleId)
 
         // create metadata object  and upload options
         const metadata = {}
-        if (markdownMeta.authorName) metadata.author = String(markdownMeta.authorName)
-        if (markdownMeta.title) metadata.title = String(markdownMeta.title)
-        if (markdownMeta.date) metadata.date = String(markdownMeta.date)
-        if (markdownMeta.description) metadata.description = String(markdownMeta.description)
+        if (markdownMeta?.authorName) metadata.author = String(markdownMeta.authorName)
+        if (markdownMeta?.title) metadata.title = String(markdownMeta.title)
+        if (markdownMeta?.date) metadata.date = String(markdownMeta.date)
+        if (markdownMeta?.description) metadata.description = String(markdownMeta.description)   
     
         const uploadOptions = {
             metadata,
@@ -74,7 +73,6 @@ app.http('uploadMkdToStorage', {
                 body: {
                     message: 'Uploaded to blob storage',
                     url: blockBlobClient.url,
-                    fileName,
                     metadata  
                 }
             }

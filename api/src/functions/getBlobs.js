@@ -1,36 +1,62 @@
-const { app } = require('@azure/functions');
+import { app } from '@azure/functions'
+import { BlobServiceClient } from "@azure/storage-blob"
 
 app.http('getBlobs', {
-    methods: ['GET', 'POST'],
+    method: 'GET',
     authLevel: 'anonymous',
     handler: async (request, context) => {
 
-         // get file name from query parameter
-        const fileName = request.query.get('fileName')
+        // container for blobs
         const fetchedBlobs = []
+
+        // container name to fetch
+        const containerName = request.query.get('containerName')
 
         // set connection properties
         const storageConnection = process.env.DEV_BLOB_STORAGE_CONNECTION_STRING
-        const containerName = 'markdown-files'
+        // const containerName = 'markdown-files'
+        const blobSlice = containerName === 'markdown-files' ? 3 : 5 
         
         try{
 
              // establish connections 
             const blobServiceClient = BlobServiceClient.fromConnectionString(storageConnection)
             const containerClient = blobServiceClient.getContainerClient(containerName)
-            const blobClient = containerClient.getBlobClient(fileName)
 
+            
             // get all blobs
 
-            for await(const blob of containerClient.listBlobsFlat({includeMetadata: true})){
-                const blobMeta = blob.metadata ? blob.metadata : 'no metadata'
-                fetchedBlobs.push({
-                    name: blob.name,
-                    created: blob.properties.creationTime,
-                    metaData: blobMeta
-                })
+            if(containerName === 'markdown-files') {
+                for await(const blob of containerClient.listBlobsFlat({includeMetadata: true})){
+                    const blobMeta = blob.metadata ? blob.metadata : 'no metadata'
+                    fetchedBlobs.push({
+                        name: blob.name,
+                        created: blob.properties.createdOn,
+                        metaData: blobMeta
+                    })
+                }
+            } else {
+                for await(const blob of containerClient.listBlobsFlat()){
+                    const blobClient = containerClient.getBlobClient(blob.name)
+                    fetchedBlobs.push({
+                        name: blob.name,
+                        created: blob.properties.createdOn,
+                        publicImageUrl: blobClient.url
+                    })
+                }
             }
-            context.log("fetched blobs", fetchedBlobs)
+
+            // get latest three blobs
+            const sortedBlobs = fetchedBlobs.toSorted((a,b) => new Date(b.created) - new Date(a.created)).slice(0, blobSlice)
+            context.log("fetched blobs", sortedBlobs)
+
+            return {
+                status: 200,
+                body: JSON.stringify({
+                    fetchedBlobs: sortedBlobs ?? {}
+                }),
+                headers: { 'Content-Type': 'application/json' }
+            }
 
 
         } catch(err){

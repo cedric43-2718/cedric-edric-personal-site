@@ -1,6 +1,6 @@
 <template>
 
-	<main v-if="htmlContentLoading" class="article-grid">
+	<main v-if="!articleStore.isMkdLoading" class="article-grid">
 		<section class="full-width article-info">
 			<div class="full-width-left js-center">
 				<h2 class="article-author">{{ articleStore.articleMeta?.author }}</h2>
@@ -38,7 +38,7 @@ onMounted(async () => {
 
 
 
-console.log(props.articleId)
+
 
 </script>
 
@@ -210,8 +210,32 @@ h2{
 
 /* markdown container and children styling */
 
-.markdown-article{
+.markdown-container{
 	display: grid;
+	margin-top: 2ch;
+
+	&:deep(h2),
+	&:deep(h1){
+		font-weight: 400;
+		font-size: var(--fs-700);
+		text-transform: capitalize;
+		line-height: 1.3;
+		margin-block: .5ch;
+	}
+
+	&:deep(p){
+		line-height: 1.3;
+	}
+
+	&:deep(p):not(:has(+ h1, + h2)) {
+		margin-bottom: 1ch;
+	}
+
+	&:deep(li){
+		/* line-height: 1.5; */
+		list-style-type: decimal-leading-zero;
+		/* margin-bottom: 1.5ch; */
+	}
 }
 
 </style>

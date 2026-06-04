@@ -1,14 +1,9 @@
 <template>
 	<main v-if="isArticleList" class="article-container">
-		<ul class="article-list">
-			<li class="article">
-				<router-link :to="{name: 'articles', params: {articleId: 'post-456.md'}}">Article 1</router-link>
-			</li>
-			<li class="article">
-				<router-link :to="{name: 'articles', params: {articleId: 'post-456.md'}}">Article 2</router-link>
-			</li>
-			<li class="article">
-				<router-link :to="{name: 'articles', params: {articleId: 'post-456.md'}}">Article 3</router-link>
+		<!-- these will be created in a v-for loop: v-for="article in articleStore.articleList" -->
+		<ul class="article-list"> 
+			<li v-for="article in articleStore.latestBlobs" :key="article.name" class="article">
+				<router-link :to="{name: 'articles', params: {articleId: article.name}}">{{ article.name }}</router-link>
 			</li>
 		</ul>
 	</main>
@@ -17,11 +12,19 @@
 
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useGeneralStore } from '@/stores/appStore'
 
 const route = useRoute()
+const articleStore = useGeneralStore()
 const isArticleList = computed(() => route.path === '/list-articles')
+
+// write a function that gets a list of articles sorted by date with basic info to display
+
+onMounted(async () => {
+	articleStore.callGetBlobs('markdown-files')
+})
 
 </script>
 
@@ -36,7 +39,7 @@ const isArticleList = computed(() => route.path === '/list-articles')
 	.article-list{
 		display: grid;
 		grid-auto-flow: column;
-		grid-template-columns: (auto-fit, minmax(200px, 1fr));
+		grid-template-columns: (auto-fit, minmax(250px, 1fr));
 		align-content: center;
 		justify-content: center;
 		gap: 4rem;
@@ -48,7 +51,7 @@ const isArticleList = computed(() => route.path === '/list-articles')
 		.article{
 			/* --col-count: 6; */
 			display: grid;
-			grid-template-columns: 1fr;
+			grid-template-columns: 12rem;
 			grid-template-rows: auto;
 			gap: 1rem;
 			padding: 4rem;

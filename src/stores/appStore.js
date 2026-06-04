@@ -131,39 +131,102 @@ export const useGeneralStore = defineStore('content', () => {
     
   }
 
-  // get markdown files from storage
+  // call get markdown file from storage
 
   const htmlFromMkdFile = ref('')
   const articleMeta = ref(null)
   const isMkdLoading = ref(true)
 
-  const callGetMkd = async (file) => {
+  const callGetMkd = async (article) => {
 
     try {
 
-      const response = await fetch(`http://localhost:7071/api/getMkdFromStorage?fileName=${file}`, {
+      const response = await fetch(`http://localhost:7071/api/getMkdFromStorage?articleId=${article}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
       })
 
       if(!response.ok) {
-        throw new Error('Error Getting Markdown from backend. Check you are passing the right filename.', response.statusText)
+        throw new Error('Error Getting Markdown from backend. Check you are passing the right filename.')
       }
 
-      const { markdown = '', metadata = 'none' } = await response.json()
-      console.log("markdown from storage", markdown)
-      console.log("metadata from storage", metadata)
+      const data = await response.json()
+      console.log('getMkdFromStorage response', data)
 
-      htmlFromMkdFile.value = await marked(markdown)
-      isMkdLoading.value = false
-      articleMeta.value = metadata
+      const { markdown , metadata } = data
+
+      htmlFromMkdFile.value = await marked(markdown || '')
+      articleMeta.value = metadata ?? {}
 
     } catch(err) {
       console.log("from store: there was an error when calling backend api", err)
-      isMkdLoading.value = true
+      articleMeta.value = {}
+    } finally {
+      isMkdLoading.value = false
     }
     
   }
+
+  // call get a list of blobs from a storage container
+
+  const latestBlobs = ref([])
+
+  const callGetBlobs = async (containerName) => {
+    try {
+      const response = await fetch(`http://localhost:7071/api/getBlobs?containerName=${containerName}`, {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" }
+      })
+
+      if(!response.ok) {
+        throw new Error('Error Getting Blob List From Container. Check you are passing the right filename.')
+      }
+
+      const data = await response.json()
+      const { fetchedBlobs } = data
+      console.log('getBlobs response', data)
+      latestBlobs.value = fetchedBlobs
+
+    } catch(err) {
+      console.log("from store: there was an error when calling backend api", err)
+    }
+
+  }
+
+  // generate SAS url for image uploads
+
+  const sasUploadUrl = ref('')
+  const sasImageUrl = ref('')
+  const ImageUrl = ref('')
+
+  const callGetSASUrl = async (fileName, fileType) => {
+    
+    try {
+
+      const params = new URLSearchParams({ fileName, fileType });
+      const url = `http://localhost:7071/api/getSASUploadUrl?${params.toString()}`;
+
+      const response = await fetch(url, {
+        method: 'GET'
+      })
+
+      if(!response.ok) {
+        throw new Error('Error Getting SAS Token. Check you are passing the right filename.')
+      }
+
+      const data = await response.json()
+      console.log('getSASUploadUrl response', data)
+
+      const { uploadUrl , imageUrl, publicImageUrl } = data
+      sasUploadUrl.value = uploadUrl
+      sasImageUrl.value = imageUrl
+      ImageUrl.value = publicImageUrl
+
+    } catch(err) {
+      console.log("from store: there was an error when calling backend api", err)
+    } 
+  }
+
 
   // returns from the store
 
@@ -175,11 +238,16 @@ export const useGeneralStore = defineStore('content', () => {
     htmlFromMkdFile,
     isMkdLoading,
     articleMeta,
+    latestBlobs,
+    sasUploadUrl,
+    sasImageUrl,
+    ImageUrl,
     fetchRecipes,
     fetchRecipe,
     callUploadMkd,
-    callGetMkd
-
+    callGetMkd,
+    callGetBlobs,
+    callGetSASUrl
   }
 
 })

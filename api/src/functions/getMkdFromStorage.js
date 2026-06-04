@@ -7,7 +7,7 @@ app.http('getMkdFromStorage', {
     handler: async (request, context) => {
         
         // get file name from query parameter
-        const fileName = request.query.get('fileName')
+        const articleId = request.query.get('articleId')
 
         // set connection properties
         const storageConnection = process.env.DEV_BLOB_STORAGE_CONNECTION_STRING
@@ -18,7 +18,7 @@ app.http('getMkdFromStorage', {
             // establish connections 
             const blobServiceClient = BlobServiceClient.fromConnectionString(storageConnection)
             const containerClient = blobServiceClient.getContainerClient(containerName)
-            const blobClient = containerClient.getBlobClient(fileName)
+            const blobClient = containerClient.getBlobClient(articleId)
 
             // download blob as a readable stream and convert to text
             const downloadResponse = await blobClient.download()
@@ -26,11 +26,12 @@ app.http('getMkdFromStorage', {
 
             // get blob properties 
             const properties = await blobClient.getProperties()
+            context.log(properties.metadata)
 
             return {
                 status: 200,
                 body: JSON.stringify({
-                    fileName,
+                    articleId,
                     markdown: downloadedBlobText,
                     metadata: properties.metadata ?? {}
                 }),
