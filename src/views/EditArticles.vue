@@ -27,6 +27,15 @@
 								</ol>
 							</div> -->
 						</div>
+						<div class="form-group preview-group">
+							<label for="title">Preview Image</label>
+							<select name="preview-image" id="preview-image" class="select" v-model="articleData.metaData.previewImage">
+								<option disabled value="">Select a preview image</option>
+								<option v-for="(imageUrl, index) in publicImageUrlList" :key="index" :value="imageUrl">
+									{{ imageUrl }}
+								</option>
+							</select>
+						</div>
 					</div>
 					<div class="description-meta">
 						<div class="form-group description-group">
@@ -54,7 +63,7 @@
 </template>
 
 <script setup>
-import { ref, computed, reactive, onMounted } from 'vue'
+import { ref, computed, reactive, onMounted, onUpdated } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useGeneralStore } from '@/stores/appStore'
 import { MdEditor } from 'md-editor-v3'
@@ -91,7 +100,8 @@ const articleData = reactive(
 			authorName: '',
 			title: '',
 			description: '',
-			date: new Date().toISOString()
+			date: new Date().toISOString(),
+			previewImage: ''
 		},
 		articleId: uuidv4(),		
 	});
@@ -138,6 +148,7 @@ const uploadImage = async () => {
 		console.log(articleStore.ImageUrl)
 
 		console.log('image succesfully uploaded')
+		articleStore.callGetBlobs('image-files')
 
 	} catch(err){
 		console.error('upload failed: ', err)
@@ -160,6 +171,8 @@ const handleImageClick = async (event) => {
 onMounted(async () => {
 	articleStore.callGetBlobs('image-files')
 })
+
+
 
 </script>
 
@@ -215,7 +228,8 @@ onMounted(async () => {
 
 			.form-group{
 				display: grid;
-				margin-bottom: 2ch;
+				grid-column: 2 / span 10;
+				/* margin-bottom: 2ch; */
 
 				input{
 					background: var(--young-orange-0);
@@ -237,19 +251,26 @@ onMounted(async () => {
 					&:focus-visible{
 						border-bottom: 2px solid var(--lime-7);
 					}
-				}	
+				}
+				
+				textarea{
+					border: 1px solid var(--deepslate-0);
+					border-radius: 6px;
+					box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+				}
 			}
 
-			.name-group,
-			.title-group,
-			.file-group,
-			.description-group{
-				grid-column: 2 / span 10;
+			.form-group:not(:last-of-type){
+				margin-bottom: 2ch;
 			}
 
 			.file-group{
+
+				label{
+					margin-bottom: 1ch;
+				}
+
 				justify-self: center;
-				margin-top: 2ch;
 				margin-bottom: 0;
 
 				.file-controls{
@@ -264,23 +285,34 @@ onMounted(async () => {
 					}
 				}
 
-				.fileurls{
-					margin-top: 2ch;
-
-					ol li{
-						line-height: 1.2;
-						list-style-type: decimal;
-						margin-bottom: .5ch;
-					}
-
-					ol li::marker{
-						font-size: var(--fs-400);
-						font-weight: 300;
-					}
-				}
-
 				input{
 					border: none;
+				}
+			}
+
+			.preview-group{
+
+				label{
+					margin-bottom: 1ch;
+				}
+
+				.select{
+					appearance: none;
+  					-webkit-appearance: none;
+  					-moz-appearance: none;
+
+					width: 100%;
+					max-width: 500px;
+					padding: 12px 40px 12px 16px; /* Extra right padding prevents text overlapping the arrow */
+					font-size: .75rem;
+					color: var(--teak);
+					cursor: pointer;
+					
+					/* Visual styling */
+					background-color: #ffffff;
+					border: 1px solid var(--deepslate-0);
+					border-radius: 6px;
+					box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 				}
 			}
 		}

@@ -39,13 +39,49 @@
 				/>
 			</div>
 		</div>
+		<div
+			class="project" 
+			v-for="article in articleStore.latestBlobs"
+			:key="article.name"
+		>
+			<div class="project-preview">
+				<div class="project-items">
+					<h2 class="project-title fs-primary-heading">{{ article.metaData.title }}</h2>
+					<div class="project-info">
+						<p class="fs-tertiary-heading">{{ article.metaData.author }}</p>
+						<p class="fs-note">{{ article.metaData.date }}</p>
+					</div>
+					<!-- <ul class="recipe-tags">
+          				<li class="tag fs-note"
+							v-for="tag in recipe.tags"
+							:key="tag"
+						>
+						{{ tag }}</li>
+        			</ul> -->
+				</div>
+				<div class="description">
+					<p>{{ article.metaData.description }}</p>
+				</div>
+				<!-- <div class="nav-button">
+					<button
+						class="button-more"
+						data-icon="newspaper"
+						@click.self="navToArticle(recipe.id)"
+						:disabled="hasArticle(recipe.hasArticle)"
+						>Read More</button>
+				</div> -->
+			</div>
+			<div class="project-image">
+				<img :src="article.metaData.previwImage" alt="article preview image">
+			</div>
+		</div>
 	</main>
 	<RouterView/>
 </template>
 
 <script setup>
 
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useCycleList } from '@vueuse/core'
 import { useGeneralStore } from '@/stores/appStore'
@@ -94,6 +130,13 @@ const handleSearchSubmit = () => {
 	articleStore.passSearchTermToApi(searchTerm.value)
 }
 
+// getting markdown blobs from storage
+
+onMounted(async () => {
+	await articleStore.callGetBlobs('markdown-files')
+	console.log(articleStore.latestBlobs[0].metaData)
+})
+
 </script>
 
 
@@ -106,14 +149,14 @@ main{
 
 .cooking-layout{
 	display: grid;
-	grid-auto-flow: column;
-	grid-template-columns: (auto-fit, minmax(200px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
 	align-content: center;
 	justify-content: center;
 	gap: 4rem;
-	margin-inline: 2rem;
-	margin-top: 15vh;
-	margin-bottom: 35vh;
+	max-width: 1400px;
+	margin-inline: auto;
+	margin-block: 2rem;
+	
 	
 	@media (width <= 1480px) {
 		grid-auto-flow: row;
@@ -122,10 +165,12 @@ main{
 	}
 }
 
+
 .project{
 	--col-count: 7;
 	display: grid;
 	grid-template-columns: repeat(var(--col-count), minmax(0, 6rem));
+	/* grid-template-columns: repeat(auto-fit, minmax(200px, 100%)); */
 	gap: 1rem;
 	padding: 1rem;
 	border: .5px solid var(--young-orange-4);
