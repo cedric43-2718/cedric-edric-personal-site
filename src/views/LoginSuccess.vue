@@ -1,10 +1,10 @@
 <template>
 	<main class="login-success">
 		<h1>You are logged in</h1>
-		<p>This page is here for testing an authentication flow for contributors to add content to this site.
-		The markdown editor route will post to a storage container which the articles list route will search and fetch from.</p>
-		<!-- <a href="https://cedricedric.net/.auth/logout?post_logout_redirect_uri=https://cedricedric.net">Logout</a> -->
-		<router-link :to="{name: 'edit-articles'}">Markdown Editor</router-link>
+		<p>Welcome to the article creation part of this site. The Markdown editor allows you to create new articles and upload images you might want to include. 
+		Article content will be posted to a backend storage container and then displayed in the Articles section of this site.</p>
+		<a href="https://cedricedric.net/.auth/logout?post_logout_redirect_uri=https://cedricedric.net">Logout</a>
+		<!-- <router-link :to="{name: 'edit-articles'}">Markdown Editor</router-link> -->
 		<div v-if="generalStore.showAuthMessage" class="auth-error">
 				<p>You need to be a site admin to access this page. Contact Jason to get access.</p>
 		</div>

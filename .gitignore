@@ -30,3 +30,8 @@ coverage
 *.tsbuildinfo
 
 __azurite*
+
+# Environment variables
+.env
+.env.local
+*.env
