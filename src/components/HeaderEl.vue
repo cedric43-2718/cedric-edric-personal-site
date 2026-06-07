@@ -65,7 +65,7 @@ watchEffect(() => {
 
 // theme selector
 
-const currentTheme = inject('theme')
+// const currentTheme = inject('theme')
 const isDarkMode = ref(false)
 
 const handleTheme = () => {

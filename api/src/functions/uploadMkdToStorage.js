@@ -7,7 +7,7 @@ app.http('uploadMkdToStorage', {
     handler: async (request, context) => {
     
         // set connection properties
-        const storageConnection = process.env.DEV_BLOB_STORAGE_CONNECTION_STRING
+        const storageConnection = process.env.PROD_STORAGE_CONNECTION_STRING
         const containerName = 'markdown-files'
         
         // parse incoming request depending payload 
@@ -36,7 +36,7 @@ app.http('uploadMkdToStorage', {
         blobServiceClient = BlobServiceClient.fromConnectionString(storageConnection)
        } catch(err) {
         context.log('failed to create BlobServiceClient:', err.message)
-        return { status: 500, body: 'Storage connection failure. Check DEV_BLOB_STORAGE_CONNECTION_STRING.'}
+        return { status: 500, body: 'Storage connection failure. Check PROD_STORAGE_CONNECTION_STRING.'}
        }
         
        // is the blobServiceClient null, undefined or empty

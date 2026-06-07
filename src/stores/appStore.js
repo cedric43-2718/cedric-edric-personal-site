@@ -18,10 +18,15 @@ export const useGeneralStore = defineStore('content', () => {
     },
     {
       id: 3,
+      title: 'Articles'
+
+    },
+    {
+      id: 4,
       title: 'Projects'
     },
     {
-      id: 3,
+      id: 5,
       title: 'Contact'
     }
   ])

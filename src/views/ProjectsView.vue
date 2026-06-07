@@ -30,19 +30,6 @@
 					</svg>
 				</svg>
 			</router-link>
-			<router-link class="cooking" v-if="!displayCooking" to="/projects/cooking">
-				<svg class="project-icon tools">
-					<!-- <use href="../assets/images/project-icons.svg#tools-kitchen-3"></use> -->
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-					stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-					class="icon icon-tabler icons-tabler-outline icon-tabler-tools-kitchen-3">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-						<path d="M7 4v17m-3 -17v3a3 3 0 1 0 6 0v-3" />
-						<path d="M14 8a3 4 0 1 0 6 0a3 4 0 1 0 -6 0" />
-						<path d="M17 12v9" />
-					</svg>
-				</svg>
-			</router-link>
 		</ul>
 	</nav>
 	<div v-if="isProjectRoot" class="fluid-grid-container">
@@ -103,7 +90,7 @@
 			<!-- Cooking -->
 				<div class="link-container p2-link">
 					<div class="frosted-circle">
-						<router-link class="cooking" to="/projects/cooking">
+						<router-link class="cooking" to="/articles">
 							<!-- <svg class="project-icon tools">
 								<use href="../assets/images/project-icons.svg#tools-kitchen-3"></use>
 							</svg> -->
@@ -143,7 +130,7 @@ const isProjectRoot = computed(() => route.path === '/projects/')
 
 const displayArt = computed(() => route.path === '/projects/aci-explorer')
 const displayKnowledge = computed(() => route.path === '/projects/knowledge')
-const displayCooking = computed(() => route.path === '/projects/cooking')
+// const displayCooking = computed(() => route.path === '/projects/cooking')
 
 </script>
 

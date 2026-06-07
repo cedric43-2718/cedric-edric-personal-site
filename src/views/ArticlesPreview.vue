@@ -1,14 +1,15 @@
 <template>
-	<main v-if="isProjectCooking" class="cooking-layout">
+	<main v-if="isArticlePreview" class="cooking-layout">
 		<div
 			class="project" 
 			v-for="recipe in articleStore.recipeItems.recipes"
 			:key="recipe.id"
 			:id="recipe.id"
 		>
+			<h2 class="project-title fs-primary-heading">{{ recipe.title }}</h2>
 			<div class="project-preview">
 				<div class="project-items">
-					<h2 class="project-title fs-primary-heading">{{ recipe.title }}</h2>
+					
 					<div class="project-info">
 						<p class="fs-tertiary-heading">{{ recipe.author }}</p>
 						<p class="fs-note">{{ recipe.date }}</p>
@@ -45,9 +46,9 @@
 			:key="article.name"
 			v-if="loadedBlobs"
 		>
+			<h2 class="project-title fs-primary-heading">{{ article.metaData.title }}</h2>
 			<div class="project-preview">
 				<div class="project-items">
-					<h2 class="project-title fs-primary-heading">{{ article.metaData.title }}</h2>
 					<div class="project-info">
 						<p class="fs-tertiary-heading">{{ article.metaData.author }}</p>
 						<p class="fs-note">{{ formatDate(article.metaData.date) }}</p>
@@ -112,7 +113,7 @@ const navToArticle = (articleId) => {
 	})
 }
 
-const isProjectCooking = computed(() => route.path === '/projects/cooking')
+const isArticlePreview = computed(() => route.path === '/articles')
 
 const hasArticle = (article) => {
 	return article === false
@@ -166,7 +167,8 @@ main{
 	gap: 4rem;
 	max-width: 1400px;
 	margin-inline: auto;
-	margin-block: 2rem;
+	margin-top: 5rem;
+	margin-bottom: 10rem;
 	
 	
 	@media (width <= 1480px) {
@@ -189,9 +191,13 @@ main{
 	box-shadow: 2px 4px 15px 5px rgba(0,0,0,0.1);
 	transition: transform .5s ease-in-out;
 
+	.project-title{
+		grid-column: 1 / -1;
+	}
+
 	.project-preview{
 		display: grid;
-		grid-template-rows: 1fr minmax(0, 250px) 2rem;
+		grid-template-rows: 1fr minmax(0, 250px) 7ch;
 		align-items: start;
 		grid-column: 1 / span 4;
 		padding-right: 1rem;
@@ -229,6 +235,7 @@ main{
 		.nav-button{
 			display: grid;
 			place-self: center;
+			align-self: end;
 		}
 
 	}
@@ -236,6 +243,10 @@ main{
 	.project-image{
 		display: grid;
 		grid-column: span 3;
+		
+		img{
+			border-radius: 10px;
+		}
 
 		.image-container{
 			justify-content: space-between;

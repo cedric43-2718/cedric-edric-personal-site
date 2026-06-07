@@ -5,14 +5,13 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import ProjectsView from '../views/ProjectsView.vue'
 import ContactView from '../views/ContactView.vue'
+import ArticlesPreview from '../views/ArticlesPreview.vue'
 import RecipeDetails from '../views/RecipeDetails.vue'
 import ArticleDetails from '@/views/ArticleDetails.vue'
 import LoginSuccess from '@/views/LoginSuccess.vue'
 import EditArticles from '@/views/EditArticles.vue'
-import ListArticles from '@/views/ListArticles.vue'
 import Project1 from '../views/Project_ACI.vue'
 import Project2 from '../views/Project_Reading.vue'
-import Project3 from '../views/Project_Cooking.vue'
 import { getUserInfo } from '@/composables/getAuthInfo'
 
 const router = createRouter({
@@ -29,6 +28,27 @@ const router = createRouter({
       component: AboutView
     },
     {
+      path: '/articles',
+      name: 'articles',
+      component: ArticlesPreview,
+      children: [
+        {
+          path: 'recipe/:id',
+          name: 'recipe-details',
+          props: true,
+          component: RecipeDetails,
+          meta: { hideNav: true } 
+        },
+        {
+          path: 'article/:id',
+          name: 'article-details',
+          props: true,
+          component: ArticleDetails,
+          meta: { hideNav: true } 
+        },
+      ]
+    },
+    {
       path: '/projects/',
       name: 'projects',
       component: ProjectsView,
@@ -40,27 +60,6 @@ const router = createRouter({
         {
           path: 'knowledge',
           component: Project2
-        },
-        {
-          path: 'cooking',
-          component: Project3,
-          children: [
-            {
-              path: 'recipe/:id',
-              name: 'recipe-details',
-              props: true,
-              component: RecipeDetails,
-              meta: { hideNav: true } 
-            },
-            {
-              path: 'article/:id',
-              name: 'article-details',
-              props: true,
-              component: ArticleDetails,
-              meta: { hideNav: true } 
-            },
-
-          ]
         }
       ]
     },

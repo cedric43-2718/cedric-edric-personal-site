@@ -51,6 +51,9 @@
 							<li>
 								<router-link :to="{name: 'about'}">About</router-link>
 							</li>
+							<li>
+								<router-link :to="{name: 'articles'}">Articles</router-link>
+							</li>
 							<li v-if="!isMobile">
 								<router-link :to="{name: 'projects'}">Projects</router-link>
 							</li>
@@ -83,7 +86,7 @@ const route = useRoute()
 const windowWidth = ref(window.innerWidth)
 const isMobile = computed(() => (windowWidth.value < 800 ? true : false))
 
-const isArticleRoute = computed(() => route.path === '/projects/cooking')
+const isArticleRoute = computed(() => route.path === '/articles')
 console.log(isArticleRoute.value)
 
 onMounted(() => {
