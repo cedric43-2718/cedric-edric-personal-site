@@ -38,6 +38,7 @@ export const useGeneralStore = defineStore('content', () => {
   // auth related setings
 
   const showAuthMessage = ref(false)
+  const isEditor = ref(false)
 
   // production getters for recipe and store items
 
@@ -252,6 +253,7 @@ export const useGeneralStore = defineStore('content', () => {
     sasUploadUrl,
     sasImageUrl,
     ImageUrl,
+    isEditor,
     fetchRecipes,
     fetchRecipe,
     callUploadMkd,

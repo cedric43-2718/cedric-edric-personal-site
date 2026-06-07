@@ -70,7 +70,8 @@
 				</div>
 				<div v-if="isArticleRoute" class="login">
 					<!-- <router-link :to="{name: 'login-success'}">Login</router-link> -->
-					<a href="/.auth/login/google?post_login_redirect_uri=https://cedricedric.net/login-success">Login</a>
+					<a v-if="!generalStore.isEditor" href="/.auth/login/google?post_login_redirect_uri=https://cedricedric.net/login-success">Login</a>
+					<router-link v-else :to="{name: 'edit-articles'}">Markdown Editor</router-link>
 				</div>
 			</div>
 		</div>
@@ -80,8 +81,11 @@
 <script setup>
 import { ref, onMounted, computed} from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
+import { getUserInfo } from '@/composables/getAuthInfo'
+import { useGeneralStore } from '@/stores/appStore'
 
 const route = useRoute()
+const generalStore = useGeneralStore()
 
 const windowWidth = ref(window.innerWidth)
 const isMobile = computed(() => (windowWidth.value < 800 ? true : false))

@@ -82,15 +82,17 @@ const router = createRouter({
         const generalStore = useGeneralStore()
         const isAdmin = ref(true)
 
-        // const authDetails = await getUserInfo()
-        // console.log(authDetails)
-        // isAdmin.value = authDetails.userDetails === 'ecedric311@gmail.com' ? true : false;
+        const authDetails = await getUserInfo()
+        console.log(authDetails)
+        isAdmin.value = authDetails.userDetails === 'ecedric311@gmail.com' ? true : false;
 
         generalStore.showAuthMessage = !isAdmin.value
 
         if(isAdmin.value) {
+          generalStore.isEditor = true
           next()
         } else {
+            generalStore.isEditor = false
             setTimeout(() => {
               next('/login-success')
               generalStore.showAuthMessage = false
