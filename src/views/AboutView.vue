@@ -50,6 +50,7 @@
 				<h2>Programing</h2>
 				<p>I've loved programming since I learned logo as a kid in elementary school. I'm not a software engineer, but I love 
 				writing programs to solve analytical problems and design websites. This	is a list of languages and frameworks that I use in my professional work and personal projects on a daily basis.
+				</p>
 				<ul>
 					<li>R</li>
 					<li>Python</li>
@@ -59,7 +60,6 @@
 					<li>CSS</li>
 					<li v-if="message" class="server">{{ message }}</li>
 				</ul>
-				</p>
 			</div>
 
 

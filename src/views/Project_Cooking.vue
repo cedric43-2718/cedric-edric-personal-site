@@ -2,7 +2,7 @@
 	<main v-if="isProjectCooking" class="cooking-layout">
 		<div
 			class="project" 
-			v-for="recipe in recipeStore.recipeItems.recipes"
+			v-for="recipe in articleStore.recipeItems.recipes"
 			:key="recipe.id"
 			:id="recipe.id"
 		>
@@ -28,7 +28,7 @@
 					<button
 						class="button-more"
 						data-icon="newspaper"
-						@click.self="navToArticle(recipe.id)"
+						@click.self="navToRecipe(recipe.id)"
 						:disabled="hasArticle(recipe.hasArticle)"
 						>Read More</button>
 				</div>
@@ -39,27 +39,71 @@
 				/>
 			</div>
 		</div>
+		<div
+			class="project" 
+			v-for="article in articleStore.latestBlobs"
+			:key="article.name"
+			v-if="loadedBlobs"
+		>
+			<div class="project-preview">
+				<div class="project-items">
+					<h2 class="project-title fs-primary-heading">{{ article.metaData.title }}</h2>
+					<div class="project-info">
+						<p class="fs-tertiary-heading">{{ article.metaData.author }}</p>
+						<p class="fs-note">{{ formatDate(article.metaData.date) }}</p>
+					</div>
+					<!-- <ul class="recipe-tags">
+          				<li class="tag fs-note"
+							v-for="tag in recipe.tags"
+							:key="tag"
+						>
+						{{ tag }}</li>
+        			</ul> -->
+				</div>
+				<div class="description">
+					<p>{{ article.metaData.description }}</p>
+				</div>
+				<div class="nav-button">
+					<button
+						class="button-more"
+						data-icon="newspaper"
+						@click.self="navToArticle(article.name)"
+						>Read More</button>
+				</div>
+			</div>
+			<div class="project-image">
+				<img :src="article.metaData.previewImage" alt="article preview image">
+			</div>
+		</div>
 	</main>
 	<RouterView/>
 </template>
 
 <script setup>
 
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useCycleList } from '@vueuse/core'
 import { useGeneralStore } from '@/stores/appStore'
 import CycleInstance  from '@/components/CycleInstance.vue'
+import { formatDate } from '@/composables/formatDate'
 
 // Store 
 
-const recipeStore = useGeneralStore()
+const articleStore = useGeneralStore()
 
 // Routing to specific ids
 
 const router = useRouter()
 const route = useRoute()
 // const hasArticle = ref(true)
+
+const navToRecipe = (articleId) => {
+	router.push({
+		name: 'recipe-details',
+		params: { id: articleId}
+	})
+}
 
 const navToArticle = (articleId) => {
 	router.push({
@@ -86,6 +130,24 @@ function getImageArray(imageArray){
 	return renderArray
 }
 
+// store interface to call getFilesFromStorage
+
+const searchTerm = ref('')
+
+const handleSearchSubmit = () => {
+	articleStore.passSearchTermToApi(searchTerm.value)
+}
+
+// getting markdown blobs from storage
+
+const loadedBlobs = ref(false)
+
+onMounted(async () => {
+	await articleStore.callGetBlobs('markdown-files')
+	loadedBlobs.value = true
+	// console.log(articleStore.latestBlobs)
+})
+
 </script>
 
 
@@ -98,14 +160,14 @@ main{
 
 .cooking-layout{
 	display: grid;
-	grid-auto-flow: column;
-	grid-template-columns: (auto-fit, minmax(200px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
 	align-content: center;
 	justify-content: center;
 	gap: 4rem;
-	margin-inline: 2rem;
-	margin-top: 15vh;
-	margin-bottom: 35vh;
+	max-width: 1400px;
+	margin-inline: auto;
+	margin-block: 2rem;
+	
 	
 	@media (width <= 1480px) {
 		grid-auto-flow: row;
@@ -114,10 +176,12 @@ main{
 	}
 }
 
+
 .project{
 	--col-count: 7;
 	display: grid;
 	grid-template-columns: repeat(var(--col-count), minmax(0, 6rem));
+	/* grid-template-columns: repeat(auto-fit, minmax(200px, 100%)); */
 	gap: 1rem;
 	padding: 1rem;
 	border: .5px solid var(--young-orange-4);

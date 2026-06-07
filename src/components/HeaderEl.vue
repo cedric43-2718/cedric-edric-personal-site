@@ -142,6 +142,7 @@ const handleMouseLeave = (event) => {
 	padding: .5rem 0;
 	background-color: var(--surface-1);
 	transition: background 500ms;
+	z-index: 10;
 
 	@media(width <= 800px){
 		justify-content: center;
