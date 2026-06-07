@@ -151,7 +151,7 @@ export const useGeneralStore = defineStore('content', () => {
       }
 
       const data = await response.json()
-      console.log('getMkdFromStorage response', data)
+      // console.log('getMkdFromStorage response', data)
 
       const { markdown , metadata } = data
 
@@ -184,7 +184,7 @@ export const useGeneralStore = defineStore('content', () => {
 
       const data = await response.json()
       const { fetchedBlobs } = data
-      console.log('getBlobs response', data)
+      // console.log('getBlobs response', data)
       latestBlobs.value = fetchedBlobs
 
     } catch(err) {
@@ -215,7 +215,7 @@ export const useGeneralStore = defineStore('content', () => {
       }
 
       const data = await response.json()
-      console.log('getSASUploadUrl response', data)
+      // console.log('getSASUploadUrl response', data)
 
       const { uploadUrl , imageUrl, publicImageUrl } = data
       sasUploadUrl.value = uploadUrl

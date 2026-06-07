@@ -29,12 +29,25 @@
 						</div>
 						<div class="form-group preview-group">
 							<label for="title">Preview Image</label>
-							<select name="preview-image" id="preview-image" class="select" v-model="articleData.metaData.previewImage">
+							<select name="preview-image" id="preview-image" class="select" v-model.lazy="articleData.metaData.previewImage">
 								<option disabled value="">Select a preview image</option>
 								<option v-for="(imageUrl, index) in publicImageUrlList" :key="index" :value="imageUrl">
 									{{ imageUrl }}
 								</option>
 							</select>
+							<!-- <VueMultiselect
+								v-model="articleData.metaData.previewImage"
+								:options="publicImageUrlList"
+								:taggable="true"
+								:searchable="true"
+								label="imagename"
+								track-by="code"
+								placeholder="Select an option or type your own"
+			
+							/> -->
+							<div v-if="articleData.metaData.previewImage" class="preview-container">
+								<img :src="articleData.metaData.previewImage" alt="preview image">
+							</div>
 						</div>
 					</div>
 					<div class="description-meta">
@@ -45,13 +58,13 @@
 					</div>
 				</div>
 				<div class="form-controls">
-					<router-link class="test-articles" :to="{name: 'list-articles'}">Articles</router-link>
 					<button :disabled="isInvalid || !isSaved" class="submit">Submit</button>
 				</div>
 			</form>
 			<div class="image-library">
 				<h2>Image Library</h2>
 				<p>Click on an image to copy image source to clipboard.</p>
+				<p>This can be used in the markdown editor to include pictures in your content.</p>
 			</div>
 			<div v-if="articleStore.latestBlobs.length > 0" class="image-preview">
 				<li v-for="image in articleStore.latestBlobs" :key="image.name" class="image-card">
@@ -69,6 +82,8 @@ import { useGeneralStore } from '@/stores/appStore'
 import { MdEditor } from 'md-editor-v3'
 import { v4 as uuidv4 } from 'uuid'
 import 'md-editor-v3/lib/style.css'
+import VueMultiselect from 'vue-multiselect'
+import 'vue-multiselect/dist/vue-multiselect.css'
 
 const articleStore = useGeneralStore()
 
@@ -108,8 +123,8 @@ const articleData = reactive(
 
 
 const handleSubmit = async () => {
-	if(!articleData.content || !articleData.content.trim()) {
-		console.error("Markdown content is empty")
+	if(!articleData.content || !articleData.content.trim() || !articleData.metaData.authorName || !articleData.metaData.title || !articleData.metaData.previewImage) {
+		console.error("Article information is missing required information")
 		return
 	}
 	await articleStore.callUploadMkd(articleData)
@@ -313,6 +328,15 @@ onMounted(async () => {
 					border: 1px solid var(--deepslate-0);
 					border-radius: 6px;
 					box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+				}
+
+				img{
+					justify-self: center;
+					width: 200px;
+					height: 200px;
+					object-fit: cover;
+					margin-top: 2ch;
+					border-radius: 2px;
 				}
 			}
 		}

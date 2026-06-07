@@ -5,11 +5,11 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import ProjectsView from '../views/ProjectsView.vue'
 import ContactView from '../views/ContactView.vue'
-import ArticleDetails from '../views/ArticleDetails.vue'
+import RecipeDetails from '../views/RecipeDetails.vue'
+import ArticleDetails from '@/views/ArticleDetails.vue'
 import LoginSuccess from '@/views/LoginSuccess.vue'
 import EditArticles from '@/views/EditArticles.vue'
 import ListArticles from '@/views/ListArticles.vue'
-import Articles from '@/views/Articles.vue'
 import Project1 from '../views/Project_ACI.vue'
 import Project2 from '../views/Project_Reading.vue'
 import Project3 from '../views/Project_Cooking.vue'
@@ -46,35 +46,24 @@ const router = createRouter({
           component: Project3,
           children: [
             {
-              path: ':id',
+              path: 'recipe/:id',
+              name: 'recipe-details',
+              props: true,
+              component: RecipeDetails,
+              meta: { hideNav: true } 
+            },
+            {
+              path: 'article/:id',
               name: 'article-details',
               props: true,
               component: ArticleDetails,
               meta: { hideNav: true } 
-            }
+            },
+
           ]
         }
       ]
     },
-    {
-      path: '/list-articles',
-      name: 'list-articles',
-      component: ListArticles,
-      children: [
-        {
-          path: ':articleId',
-          name: 'articles',
-          component: Articles,
-          props: true,
-          meta: { hideNav: true } 
-        }
-      ]
-    },
-    // {
-    //   path: '/articles',
-    //   name: 'articles',
-    //   component: Articles
-    // },
     {
       path: '/contact',
       name: 'contact',

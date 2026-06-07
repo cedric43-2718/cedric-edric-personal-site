@@ -21,7 +21,7 @@ app.http('getSASUploadUrl', {
             const containerClient = blobServiceClient.getContainerClient(containerName)
 
             // set the name of the blob that this file will create in the container
-            const blobName = `${Date.now()}-${fileName}`
+            const blobName = `${fileName}`
             const blobClient = containerClient.getBlockBlobClient(blobName)
 
             // generate temporary SAS token for uploading

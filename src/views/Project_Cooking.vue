@@ -28,7 +28,7 @@
 					<button
 						class="button-more"
 						data-icon="newspaper"
-						@click.self="navToArticle(recipe.id)"
+						@click.self="navToRecipe(recipe.id)"
 						:disabled="hasArticle(recipe.hasArticle)"
 						>Read More</button>
 				</div>
@@ -43,13 +43,14 @@
 			class="project" 
 			v-for="article in articleStore.latestBlobs"
 			:key="article.name"
+			v-if="loadedBlobs"
 		>
 			<div class="project-preview">
 				<div class="project-items">
 					<h2 class="project-title fs-primary-heading">{{ article.metaData.title }}</h2>
 					<div class="project-info">
 						<p class="fs-tertiary-heading">{{ article.metaData.author }}</p>
-						<p class="fs-note">{{ article.metaData.date }}</p>
+						<p class="fs-note">{{ formatDate(article.metaData.date) }}</p>
 					</div>
 					<!-- <ul class="recipe-tags">
           				<li class="tag fs-note"
@@ -62,17 +63,16 @@
 				<div class="description">
 					<p>{{ article.metaData.description }}</p>
 				</div>
-				<!-- <div class="nav-button">
+				<div class="nav-button">
 					<button
 						class="button-more"
 						data-icon="newspaper"
-						@click.self="navToArticle(recipe.id)"
-						:disabled="hasArticle(recipe.hasArticle)"
+						@click.self="navToArticle(article.name)"
 						>Read More</button>
-				</div> -->
+				</div>
 			</div>
 			<div class="project-image">
-				<img :src="article.metaData.previwImage" alt="article preview image">
+				<img :src="article.metaData.previewImage" alt="article preview image">
 			</div>
 		</div>
 	</main>
@@ -86,6 +86,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { useCycleList } from '@vueuse/core'
 import { useGeneralStore } from '@/stores/appStore'
 import CycleInstance  from '@/components/CycleInstance.vue'
+import { formatDate } from '@/composables/formatDate'
 
 // Store 
 
@@ -96,6 +97,13 @@ const articleStore = useGeneralStore()
 const router = useRouter()
 const route = useRoute()
 // const hasArticle = ref(true)
+
+const navToRecipe = (articleId) => {
+	router.push({
+		name: 'recipe-details',
+		params: { id: articleId}
+	})
+}
 
 const navToArticle = (articleId) => {
 	router.push({
@@ -132,9 +140,12 @@ const handleSearchSubmit = () => {
 
 // getting markdown blobs from storage
 
+const loadedBlobs = ref(false)
+
 onMounted(async () => {
 	await articleStore.callGetBlobs('markdown-files')
-	console.log(articleStore.latestBlobs[0].metaData)
+	loadedBlobs.value = true
+	// console.log(articleStore.latestBlobs)
 })
 
 </script>

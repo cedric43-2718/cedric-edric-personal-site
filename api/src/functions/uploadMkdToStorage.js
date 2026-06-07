@@ -52,6 +52,7 @@ app.http('uploadMkdToStorage', {
         if (markdownMeta?.authorName) metadata.author = String(markdownMeta.authorName)
         if (markdownMeta?.title) metadata.title = String(markdownMeta.title)
         if (markdownMeta?.date) metadata.date = String(markdownMeta.date)
+        if (markdownMeta?.previewImage) metadata.previewImage = String(markdownMeta.previewImage)    
         if (markdownMeta?.description) metadata.description = String(markdownMeta.description)   
     
         const uploadOptions = {
