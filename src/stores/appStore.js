@@ -121,7 +121,7 @@ export const useGeneralStore = defineStore('content', () => {
 
       console.log("store", JSON.stringify(article))
 
-      const response = await fetch("http://localhost:7071/api/uploadMkdToStorage", {
+      const response = await fetch("https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/uploadMkdToStorage", {
         method: 'POST',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(article)
@@ -150,7 +150,7 @@ export const useGeneralStore = defineStore('content', () => {
 
     try {
 
-      const response = await fetch(`http://localhost:7071/api/getMkdFromStorage?articleId=${article}`, {
+      const response = await fetch(`https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getMkdFromStorage?articleId=${article}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
       })
@@ -182,7 +182,7 @@ export const useGeneralStore = defineStore('content', () => {
 
   const callGetBlobs = async (containerName) => {
     try {
-      const response = await fetch(`http://localhost:7071/api/getBlobs?containerName=${containerName}`, {
+      const response = await fetch(`https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getBlobs?containerName=${containerName}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
       })
@@ -213,7 +213,7 @@ export const useGeneralStore = defineStore('content', () => {
     try {
 
       const params = new URLSearchParams({ fileName, fileType });
-      const url = `http://localhost:7071/api/getSASUploadUrl?${params.toString()}`;
+      const url = `https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getSASUploadUrl?${params.toString()}`;
 
       const response = await fetch(url, {
         method: 'GET'
