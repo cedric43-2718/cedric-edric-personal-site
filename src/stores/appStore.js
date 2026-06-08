@@ -180,6 +180,7 @@ export const useGeneralStore = defineStore('content', () => {
   // call get a list of blobs from a storage container
 
   const latestBlobs = ref([])
+  const loadedBlobs = ref(false)
 
   const callGetBlobs = async (containerName) => {
     try {
@@ -196,6 +197,7 @@ export const useGeneralStore = defineStore('content', () => {
       const { fetchedBlobs } = data
       // console.log('getBlobs response', data)
       latestBlobs.value = fetchedBlobs
+      loadedBlobs.value = true
 
     } catch(err) {
       console.log("from store: there was an error when calling backend api", err)
@@ -254,6 +256,7 @@ export const useGeneralStore = defineStore('content', () => {
     sasImageUrl,
     ImageUrl,
     isEditor,
+    loadedBlobs, 
     fetchRecipes,
     fetchRecipe,
     callUploadMkd,

@@ -42,8 +42,8 @@
 				<p>I started learning about building websites during the pandemic and I've been dabbling with various projects ever since. 
 				This site is built entirely using <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">Vue 3</a> in the composition dialect. The layout and design is all naitive css - using nesting a lot which is awesome. The current site is a 
 				Single Page Application that uses client side routing and implements a serverless backend with Azure Functions. It is hosted on Azure and uses github actions to implement CI/CD (Continuous Integration/Continuous Deployment). A few notable integrations are <a href="https://css-doodle.com/" target="_blank" rel="noopener noreferrer">css-doodle</a> 
-				and <a href="https://observablehq.com/plot/" target="_blank" rel="noopener noreferrer">Observable Plot </a>. I'm currently working on building a live preview markdown editor dashboard where authorized users can create and post articles to this site. 
-				The articles will get posted to an azure blob storage container and then fetched via a backend api when the articles list is mounted.
+				and <a href="https://observablehq.com/plot/" target="_blank" rel="noopener noreferrer">Observable Plot </a>. I recently integrated a markdown editor, with live preview, where authorized users can create and post new articles to this site. 
+				The markdown feature uploads and fetches content, including images, from an Azure Blob Storage container.
 				</p>
 			</div>
 			<div class="wrapper">
