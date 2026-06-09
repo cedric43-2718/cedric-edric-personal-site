@@ -1,15 +1,14 @@
 <template>
-	<main v-if="isArticlePreview" class="cooking-layout">
+	<main v-if="isProjectCooking" class="cooking-layout">
 		<div
 			class="project" 
 			v-for="recipe in articleStore.recipeItems.recipes"
 			:key="recipe.id"
 			:id="recipe.id"
 		>
-			<h2 class="project-title fs-primary-heading">{{ recipe.title }}</h2>
 			<div class="project-preview">
 				<div class="project-items">
-					
+					<h2 class="project-title fs-primary-heading">{{ recipe.title }}</h2>
 					<div class="project-info">
 						<p class="fs-tertiary-heading">{{ recipe.author }}</p>
 						<p class="fs-note">{{ recipe.date }}</p>
@@ -40,15 +39,65 @@
 				/>
 			</div>
 		</div>
+		<div class="loader-grid" v-if="!loadedBlobs">
+			<div class="project">
+				<div class="project-preview">
+					<div class="project-items">
+						<div class="skeleton skeleton-title"></div>
+						<div class="project-info">
+							<div class="skeleton skeleton-info"></div>
+							<div class="skeleton skeleton-info"></div>
+						</div>
+					</div>
+					<div class="description">
+						<div class="skeleton skeleton-text"></div>
+						<div class="skeleton skeleton-text"></div>
+						<div class="skeleton skeleton-text"></div>
+						<div class="skeleton skeleton-text"></div>
+					</div>
+					<div class="nav-button">
+						<div class="skeleton skeleton-button"></div>
+					</div>
+				</div>
+				<div class="project-image">
+					<div class="skeleton skeleton-image"></div>
+				</div>
+			</div>
+		</div>
+		<div class="loader-grid" v-if="!loadedBlobs">
+			<div class="project">
+				<div class="project-preview">
+					<div class="project-items">
+						<div class="skeleton skeleton-title"></div>
+						<div class="project-info">
+							<div class="skeleton skeleton-info"></div>
+							<div class="skeleton skeleton-info"></div>
+						</div>
+					</div>
+					<div class="description">
+						<div class="skeleton skeleton-text"></div>
+						<div class="skeleton skeleton-text"></div>
+						<div class="skeleton skeleton-text"></div>
+						<div class="skeleton skeleton-text"></div>
+					</div>
+					<div class="nav-button">
+						<div class="skeleton skeleton-button"></div>
+					</div>
+				</div>
+				<div class="project-image">
+					<div class="skeleton skeleton-image"></div>
+				</div>
+			</div>
+		</div>
 		<div
 			class="project" 
 			v-for="article in articleStore.latestBlobs"
 			:key="article.name"
-			v-if="loadedBlobs"
+			v-show="loadedBlobs"
 		>
-			<h2 class="project-title fs-primary-heading">{{ article.metaData.title }}</h2>
 			<div class="project-preview">
 				<div class="project-items">
+					<h2 class="project-title fs-primary-heading">{{ article.metaData.title }}</h2>
 					<div class="project-info">
 						<p class="fs-tertiary-heading">{{ article.metaData.author }}</p>
 						<p class="fs-note">{{ formatDate(article.metaData.date) }}</p>
@@ -66,9 +115,10 @@
 				</div>
 			</div>
 			<div class="project-image">
-				<img :src="article.metaData.previewImage" alt="article preview image">
+				<img :src="article.metaData.previewImage" @load="onImageLoad" alt="article preview image">
 			</div>
 		</div>
+		
 	</main>
 	<RouterView/>
 </template>
@@ -106,7 +156,7 @@ const navToArticle = (articleId) => {
 	})
 }
 
-const isArticlePreview = computed(() => route.path === '/articles')
+const isProjectCooking = computed(() => route.path === '/projects/cooking')
 
 const hasArticle = (article) => {
 	return article === false
@@ -136,9 +186,15 @@ const handleSearchSubmit = () => {
 
 const loadedBlobs = ref(false)
 
+const onImageLoad = () => {
+		loadedBlobs.value = true
+	}
+
 onMounted(async () => {
 	await articleStore.callGetBlobs('markdown-files')
-	loadedBlobs.value = true
+
+	
+	// loadedBlobs.value = true
 	// console.log(articleStore.latestBlobs)
 })
 
@@ -160,8 +216,7 @@ main{
 	gap: 4rem;
 	max-width: 1400px;
 	margin-inline: auto;
-	margin-top: 5rem;
-	margin-bottom: 10rem;
+	margin-block: 2rem;
 	
 	
 	@media (width <= 1480px) {
@@ -188,9 +243,14 @@ main{
 		grid-column: 1 / -1;
 	}
 
+	.skeleton{
+		opacity: .7;
+		animation: skeleton-loader 1s linear infinite alternate;
+	}
+
 	.project-preview{
 		display: grid;
-		grid-template-rows: 1fr minmax(0, 250px) 7ch;
+		grid-template-rows: 1fr minmax(0, 250px) 2rem;
 		align-items: start;
 		grid-column: 1 / span 4;
 		padding-right: 1rem;
@@ -228,23 +288,68 @@ main{
 		.nav-button{
 			display: grid;
 			place-self: center;
-			align-self: end;
 		}
+
+		.skeleton-title{
+			width: 335px;
+			height: 40px;
+			border-radius: 10px;
+			margin-bottom: 2ch;
+		}
+
+		.skeleton-info{
+			width: 275px;
+			height: 30px;
+			border-radius: 10px;
+		}
+
+		.skeleton-info:nth-child(1){
+			margin-bottom: .5ch;
+		}
+
+		.skeleton-info:nth-child(2){
+			margin-bottom: 2ch;
+		}
+
+		.skeleton-text{
+			width: 335px;
+			height: 30px;
+			border-radius: 10px;
+		}
+
+		.skeleton-text:not(:last-of-type){
+			margin-bottom: 1.5ch;
+		}
+
+		.skeleton-button{
+			width: 10rem;
+			height: 2rem;
+			border-radius: 20px;
+		}
+
 
 	}
 
 	.project-image{
 		display: grid;
 		grid-column: span 3;
-		
-		img{
-			border-radius: 10px;
-		}
 
 		.image-container{
 			justify-content: space-between;
 		}
 
+		img{
+			height: 200px;
+			min-width: 100%;
+			object-fit: cover;
+			border-radius: 10px;
+		}
+
+		.skeleton-image{
+			height: 200px;
+			min-width: 100%;
+			border-radius: 10px
+		}	
 	}
 
 	.button-more{
@@ -279,4 +384,14 @@ main{
 .project:hover{
 	transform: scale(1.01);
 }
+
+@keyframes skeleton-loader {
+	0% {
+		background-color: hsl(46, 99%, 80%);
+	}
+	100% {
+		background-color: hsl(46, 99%, 90%);
+	}
+}
+
 </style>
