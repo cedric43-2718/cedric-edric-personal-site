@@ -217,7 +217,6 @@ main{
 	
 	
 	@media (width <= 1480px) {
-		grid-auto-flow: row;
 		margin: 2rem;
 		gap: 2rem;
 	}
@@ -246,7 +245,7 @@ main{
 	}
 
 	.skeleton-title{
-		width: 630px;
+		width: 95%;
 		height: 40px;
 		border-radius: 10px;
 		margin-bottom: 2ch;
@@ -296,7 +295,7 @@ main{
 		}
 
 		.skeleton-info{
-			width: 275px;
+			width: 95%;
 			height: 30px;
 			border-radius: 10px;
 		}
@@ -310,7 +309,7 @@ main{
 		}
 
 		.skeleton-text{
-			width: 335px;
+			width: 95%;
 			height: 30px;
 			border-radius: 10px;
 		}
