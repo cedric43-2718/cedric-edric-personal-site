@@ -217,6 +217,8 @@ main{
 	
 	
 	@media (width <= 1480px) {
+		grid-template-columns: .65fr;
+		grid-auto-flow: row;
 		margin: 2rem;
 		gap: 2rem;
 	}
