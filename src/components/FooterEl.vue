@@ -208,6 +208,10 @@ onMounted(() => {
 	align-items: end;
 	justify-items: end;
 
+	@media (width <= 800px) {
+		display: none;
+	}
+
 	a{
 		font-family: "Source Code Pro", monospace;
 		color: var(--lime-4);
