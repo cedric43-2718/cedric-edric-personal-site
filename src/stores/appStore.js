@@ -239,6 +239,34 @@ export const useGeneralStore = defineStore('content', () => {
     } 
   }
 
+  // call getValuesFromCsv to verify logged in user has site editor role
+
+  const userRoleExists = ref(false)
+
+  const callGetCsv = async (email, role) => {
+    try {
+      const response = await fetch(`http://localhost:7071/api/getValuesFromCsv?email=${email}&role=${role}`, {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" }
+      })
+
+      if(!response.ok) {
+        throw new Error('From Store: Error Getting the response.')
+      }
+
+      const data = await response.json()
+      const { valueExists } = data
+      console.log('getValuesFromCsv response', data)
+      userRoleExists.value = valueExists
+      
+
+    } catch(err) {
+      console.log("from store: there was an error when calling backend api getValuesFromCsv", err)
+    }
+
+  }
+
+
 
   // returns from the store
 

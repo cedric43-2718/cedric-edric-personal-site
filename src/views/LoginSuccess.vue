@@ -6,7 +6,7 @@
 		<a href="https://cedricedric.net/.auth/logout?post_logout_redirect_uri=https://cedricedric.net">Logout</a>
 		<router-link :to="{name: 'edit-articles'}">Markdown Editor</router-link>
 		<div v-if="generalStore.showAuthMessage" class="auth-error">
-				<p>You need to be a site admin to access this page. Contact Jason to get access.</p>
+				<p>You need to have the site editor role added to your authorization profile. Contact Jason to get access.</p>
 		</div>
 	</main>
 </template>
