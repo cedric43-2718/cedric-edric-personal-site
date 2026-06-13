@@ -21,9 +21,10 @@ import { useGeneralStore } from '@/stores/appStore'
 const route = useRoute()
 const generalStore = useGeneralStore()
 
-// onMounted(() => {
-// 	console.log(generalStore.isUserAdmin)
-// })
+onMounted(async () => {
+	await generalStore.callGetCsv('jrudokas@gmail.com', 'editor')
+	console.log(generalStore.userRoleExists)
+})
 
 </script>
 

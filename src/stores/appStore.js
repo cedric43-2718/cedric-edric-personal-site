@@ -245,7 +245,7 @@ export const useGeneralStore = defineStore('content', () => {
 
   const callGetCsv = async (email, role) => {
     try {
-      const response = await fetch(`http://localhost:7071/api/getValuesFromCsv?email=${email}&role=${role}`, {
+      const response = await fetch(`https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getvaluesfromcsv?email=${email}&role=${role}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
       })
@@ -256,7 +256,7 @@ export const useGeneralStore = defineStore('content', () => {
 
       const data = await response.json()
       const { valueExists } = data
-      console.log('getValuesFromCsv response', data)
+      // console.log('getValuesFromCsv response', data)
       userRoleExists.value = valueExists
       
 
@@ -284,13 +284,15 @@ export const useGeneralStore = defineStore('content', () => {
     sasImageUrl,
     ImageUrl,
     isEditor,
-    loadedBlobs, 
+    loadedBlobs,
+    userRoleExists, 
     fetchRecipes,
     fetchRecipe,
     callUploadMkd,
     callGetMkd,
     callGetBlobs,
-    callGetSASUrl
+    callGetSASUrl,
+    callGetCsv
   }
 
 })
