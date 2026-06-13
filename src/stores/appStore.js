@@ -35,11 +35,6 @@ export const useGeneralStore = defineStore('content', () => {
 
   const keyCount = ref(0)
 
-  // auth related setings
-
-  const showAuthMessage = ref(false)
-  const isEditor = ref(false)
-
   // production getters for recipe and store items
 
   const recipeItems = ref(recipesData)
@@ -241,7 +236,8 @@ export const useGeneralStore = defineStore('content', () => {
 
   // call getValuesFromCsv to verify logged in user has site editor role
 
-  const userRoleExists = ref(false)
+  const showAuthMessage = ref(false)
+  const isEditor = ref(false)
 
   const callGetCsv = async (email, role) => {
     try {
@@ -257,7 +253,7 @@ export const useGeneralStore = defineStore('content', () => {
       const data = await response.json()
       const { valueExists } = data
       // console.log('getValuesFromCsv response', data)
-      userRoleExists.value = valueExists
+      isEditor.value = valueExists
       
 
     } catch(err) {
@@ -285,7 +281,7 @@ export const useGeneralStore = defineStore('content', () => {
     ImageUrl,
     isEditor,
     loadedBlobs,
-    userRoleExists, 
+    isEditor, 
     fetchRecipes,
     fetchRecipe,
     callUploadMkd,

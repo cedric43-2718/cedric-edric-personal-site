@@ -80,19 +80,18 @@ const router = createRouter({
       beforeEnter: async (to, from, next) => {
 
         const generalStore = useGeneralStore()
-        const isAdmin = ref(true)
 
         const authDetails = await getUserInfo()
-        console.log(authDetails)
-        isAdmin.value = authDetails.userDetails === 'ecedric311@gmail.com' ? true : false;
+        await generalStore.callGetCsv(authDetails.userDetails, 'editor')
 
-        generalStore.showAuthMessage = !isAdmin.value
 
-        if(isAdmin.value) {
-          generalStore.isEditor = true
+        // isAdmin.value = authDetails.userDetails === 'ecedric311@gmail.com' ? true : false;
+        // generalStore.showAuthMessage = !generalStore.isEditor
+
+        if(generalStore.isEditor) {
           next()
         } else {
-            generalStore.isEditor = false
+            generalStore.showAuthMessage = true
             setTimeout(() => {
               next('/login-success')
               generalStore.showAuthMessage = false
