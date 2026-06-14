@@ -271,7 +271,7 @@ onMounted(async () => {
 				/* margin-bottom: 2ch; */
 
 				input{
-					background: var(--young-orange-0);
+					background: var(--surface-3);
 				}
 
 				textarea{
