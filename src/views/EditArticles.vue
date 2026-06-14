@@ -77,7 +77,7 @@
 
 <script setup>
 import { ref, computed, reactive, onMounted, onUpdated } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 import { useGeneralStore } from '@/stores/appStore'
 import { MdEditor } from 'md-editor-v3'
 import { v4 as uuidv4 } from 'uuid'
@@ -86,6 +86,7 @@ import VueMultiselect from 'vue-multiselect'
 import 'vue-multiselect/dist/vue-multiselect.css'
 
 const articleStore = useGeneralStore()
+const router = useRouter()
 
 const isSaved = ref(false)
 const isInvalid = computed(() => {
