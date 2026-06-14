@@ -31,9 +31,15 @@ const router = createRouter({
       path: '/articles',
       name: 'articles',
       component: ArticlesPreview,
-      beforeEnter: (to, from) => {
+      beforeEnter: async (to, from) => {
         const articleStore = useGeneralStore()
-        articleStore.callGetBlobs('markdown-files')
+
+        if(from.path === '/create-edit-articles') {
+          await articleStore.callGetBlobs('markdown-files')
+        } else {
+          articleStore.callGetBlobs('markdown-files')
+        }
+        
       },
       children: [
         {

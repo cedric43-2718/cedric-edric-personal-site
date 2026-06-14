@@ -130,7 +130,10 @@ const handleSubmit = async () => {
 		return
 	}
 	await articleStore.callUploadMkd(articleData)
-	console.log("template:", articleData)
+	// 
+	router.push({
+		name: 'articles',
+	})
 }
 
 // Image uploading .................................................................
