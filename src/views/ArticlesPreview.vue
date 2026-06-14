@@ -25,7 +25,7 @@
 				<div class="description">
 					<p>{{ recipe.description }}</p>
 				</div>
-				<div class="nav-button">
+				<div class="recipe-controls">
 					<button
 						class="button-more"
 						data-icon="newspaper"
@@ -107,7 +107,7 @@
 				<div class="description">
 					<p>{{ article.metaData?.description }}</p>
 				</div>
-				<div class="nav-button">
+				<div class="article-controls">
 					<button
 						class="button-more"
 						data-icon="newspaper"
@@ -117,6 +117,7 @@
 						class="button-more button-edit"
 						data-icon="pencil"
 						@click.self="editArticle(article.name)"
+						v-tippy="{content: 'Edit Article'}"
 						></button>
 				</div>
 			</div>
@@ -319,11 +320,16 @@ main{
 			margin-top: 1rem;
 		}
 
-		.nav-button{
+		.recipe-controls{
 			display: grid;
-			gap: 5rem;
-			grid-auto-flow: column;
 			place-self: center;
+			align-self: end;
+		}
+
+		.article-controls{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
 			align-self: end;
 		}
 

@@ -18,7 +18,8 @@
     "uuid": "^14.0.0",
     "vue": "^3.4.21",
     "vue-multiselect": "^3.5.0",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vue-tippy": "^6.7.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
