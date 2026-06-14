@@ -96,16 +96,16 @@
 			:key="article.name"
 			v-show="loadedBlobs"
 		>
-			<h2 class="project-title fs-primary-heading">{{ article.metaData.title }}</h2>
+			<h2 class="project-title fs-primary-heading">{{ article.metaData?.title }}</h2>
 			<div class="project-preview">
 				<div class="project-items">
 					<div class="project-info">
-						<p class="fs-tertiary-heading">{{ article.metaData.author }}</p>
+						<p class="fs-tertiary-heading">{{ article.metaData?.author }}</p>
 						<p class="fs-note">{{ formatDate(article.metaData.date) }}</p>
 					</div>
 				</div>
 				<div class="description">
-					<p>{{ article.metaData.description }}</p>
+					<p>{{ article.metaData?.description }}</p>
 				</div>
 				<div class="nav-button">
 					<button
@@ -113,6 +113,11 @@
 						data-icon="newspaper"
 						@click.self="navToArticle(article.name)"
 						>Read More</button>
+					<button
+						class="button-more button-edit"
+						data-icon="pencil"
+						@click.self="editArticle(article.name)"
+						></button>
 				</div>
 			</div>
 			<div class="project-image">
@@ -156,6 +161,13 @@ const navToArticle = (articleId) => {
 	})
 }
 
+const editArticle = (articleId) => {
+	articleStore.editArticleID = articleId
+	router.push({
+		name: 'edit-articles',
+	})
+}
+
 const isArticlePreview = computed(() => route.path === '/articles')
 
 const hasArticle = (article) => {
@@ -190,9 +202,9 @@ const onImageLoad = () => {
 	loadedBlobs.value = true
 }
 
-onMounted(async () => {
-	await articleStore.callGetBlobs('markdown-files')
-})
+// onMounted(async () => {
+// 	await articleStore.callGetBlobs('markdown-files')
+// })
 
 </script>
 
@@ -309,6 +321,8 @@ main{
 
 		.nav-button{
 			display: grid;
+			gap: 5rem;
+			grid-auto-flow: column;
 			place-self: center;
 			align-self: end;
 		}
@@ -394,6 +408,19 @@ main{
 		&[data-icon="newspaper"]::before{
 			content: '';
 			background-image: url("../assets/images/newspaper.svg");
+			width: 32px;
+			height: 32px;
+
+		}
+	}
+
+	.button-edit{
+		padding-inline: .5rem;
+		padding-block: .5rem;
+
+		&[data-icon="pencil"]::before{
+			content: '';
+			background-image: url("../assets/images/pencil.svg");
 			width: 32px;
 			height: 32px;
 

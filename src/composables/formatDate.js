@@ -1,7 +1,6 @@
 export function formatDate(dateString) {
 
-	const date = new Date(dateString)
-	console.log(date)
+	const date = new Date(dateString)	
 
 	const options = { 
 		month: 'short', 

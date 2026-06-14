@@ -10,7 +10,7 @@ app.http('getMkdFromStorage', {
         const articleId = request.query.get('articleId')
 
         // set connection properties
-        const storageConnection = process.env.PROD_STORAGE_CONNECTION_STRING
+        const storageConnection = process.env.DEV_BLOB_STORAGE_CONNECTION_STRING
         const containerName = 'markdown-files'
 
         try {

@@ -108,6 +108,8 @@ const handleSave = async (v, h) => {
 
 // store interface to to call postMkdToStorage
 
+const articleId = articleStore.editArticleID ? articleStore.editArticleID : uuidv4()
+
 const articleData = reactive(
 	{ 
 		content: '',
@@ -118,7 +120,7 @@ const articleData = reactive(
 			date: new Date().toISOString(),
 			previewImage: ''
 		},
-		articleId: uuidv4(),		
+		articleId: articleId,		
 	});
 
 
@@ -159,8 +161,8 @@ const uploadImage = async () => {
 
 		uploadedImageUrl.value = articleStore.sasImageUrl
 		publicImageUrlList.value.push(articleStore.ImageUrl)
-		console.log(uploadedImageUrl.value)
-		console.log(articleStore.ImageUrl)
+		// console.log(uploadedImageUrl.value)
+		// console.log(articleStore.ImageUrl)
 
 		console.log('image succesfully uploaded')
 		articleStore.callGetBlobs('image-files')
@@ -183,11 +185,21 @@ const handleImageClick = async (event) => {
 	}
 }
 
+// Editing Article ...........................................................................
+
+
 onMounted(async () => {
 	articleStore.callGetBlobs('image-files')
+
+	if(articleStore.editArticleID){
+		await articleStore.callGetMkd(articleStore.editArticleID)
+		articleData.content = articleStore.rawMkd
+		articleData.metaData.authorName = articleStore.articleMeta.author
+		articleData.metaData.title = articleStore.articleMeta.title
+		articleData.metaData.description = articleStore.articleMeta.description
+		articleData.metaData.previewImage = articleStore.articleMeta.previewimage
+	}
 })
-
-
 
 </script>
 

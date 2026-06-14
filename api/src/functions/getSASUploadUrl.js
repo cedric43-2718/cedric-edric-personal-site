@@ -11,7 +11,7 @@ app.http('getSASUploadUrl', {
         const fileType = request.query.get('fileType')
 
         // set connection properties
-        const storageConnection = process.env.PROD_STORAGE_CONNECTION_STRING
+        const storageConnection = process.env.DEV_BLOB_STORAGE_CONNECTION_STRING
         const containerName = 'image-files'
         
         try {
