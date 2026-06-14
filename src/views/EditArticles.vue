@@ -137,7 +137,7 @@ const handleSubmit = async () => {
 	articleData.metaData.title = ''
 	articleData.metaData.description = ''
 	articleData.metaData.previewImage = ''
-	articleStore.editArticleID.value = null
+	articleStore.editArticleID = null
 
 	router.push({
 		name: 'articles',
