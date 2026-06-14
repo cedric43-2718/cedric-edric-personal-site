@@ -135,6 +135,11 @@ const handleSubmit = async () => {
 	router.push({
 		name: 'articles',
 	})
+	articleData.content = ''
+	articleData.metaData.authorName = ''
+	articleData.metaData.title = ''
+	articleData.metaData.description = ''
+	articleData.metaData.previewImage = ''
 }
 
 // Image uploading .................................................................
