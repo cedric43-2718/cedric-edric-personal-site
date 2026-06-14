@@ -117,7 +117,7 @@ export const useGeneralStore = defineStore('content', () => {
 
       console.log("store", JSON.stringify(article))
 
-      const response = await fetch("https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/uploadMkdToStorage", {
+      const response = await fetch("http://localhost:7071/api/uploadMkdToStorage", {
         method: 'POST',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(article)
@@ -139,14 +139,19 @@ export const useGeneralStore = defineStore('content', () => {
   // call get markdown file from storage
 
   const htmlFromMkdFile = ref('')
+  const rawMkd = ref('')
   const articleMeta = ref(null)
   const isMkdLoading = ref(true)
+
+  // editing article
+
+  const editArticleID = ref(null)
 
   const callGetMkd = async (article) => {
 
     try {
 
-      const response = await fetch(`https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getMkdFromStorage?articleId=${article}`, {
+      const response = await fetch(`http://localhost:7071/api/getMkdFromStorage?articleId=${article}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
       })
@@ -159,9 +164,14 @@ export const useGeneralStore = defineStore('content', () => {
       // console.log('getMkdFromStorage response', data)
 
       const { markdown , metadata } = data
+      
 
       htmlFromMkdFile.value = await marked(markdown || '')
       articleMeta.value = metadata ?? {}
+
+      if(editArticleID.value){
+        rawMkd.value = markdown
+      }
 
     } catch(err) {
       console.log("from store: there was an error when calling backend api", err)
@@ -179,7 +189,7 @@ export const useGeneralStore = defineStore('content', () => {
 
   const callGetBlobs = async (containerName) => {
     try {
-      const response = await fetch(`https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getBlobs?containerName=${containerName}`, {
+      const response = await fetch(`http://localhost:7071/api/getBlobs?containerName=${containerName}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
       })
@@ -211,7 +221,7 @@ export const useGeneralStore = defineStore('content', () => {
     try {
 
       const params = new URLSearchParams({ fileName, fileType });
-      const url = `https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getSASUploadUrl?${params.toString()}`;
+      const url = `http://localhost:7071/api/getSASUploadUrl?${params.toString()}`;
 
       const response = await fetch(url, {
         method: 'GET'
@@ -241,7 +251,7 @@ export const useGeneralStore = defineStore('content', () => {
 
   const callGetCsv = async (email, role) => {
     try {
-      const response = await fetch(`https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getvaluesfromcsv?email=${email}&role=${role}`, {
+      const response = await fetch(`http://localhost:7071/api/getValuesFromCsv?email=${email}&role=${role}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
       })
@@ -281,7 +291,9 @@ export const useGeneralStore = defineStore('content', () => {
     ImageUrl,
     isEditor,
     loadedBlobs,
-    isEditor, 
+    isEditor,
+    editArticleID,
+    rawMkd,  
     fetchRecipes,
     fetchRecipe,
     callUploadMkd,

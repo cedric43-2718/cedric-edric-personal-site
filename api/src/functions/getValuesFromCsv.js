@@ -10,7 +10,7 @@ app.http('getValuesFromCsv', {
     handler: async (request, context) => {
         
         // set connection properties
-        const storageConnection = process.env.PROD_STORAGE_CONNECTION_STRING
+        const storageConnection = process.env.DEV_BLOB_STORAGE_CONNECTION_STRING
         const containerName = 'site-data'
         const blobName = 'user-roles1.csv'
 

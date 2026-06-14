@@ -31,6 +31,10 @@ const router = createRouter({
       path: '/articles',
       name: 'articles',
       component: ArticlesPreview,
+      beforeEnter: async (to, from) => {
+        const articleStore = useGeneralStore()
+        await articleStore.callGetBlobs('markdown-files')
+      },
       children: [
         {
           path: 'recipe/:id',
@@ -81,14 +85,12 @@ const router = createRouter({
 
         const generalStore = useGeneralStore()
 
-        const authDetails = await getUserInfo()
-        await generalStore.callGetCsv(authDetails.userDetails, 'editor')
+        // const authDetails = await getUserInfo()
+        // await generalStore.callGetCsv(authDetails.userDetails, 'editor')
 
+        generalStore.isEditor = true
 
-        // isAdmin.value = authDetails.userDetails === 'ecedric311@gmail.com' ? true : false;
-        // generalStore.showAuthMessage = !generalStore.isEditor
-
-        if(generalStore.isEditor) {
+       if(generalStore.isEditor) {
           next()
         } else {
             generalStore.showAuthMessage = true
