@@ -131,15 +131,18 @@ const handleSubmit = async () => {
 		return
 	}
 	await articleStore.callUploadMkd(articleData)
-	// 
-	router.push({
-		name: 'articles',
-	})
+	
 	articleData.content = ''
 	articleData.metaData.authorName = ''
 	articleData.metaData.title = ''
 	articleData.metaData.description = ''
 	articleData.metaData.previewImage = ''
+	articleStore.editArticleID.value = null
+
+	router.push({
+		name: 'articles',
+	})
+	
 }
 
 // Image uploading .................................................................
