@@ -246,8 +246,8 @@ onMounted(async () => {
 		display: grid;
 		gap: 2rem;
 		padding: 2rem;
-		background: var(--young-orange-0);
-		border: .5px solid var(--young-orange-4);
+		background: var(--surface-3);
+		border: .5px solid var(--accent-1);
 		border-radius: 15px;
 
 		.form-fields{
