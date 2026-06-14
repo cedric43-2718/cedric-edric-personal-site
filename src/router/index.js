@@ -31,9 +31,9 @@ const router = createRouter({
       path: '/articles',
       name: 'articles',
       component: ArticlesPreview,
-      beforeEnter: async (to, from) => {
+      beforeEnter: (to, from) => {
         const articleStore = useGeneralStore()
-        await articleStore.callGetBlobs('markdown-files')
+        articleStore.callGetBlobs('markdown-files')
       },
       children: [
         {
