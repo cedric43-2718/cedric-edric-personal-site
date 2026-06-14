@@ -1,13 +1,14 @@
 <template>
 	<main class="login-success">
 		<h1>You are logged in</h1>
-		<p>Welcome to the article creation part of this site. The Markdown editor allows you to create new articles and upload images you might want to include. 
-		Article content will be posted to a backend storage container and then displayed in the Articles section of this site.</p>
+		<p>Welcome to the article creation part of this site. The content editor allows you to create new articles using markdown and to upload images you might want to include. 
+		Article content will be posted to a backend storage container and then displayed in the Articles section of this site. You need to have the site editor role added to your login profile to start creating content. Just drop me a line and I'll add you as an editor.</p>
+		<p>Cheers, J</p>
 		<a href="https://cedricedric.net/.auth/logout?post_logout_redirect_uri=https://cedricedric.net">Logout</a>
-		<router-link :to="{name: 'edit-articles'}">Markdown Editor</router-link>
-		<!-- <div v-if="generalStore.showAuthMessage" class="auth-error">
+		<router-link :to="{name: 'edit-articles'}">Content Editor</router-link>
+		<div v-if="generalStore.showAuthMessage" class="auth-error">
 				<p>You need to have the site editor role added to your authorization profile. Contact Jason to get access.</p>
-		</div> -->
+		</div>
 	</main>
 </template>
 
@@ -45,6 +46,8 @@ main{
 
 	h1{
 		margin: auto;
+		font-weight: 400;
+		letter-spacing: 5px;
 	}
 }
 

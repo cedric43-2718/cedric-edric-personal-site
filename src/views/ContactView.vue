@@ -74,7 +74,7 @@ const handleSubmit = async  () => {
 	isSent.value = false
 
 	try{
-		const response = await fetch("https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/handlecontact", {
+		const response = await fetch("https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/handleContact", {
 			// "https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/handlecontact"
 			method: 'POST',
 			headers: {"Content-Type": "application/json"},

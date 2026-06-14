@@ -85,10 +85,11 @@ const router = createRouter({
 
         const generalStore = useGeneralStore()
 
-        // const authDetails = await getUserInfo()
-        // await generalStore.callGetCsv(authDetails.userDetails, 'editor')
+        const authDetails = await getUserInfo()
+        await generalStore.callGetCsv(authDetails.userDetails, 'editor')
 
-        generalStore.isEditor = true
+        // for testing
+        // generalStore.isEditor = true
 
        if(generalStore.isEditor) {
           next()

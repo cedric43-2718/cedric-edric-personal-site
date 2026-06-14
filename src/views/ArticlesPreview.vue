@@ -107,7 +107,7 @@
 				<div class="description">
 					<p>{{ article.metaData?.description }}</p>
 				</div>
-				<div class="article-controls">
+				<div class="article-controls" :class="{editor: !articleStore.isEditor}">
 					<button
 						class="button-more"
 						data-icon="newspaper"
@@ -118,6 +118,7 @@
 						data-icon="pencil"
 						@click.self="editArticle(article.name)"
 						v-tippy="{content: 'Edit Article'}"
+						v-if="articleStore.isEditor"
 						></button>
 				</div>
 			</div>
@@ -331,6 +332,10 @@ main{
 			flex-direction: row;
 			justify-content: space-between;
 			align-self: end;
+		}
+
+		.article-controls.editor{
+			justify-content: center;
 		}
 
 		.skeleton-info{
