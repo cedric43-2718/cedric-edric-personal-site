@@ -205,17 +205,28 @@ h2{
 
 /* markdown container and children styling */
 
+.markdown-container > * + * {
+	margin-block-start: var(--markdown-flow, 1em);
+}
+
 .markdown-container{
 	display: grid;
 	margin-top: 2ch;
 
+	&:deep(h1){
+		font-size: var(--fs-800);
+	}
+
+	&:deep(h2){
+		font-size: var(--fs-700);
+	}
+
 	&:deep(h2),
 	&:deep(h1){
 		font-weight: 400;
-		font-size: var(--fs-700);
 		text-transform: capitalize;
 		line-height: 1.3;
-		margin-block: .5ch;
+		/* margin-block: .5ch; */
 	}
 
 	&:deep(p){
@@ -223,7 +234,7 @@ h2{
 	}
 
 	&:deep(p):not(:has(+ h1, + h2)) {
-		margin-bottom: 1ch;
+		/* margin-bottom: 1ch; */
 	}
 
 	&:deep(li){
@@ -231,6 +242,13 @@ h2{
 		list-style-type: decimal-leading-zero;
 		/* margin-bottom: 1.5ch; */
 	}
+
+	&:deep(img){
+		max-width: 600px;
+		object-fit: cover;
+		justify-self: center;
+	}
 }
+
 
 </style>
