@@ -21,11 +21,6 @@
 								<input type="file" accept="image/*" id="filename" name="filename" class="file-button" @change="handleFileChange">
 								<button @click="uploadImage">Upload</button>
 							</div>
-							<!-- <div class="fileurls">
-								<ol class="url-list">
-									<li class="fs-note" v-for="imageUrl in publicImageUrlList">{{ imageUrl }}</li>
-								</ol>
-							</div> -->
 						</div>
 						<div class="form-group preview-group">
 							<label for="title">Preview Image</label>
