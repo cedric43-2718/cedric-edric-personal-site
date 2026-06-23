@@ -177,19 +177,7 @@ const editArticle = (articleId) => {
 	})
 }
 
-// getting markdown blobs from storage
-
-const loadedBlobs = ref(false)
-
-const onImageLoad = () => {
-	loadedBlobs.value = true
-}
-
-const isAuthorizedToEdit = (articleAuthor) => {
-	return articleAuthor === articleStore.currentUser
-}
-
-// display recipes with articles
+const isArticlePreview = computed(() => route.path === '/articles')
 
 const hasArticle = (article) => {
 	return article === false
@@ -215,7 +203,19 @@ const handleSearchSubmit = () => {
 	articleStore.passSearchTermToApi(searchTerm.value)
 }
 
+// getting markdown blobs from storage
 
+const loadedBlobs = ref(false)
+
+const onImageLoad = () => {
+	loadedBlobs.value = true
+}
+
+// Deleting Articles
+
+const isAuthorizedToEdit = (articleAuthor) => {
+	return articleAuthor === articleStore.currentUser
+}
 
 onMounted(() => {
 	console.log('loaded blobs value:', articleStore.loadedBlobs)
