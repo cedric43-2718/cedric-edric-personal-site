@@ -201,18 +201,18 @@ const handleSearchSubmit = () => {
 	articleStore.passSearchTermToApi(searchTerm.value)
 }
 
+// Editing Articles Articles
+
+const isAuthorizedToEdit = (articleAuthor) => {
+	return articleAuthor === articleStore.currentUser
+}
+
 // getting markdown blobs from storage
 
 const loadedBlobs = ref(false)
 
 const onImageLoad = () => {
 	loadedBlobs.value = true
-}
-
-// Editing Articles Articles
-
-const isAuthorizedToEdit = (articleAuthor) => {
-	return articleAuthor === articleStore.currentUser
 }
 
 // onMounted(async () => {
