@@ -206,7 +206,7 @@ const handleSearchSubmit = () => {
 const loadedBlobs = ref(false)
 
 const onImageLoad = () => {
-	loadedBlobs.value = articleStore.loadedBlobs
+	loadedBlobs.value = true
 }
 
 // Deleting Articles
@@ -215,8 +215,9 @@ const isAuthorizedToEdit = (articleAuthor) => {
 	return articleAuthor === articleStore.currentUser
 }
 
-onMounted(() => {
-	console.log('loaded blobs value:', loadedBlobs.value)
+onMounted(async () => {
+	await articleStore.callGetBlobs('markdown-files')
+
 })
 
 </script>
