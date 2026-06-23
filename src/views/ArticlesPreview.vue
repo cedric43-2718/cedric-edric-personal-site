@@ -177,6 +177,14 @@ const editArticle = (articleId) => {
 	})
 }
 
+// getting markdown blobs from storage
+
+const loadedBlobs = ref(false)
+
+const onImageLoad = () => {
+	loadedBlobs.value = true
+}
+
 const isAuthorizedToEdit = (articleAuthor) => {
 	return articleAuthor === articleStore.currentUser
 }
@@ -207,13 +215,7 @@ const handleSearchSubmit = () => {
 	articleStore.passSearchTermToApi(searchTerm.value)
 }
 
-// getting markdown blobs from storage
 
-const loadedBlobs = ref(false)
-
-const onImageLoad = () => {
-	loadedBlobs.value = true
-}
 
 onMounted(() => {
 	console.log('loaded blobs value:', articleStore.loadedBlobs)
