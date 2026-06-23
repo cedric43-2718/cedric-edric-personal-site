@@ -311,7 +311,6 @@ export const useGeneralStore = defineStore('content', () => {
     ImageUrl,
     isEditor,
     loadedBlobs,
-    isEditor,
     editArticleID,
     rawMkd,
     currentUser,  
