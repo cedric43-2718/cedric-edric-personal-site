@@ -218,7 +218,7 @@ const isAuthorizedToEdit = (articleAuthor) => {
 }
 
 onMounted(() => {
-	console.log('loaded blobs value:', articleStore.loadedBlobs)
+	console.log('loaded blobs value:', loadedBlobs.value)
 })
 
 </script>
