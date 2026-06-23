@@ -119,7 +119,8 @@
 						@click.self="editArticle(article.name)"
 						v-tippy="{content: 'Edit Article'}"
 						v-if="articleStore.isEditor"
-						></button>
+						:disabled="!isAuthorizedToEdit(article.metaData?.creatorId)"
+					></button>
 				</div>
 			</div>
 			<div class="project-image">
@@ -147,7 +148,11 @@ const articleStore = useGeneralStore()
 
 const router = useRouter()
 const route = useRoute()
-// const hasArticle = ref(true)
+
+// don't display nav if on articles path
+
+const isArticlePreview = computed(() => route.path === '/articles')
+
 
 const navToRecipe = (articleId) => {
 	router.push({
@@ -163,6 +168,8 @@ const navToArticle = (articleId) => {
 	})
 }
 
+// editing controls and validation
+
 const editArticle = (articleId) => {
 	articleStore.editArticleID = articleId
 	router.push({
@@ -170,7 +177,11 @@ const editArticle = (articleId) => {
 	})
 }
 
-const isArticlePreview = computed(() => route.path === '/articles')
+const isAuthorizedToEdit = (articleAuthor) => {
+	return articleAuthor === articleStore.currentUser
+}
+
+// display recipes with articles
 
 const hasArticle = (article) => {
 	return article === false
@@ -436,6 +447,11 @@ main{
 			height: 32px;
 
 		}
+	}
+
+	.button-edit:disabled{
+		background: var(--deepslate-1);
+		cursor: not-allowed;
 	}
 
 }

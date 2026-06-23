@@ -97,7 +97,7 @@ const contentToSubmit = ref('')
 
 const handleSave = async (v, h) => {
 	articleData.content = v
-	console.log("saving...", v)
+	// console.log("saving...", v)
 	isSaved.value = true
 	return "Saved Markdown"
 }
@@ -114,11 +114,11 @@ const articleData = reactive(
 			title: '',
 			description: '',
 			date: new Date().toISOString(),
-			previewImage: ''
+			previewImage: '',
+			creatorId: articleStore.currentUser
 		},
 		articleId: articleId,		
 	});
-
 
 const handleSubmit = async () => {
 	if(!articleData.content || !articleData.content.trim() || !articleData.metaData.authorName || !articleData.metaData.title || !articleData.metaData.previewImage) {
@@ -197,6 +197,8 @@ const handleImageClick = async (event) => {
 
 onMounted(async () => {
 	articleStore.callGetBlobs('image-files')
+
+	console.log('current user (editor):', articleStore.currentUser)
 
 	if(articleStore.editArticleID){
 		await articleStore.callGetMkd(articleStore.editArticleID)
