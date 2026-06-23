@@ -215,7 +215,7 @@ export const useGeneralStore = defineStore('content', () => {
 
       const data = await response.json()
       const { fetchedBlobs } = data
-      // console.log('getBlobs response', data)
+      console.log('getBlobs response', data)
       latestBlobs.value = fetchedBlobs
       loadedBlobs.value = true
 
