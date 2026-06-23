@@ -209,16 +209,16 @@ const onImageLoad = () => {
 	loadedBlobs.value = true
 }
 
-// Deleting Articles
+// Editing Articles Articles
 
 const isAuthorizedToEdit = (articleAuthor) => {
 	return articleAuthor === articleStore.currentUser
 }
 
-onMounted(async () => {
-	await articleStore.callGetBlobs('markdown-files')
+// onMounted(async () => {
+// 	await articleStore.callGetBlobs('markdown-files')
 
-})
+// })
 
 </script>
 
