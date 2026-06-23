@@ -215,9 +215,9 @@ const onImageLoad = () => {
 	loadedBlobs.value = true
 }
 
-// onMounted(async () => {
-// 	await articleStore.callGetBlobs('markdown-files')
-// })
+onMounted(async () => {
+	await articleStore.callGetBlobs('markdown-files')
+})
 
 </script>
 
