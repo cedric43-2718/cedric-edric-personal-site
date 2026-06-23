@@ -177,8 +177,6 @@ const editArticle = (articleId) => {
 	})
 }
 
-const isArticlePreview = computed(() => route.path === '/articles')
-
 const hasArticle = (article) => {
 	return article === false
 }
