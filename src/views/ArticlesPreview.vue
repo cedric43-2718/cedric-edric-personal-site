@@ -206,7 +206,7 @@ const handleSearchSubmit = () => {
 const loadedBlobs = ref(false)
 
 const onImageLoad = () => {
-	loadedBlobs.value = true
+	loadedBlobs.value = articleStore.loadedBlobs
 }
 
 // Deleting Articles
