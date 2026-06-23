@@ -98,6 +98,7 @@ const router = createRouter({
         // generalStore.isEditor = true
 
        if(generalStore.isEditor) {
+          generalStore.updateUser(authDetails.userDetails)
           next()
         } else {
             generalStore.showAuthMessage = true

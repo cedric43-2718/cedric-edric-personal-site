@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { marked } from 'marked'
+import { useStorage } from '@vueuse/core'
 import recipesData from '@/data/recipes.json'
 import articlesData from '@/data/articles.json'
 
@@ -34,6 +35,14 @@ export const useGeneralStore = defineStore('content', () => {
   // dark mode
 
   const keyCount = ref(0)
+
+  // current user storage
+
+  const currentUser = useStorage('current-user', 'none', sessionStorage)
+
+	function updateUser(user) { // this is getting called in the router before entering the editor
+		currentUser.value = user
+	}
 
   // production getters for recipe and store items
 
@@ -304,14 +313,16 @@ export const useGeneralStore = defineStore('content', () => {
     loadedBlobs,
     isEditor,
     editArticleID,
-    rawMkd,  
+    rawMkd,
+    currentUser,  
     fetchRecipes,
     fetchRecipe,
     callUploadMkd,
     callGetMkd,
     callGetBlobs,
     callGetSASUrl,
-    callGetCsv
+    callGetCsv,
+    updateUser
   }
 
 })
