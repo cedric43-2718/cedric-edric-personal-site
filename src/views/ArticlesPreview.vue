@@ -40,7 +40,7 @@
 				/>
 			</div>
 		</div>
-		<div class="loader-grid" v-if="!loadedBlobs">
+		<div class="loader-grid" v-if="!isContentLoaded">
 			<div class="project">
 				<div class="project-title skeleton skeleton-title"></div>
 				<div class="project-preview">
@@ -65,7 +65,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="loader-grid" v-if="!loadedBlobs">
+		<div class="loader-grid" v-if="!isContentLoaded">
 			<div class="project">
 				<div class="project-title skeleton skeleton-title"></div>
 				<div class="project-preview">
@@ -94,7 +94,7 @@
 			class="project" 
 			v-for="article in articleStore.latestBlobs"
 			:key="article.name"
-			v-show="loadedBlobs"
+			v-show="isContentLoaded"
 		>
 			<h2 class="project-title fs-primary-heading">{{ article.metaData?.title }}</h2>
 			<div class="project-preview">
@@ -124,7 +124,12 @@
 				</div>
 			</div>
 			<div class="project-image">
-				<img :src="article.metaData.previewImage" @load="onImageLoad" alt="article preview image">
+				<img 
+					:src="article.metaData.previewImage" 
+					@load="imagesLoaded = true"
+					@error="imagesLoaded = true" 
+					alt="article preview image"
+				/>
 			</div>
 		</div>
 	</main>
@@ -207,13 +212,12 @@ const isAuthorizedToEdit = (articleAuthor) => {
 	return articleAuthor === articleStore.currentUser
 }
 
-// getting markdown blobs from storage
+// testing that blobs are ready
 
-const loadedBlobs = ref(false)
+const blobsLoaded = computed(() => articleStore.loadedBlobs)
+const imagesLoaded = ref(false)
 
-const onImageLoad = () => {
-	loadedBlobs.value = true
-}
+const isContentLoaded = computed(() => blobsLoaded.value && imagesLoaded.value)
 
 // onMounted(async () => {
 // 	await articleStore.callGetBlobs('markdown-files')
