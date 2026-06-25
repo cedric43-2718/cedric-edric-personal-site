@@ -19,7 +19,7 @@
 							<label for="upload">Upload Images</label>
 							<div class="file-controls">
 								<input type="file" accept="image/*" id="filename" name="filename" class="file-button" @change="handleFileChange">
-								<button @click="uploadImage">Upload</button>
+								<button type="button" @click="uploadImage">Upload</button>
 							</div>
 						</div>
 						<div class="form-group preview-group">

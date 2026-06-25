@@ -206,7 +206,10 @@ export const useGeneralStore = defineStore('content', () => {
         // http://localhost:7071/api/getBlobs
         // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getBlobs
         method: 'GET',
-        headers: { "Content-Type": "application/json" }
+        headers: { 
+          "Content-Type": "application/json",
+          'x-functions-key': process.env.GET_BLOBS_FUNCTION_KEY 
+        }
       })
 
       if(!response.ok) {
