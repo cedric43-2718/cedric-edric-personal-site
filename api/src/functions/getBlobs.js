@@ -3,7 +3,7 @@ import { BlobServiceClient } from "@azure/storage-blob"
 
 app.http('getBlobs', {
     method: 'GET',
-    authLevel: 'function',
+    authLevel: 'anonymous',
     handler: async (request, context) => {
 
         // container for blobs
