@@ -84,7 +84,7 @@ let imageDescription = ref('')
 const imageId = ref('')
 const imageLoaded = ref(false)
 
-const imageSrc = computed(() => imageId.value ? `http://localhost:7071/api/proxyACIImage?imageId=${encodeURIComponent(imageId.value)}` : '')
+const imageSrc = computed(() => imageId.value ? `https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/proxyACIImage?imageId=${encodeURIComponent(imageId.value)}` : '')
 
 const onImageLoad = () => {
 	imageLoaded.value = true
