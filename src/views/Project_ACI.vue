@@ -20,7 +20,7 @@
 			</div>
 			<div class="gallery-display">
 				<section class="image-wrapper">
-					<img src="https://www.artic.edu/iiif/2/831a05de-d3f6-f4fa-a460-23008dd58dda/full/843,/0/default.jpg">
+					<img src="https://www.artic.edu/iiif/2/831a05de-d3f6-f4fa-a460-23008dd58dda/full/843,/0/default.jpg" crossorigin="anonymous">
 					<!-- <img 
 						:src="imageSrc"
 						@load="onImageLoad"
