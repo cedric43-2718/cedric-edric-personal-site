@@ -20,7 +20,7 @@ app.http('proxyACIImage', {
 
             const response = await fetch(imageUrl, {
                 headers: { 
-                    'AIC-User-Agent': 'CedricEdricNet/1.0 (+https://www.cedricedric.net; contact@cedricedric.net)',
+                    'AIC-User-Agent': 'CedricEdricNet/1.0 (+https://www.cedricedric.net; jrudokas@cedricedric.net)',
                     'Accept': 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
                     'Accept-Language': 'en-US,en;q=0.9',
                     'Referer': 'https://www.cedricedric.net/' 

@@ -44,15 +44,11 @@ export const useGeneralStore = defineStore('content', () => {
 		currentUser.value = user
 	}
 
-  // production getters for recipe and store items
+  // containers for custom recipe layouts, these are the first two articles on the articles page
+  // and are served from a json file pushed up to the site repository
 
   const recipeItems = ref(recipesData)
   const articleItems = ref(articlesData)
-
-  // when the markdown content data flow is set up for production I'm inclined to bring articles into the store
-  // first if implementing search... might be benificial
-  // articles would be a container for a get request
-
   const articles = ref([])
 
   // simulate an api call for dynamic routing experiment
@@ -99,8 +95,6 @@ export const useGeneralStore = defineStore('content', () => {
       if(!response.ok) throw new Error('Failed to get data from public folder')
 
       const data = await response.json()
-      // i might not need to parse this
-      // recipe.value = JSON.parse(data).find(recipe.id === id)
       return data.recipes.find(recipe => recipe.id === id)
 
     } catch(err) {
