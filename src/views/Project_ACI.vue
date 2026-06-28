@@ -15,16 +15,17 @@
 					</div>
 				</div>
 				<div class="button-container">
-					<!-- <div>
-						<p>Score: <span>{{ displayScore }}</span></p>
-						<p>Year: <span>{{ displayYear }}</span></p>
-					</div> -->
 					<button class="button-more" @click="modalTarget.show()">Open Notes</button>
 				</div>
 			</div>
 			<div class="gallery-display">
 				<section class="image-wrapper">
-					<img :src="`https://www.artic.edu/iiif/2/${imageId}/full/843,/0/default.jpg`">
+					<!-- <img :src="`https://www.artic.edu/iiif/2/${imageId}/full/843,/0/default.jpg`"> -->
+					<img 
+						:src="imageSrc"
+						@load="onImageLoad"
+						alt="aci artwork image"
+					>
 				</section>
 				<section class="image-info-wrapper">
 					<p class="fw-semibold">{{ imageTitle }}</p>
@@ -72,13 +73,24 @@ const loaded = ref(false)
 const isLoading = ref(false)
 const error = ref(null)
 
-let aciTerms = ref(null)
 let displayScore = ref('')
 let displayYear = ref('')
 let imageTitle = ref('')
 let artistTitle = ref('')
 let imageDescription = ref('')
-let imageId = ref('')
+
+// proxy image loading
+
+const imageId = ref('')
+const imageLoaded = ref(false)
+
+const imageSrc = computed(() => imageId.value ? `http://localhost:7071/api/proxyACIImage?imageId=${encodeURIComponent(imageId.value)}` : '')
+
+const onImageLoad = () => {
+	imageLoaded.value = true
+}
+
+// ploting logic
 
 const plotOptions = ref({
 	data: null,
@@ -141,6 +153,20 @@ function renderPlot(data) {
 
 }
 
+
+// function to set request result fields
+
+const setCurrentWork = (item) => {
+	imageId.value = item.imageId
+	imageTitle.value = item.title
+	artistTitle.value = item.artistTitle
+	displayYear.value = item.year
+	displayScore.value = item.score.toFixed(1)
+	imageDescription.value = (item.description || '').replace(/(<([^>]+)>)/gi, "")
+}
+
+// core api request
+
 const getWorks = async (input, work_count) => {
 
 	if(!input) {
@@ -151,27 +177,32 @@ const getWorks = async (input, work_count) => {
 	// console.log(filteredDataContainer.value)
 	isLoading.value = true
 	error.value = null
+	imageLoaded.value = false
 
 	try{
+
 		const url = `https://api.artic.edu/api/v1/artworks/search?q=${input}&limit=${work_count}&fields=id,title,artist_display,artist_title,category_titles,term_titles,subject_id,theme_titles,artwork_type_title,date_display,date_start,date_end,main_reference_number,image_id,description,short_description`;
 		const res = await fetch(url)
 		const data = await res.json()
-		// console.log(data.pagination.total)
-		data.data.map((i, index) => {	
-			let obj = {}
-			obj["results"] = data.pagination.total
-			obj["index"] = index
-			obj["score"] = i._score
-			obj["year"] = i.date_end
-			obj["imageId"] = i.image_id
-			obj["title"] = i.title
-			obj["artistDisplay"] = i.artist_display
-			obj["artistTitle"] = i.artist_title
-			obj["description"] = i.description
-			if((obj["description"] != null) && (obj["description"].length < 1200)) {
-				filteredDataContainer.value.push(obj)
-			}
-		})
+
+		filteredDataContainer.value = data.data
+			.map((i, index) => ({
+				index: index,
+				score: i._score,
+				year: i.date_end,
+				imageId: i.image_id,
+				title: i.title,
+				artistTitle: i.artist_title,
+				description: i.description
+			}))
+			.filter((item) => item.description && item.description.length < 1200)
+		
+		if(filteredDataContainer.value.length) {
+			setCurrentWork(filteredDataContainer.value[0])
+			renderPlot(filteredDataContainer.value)	
+		} else {
+			imageId.value = ''
+		}
 
 	} catch(err) {
 		error.value = 'Failed to fetch data'
@@ -179,20 +210,11 @@ const getWorks = async (input, work_count) => {
 	} finally {
 		isLoading.value = false
 		loaded.value = true
-		aciTerms.value = filteredDataContainer.value[0].results
-		imageId.value = filteredDataContainer.value[0].imageId
-		imageTitle.value = filteredDataContainer.value[0].title
-		artistTitle.value = filteredDataContainer.value[0].artistTitle
-		displayYear.value = filteredDataContainer.value[0].year
-		displayScore.value = filteredDataContainer.value[0].score.toFixed(1)
-		let description = filteredDataContainer.value[0].description
-		imageDescription.value = description.replace(/(<([^>]+)>)/gi, "")
-
-		renderPlot(filteredDataContainer.value)	
 	}
 }
 
 const handleSelect = (e) => {
+
 	if(e.target.tagName === 'text') {
 		let selectedTitle = filteredDataContainer.value.filter((el) => el.imageId === e.target.innerHTML)[0].title
 		let selectedArtist = filteredDataContainer.value.filter((el) => el.imageId === e.target.innerHTML)[0].artistTitle
@@ -207,7 +229,6 @@ const handleSelect = (e) => {
 		displayYear.value = selectedYear
 		imageDescription.value = selectedDescription.replace(/(<([^>]+)>)/gi, "")
 	}
-	
 }
 
 watchEffect(() => {
