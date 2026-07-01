@@ -20,12 +20,12 @@
 			</div>
 			<div class="gallery-display">
 				<section class="image-wrapper">
-					<img src="https://www.artic.edu/iiif/2/831a05de-d3f6-f4fa-a460-23008dd58dda/full/843,/0/default.jpg" crossorigin="anonymous">
-					<!-- <img 
+					<!-- <img src="https://www.artic.edu/iiif/2/831a05de-d3f6-f4fa-a460-23008dd58dda/full/843,/0/default.jpg" crossorigin="anonymous"> -->
+					<img 
 						:src="imageSrc"
 						@load="onImageLoad"
 						alt="aci artwork image"
-					> -->
+					>
 				</section>
 				<section class="image-info-wrapper">
 					<p class="fw-semibold">{{ imageTitle }}</p>
@@ -85,6 +85,7 @@ const imageId = ref('')
 const imageLoaded = ref(false)
 
 const imageSrc = computed(() => imageId.value ? `https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/proxyACIImage?imageId=${encodeURIComponent(imageId.value)}` : '')
+// const imageSrc = computed(() => imageId.value ? `http://localhost:7071/api/proxyACIImage?imageId=${encodeURIComponent(imageId.value)}` : '')
 
 const onImageLoad = () => {
 	imageLoaded.value = true
