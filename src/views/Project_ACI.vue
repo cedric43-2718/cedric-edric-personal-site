@@ -37,12 +37,14 @@
 		</div>
 		<div class="modal-container">
 			<Modal ref="modalTarget">
+				<h2 class="fs-tertiary-heading">Art Institute of Chicago Explorer</h2>
 				<p class="fs-note"><span class="fw-semibold">Search:</span> The app searches the full text of all information stored on a very large collection of works and returns a set of results based on the search term. 
-				So, for example, it's not really meant to look up every work the ACI has in it's digital collection by Edward Ruscha. 
+				So, for example, it's not really meant to look up every work the <a href="https://www.artic.edu/" target="_blank" rel="noopener noreferrer">AIC</a> has in it's digital collection by Edward Ruscha. 
 				I think it's a fun way put in random words like "electric" or whatever and see what you get.
 				The results are limited to the first 20 works that also have an image.</p>
 				<p class="fs-note"><span class="fw-semibold">Graph:</span> The orange point is the first work displayed after a search term is submitted. 
 				The dots plotted represent other works returned by the search. If you click on one of the dots the work displayed will update.</p>
+				<p class="fs-note"><span class="fw-semibold">Documentation:</span> <a href="https://api.artic.edu/docs/#introduction" target="_blank" rel="noopener noreferrer">Art Institute of Chicago API</a></p>
 				<form method="dialog">
 					<button class="close-button" data-icon="close"></button>
 				</form>
@@ -374,8 +376,23 @@ input::placeholder{
 	}
 	.modal-component{
 
+		h2{
+			margin-inline: auto;
+			color: var(--ultramarine-8);
+		}
+
 		p{
 			max-width: 50rem;
+
+			margin-inline-end: auto;
+
+			a{
+				text-decoration-line: underline;
+				text-decoration-color: var(--accent-1);
+				text-decoration-style: double;
+				text-decoration-thickness: .5px;
+				text-underline-offset: 2px;
+			}
 		}
 
 		.close-button {
