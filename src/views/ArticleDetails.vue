@@ -10,6 +10,24 @@
 			</div>
 		</section>
 		<div v-html="htmlContent" class="markdown-container"></div>
+		<div class="response-divider"></div>
+		<section class="comment-section">
+			<h2 class="title">Comments</h2>
+			<ol class="comment-list">
+				<li class="comment">
+					<div class="content-container">
+						<div class="comment-author">Author</div>
+						<div class="comment-content">Comment</div>
+						<div class="comment-actions">Actions</div>
+					</div>
+				</li>
+			</ol>
+			<div class="response-container">
+				<div class="form-container">
+				<h3>Leave a Comment</h3>
+				</div>
+			</div>
+		</section>
 	</main>
 </template>
 
@@ -248,6 +266,28 @@ h2{
 		object-fit: cover;
 		justify-self: center;
 	}
+}
+
+.comment-section{
+
+	margin-top: var(--space-2xl);
+
+	.title{
+
+	}
+
+	.comment-list{
+
+		.comment{
+
+		}
+
+	}
+
+	.response-container{
+
+	}
+
 }
 
 
