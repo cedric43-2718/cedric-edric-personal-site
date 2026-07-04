@@ -9,7 +9,7 @@
 				<h1 class="article-title">{{ articleStore.articleMeta?.title }}</h1>
 			</div>
 		</section>
-		<div v-html="htmlContent" class="markdown-container"></div>	
+		<div v-html="htmlContent" class="markdown-container"></div>
 	</main>
 </template>
 
