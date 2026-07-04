@@ -17,14 +17,15 @@
 				<li class="comment">
 					<div class="content-container">
 						<div class="comment-author">Author</div>
-						<div class="comment-content">Comment</div>
-						<div class="comment-actions">Actions</div>
+						<div class="comment-content">
+							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem sunt aliquam consectetur velit voluptatem voluptate adipisci dignissimos atque unde quis facere quae, veniam quasi tempora, ducimus quaerat praesentium quia? Ab?</p>
+						</div>
 					</div>
 				</li>
 			</ol>
 			<div class="response-container">
 				<div class="form-container">
-				<h3>Leave a Comment</h3>
+				<h2 class="form-title">Leave a Comment</h2>
 				</div>
 			</div>
 		</section>
@@ -268,23 +269,68 @@ h2{
 	}
 }
 
+.response-divider{
+	height: 6px;
+	width: 100%;
+	margin-top: var(--space-xl);
+	border: .5px solid var(--accent-1);
+	border-radius: 8px;
+	box-shadow: 1px 1px 15px 2px hsla(28, 80%, 50%, .15);
+
+}
+
 .comment-section{
 
-	margin-top: var(--space-2xl);
+	margin-top: var(--space-xl);
+
+	ol li{
+		line-height: 1.5;
+		list-style-type: none;
+		margin-bottom: 1.5ch;
+	}
 
 	.title{
+		text-align: center;
 
 	}
 
 	.comment-list{
+		/* border: 1px solid rgba(0,0,0,1); */
+		margin: 0;
+		padding: 0;
 
 		.comment{
+			border-top: 1.5px solid var(--teak);
+			margin-right: 1rem;
 
+			.content-container{
+				display: grid;
+				grid-template-columns: 25% 1fr;
+				/* border-top: 1px solid rgba(150,150,0,.5); */
+
+				.comment-author{
+
+				}
+
+				.comment-content{
+					background: var(--young-orange-0a);
+					border-radius: 1rem;
+
+					p{
+						padding: 1rem;
+					}
+
+				}
+			}
 		}
 
 	}
 
 	.response-container{
+
+		.form-title{
+			text-align: center;
+		}
 
 	}
 

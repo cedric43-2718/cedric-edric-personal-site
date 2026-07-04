@@ -173,6 +173,7 @@
 --carrot-5: hsl(28, 80%, 40%);
 
 --young-orange-0: hsl(43, 100%, 90%);
+--young-orange-0a: hsla(43, 100%, 90%, .5);
 --young-orange-1: hsl(43, 100%, 80%);
 --young-orange-2: hsl(43, 100%, 70%);
 --young-orange-3: hsl(43, 100%, 60%);
