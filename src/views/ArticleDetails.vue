@@ -12,11 +12,25 @@
 		<div v-html="htmlContent" class="markdown-container"></div>
 		<div class="response-divider"></div>
 		<section class="comment-section">
-			<h2 class="title">Comments</h2>
-			<ol class="comment-list">
+			<h2 class="title" v-if="comments">Comments</h2>
+			<ol class="comment-list" v-if="comments">
 				<li class="comment">
 					<div class="content-container">
-						<div class="comment-author">Author</div>
+						<div class="comment-info">
+							<p class="author fs-note">Jason Rudokas</p>
+							<p class="date fs-note">Oct 18, 2026</p>
+						</div>
+						<div class="comment-content">
+							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem sunt aliquam consectetur velit voluptatem voluptate adipisci dignissimos atque unde quis facere quae, veniam quasi tempora, ducimus quaerat praesentium quia? Ab?</p>
+						</div>
+					</div>
+				</li>
+				<li class="comment">
+					<div class="content-container">
+						<div class="comment-info">
+							<p class="author fs-note">Caleb</p>
+							<p class="date fs-note">Oct 18, 2026</p>
+						</div>
 						<div class="comment-content">
 							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem sunt aliquam consectetur velit voluptatem voluptate adipisci dignissimos atque unde quis facere quae, veniam quasi tempora, ducimus quaerat praesentium quia? Ab?</p>
 						</div>
@@ -24,8 +38,33 @@
 				</li>
 			</ol>
 			<div class="response-container">
-				<div class="form-container">
 				<h2 class="form-title">Leave a Comment</h2>
+				<div class="form-container">	
+					<form @submit.prevent="handleSubmit" class="form">
+						<div class="form-fields">
+							<div class="comment-content">
+								<div class="form-group comment-group">
+									<label for="description">Comment</label>
+									<textarea name="comment" required id="comment" v-model.lazy="commentData.content"></textarea>
+								</div>
+							</div>
+							<div class="author-info">
+								<div class="form-group name-group">
+									<label for="name">Name</label>
+									<input type="text" required id="name" name="author_name" v-model.lazy="commentData.authorName">
+								</div>
+								<div class="form-group title-group">
+									<label for="title">Email</label>
+									<input type="email" required id="email" name="author_email" v-model.lazy="commentData.authorEmail">
+								</div>	
+							</div>
+						</div>
+						<div class="form-controls">
+							<div class="btn-container">
+								<button :disabled="isInvalid" class="submit">Post Comment</button>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</section>
@@ -37,20 +76,71 @@
 import { ref, computed, reactive, onMounted } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useGeneralStore } from '@/stores/appStore'
+import { v4 as uuidv4 } from 'uuid'
 import { formatDate } from '@/composables/formatDate'
-
-const articleStore = useGeneralStore()
-const htmlContentLoading = ref(true)
-const htmlContent = ref('')
 
 const props = defineProps({
 	id: String
 })
 
+// current article refs
+
+const articleStore = useGeneralStore()
+const htmlContentLoading = ref(true)
+const htmlContent = ref('')
+
+// comment related refs and reactive data
+
+const comments = ref(false)
+
+const isInvalid = computed(() => {
+  return commentData.authorName.trim() === '' || commentData.content.trim() === '' || commentData.authorEmail.trim() === '';
+});
+
+const commentData = reactive(
+	{
+		commentId: uuidv4(),
+		content: '',
+		authorName: '',
+		authorEmail: '',
+		postDate: Date().toISOString()
+	}
+)
+
+const handleSubmit = async () => {
+	if(!commentData.content.trim() || !commentData.authorName || !commentData.authorEmail) {
+		console.error("Comment information is missing required information")
+		return
+	}
+
+	await articleStore.callUploadComment(commentData, props.id)
+
+	commentData.content = ''
+	commentData.authorName = ''
+	commentData.authorEmail = ''
+
+}
+
+
+
+
+
 onMounted(async () => {
+	
 	await articleStore.callGetMkd(props.id)
 	htmlContent.value = articleStore.htmlFromMkdFile
 	htmlContentLoading.value = articleStore.isMkdLoading
+
+	// await articleStore.callGetComments(props.id)
+
+
+	const commentCount = computed(() => {
+		return articleStore.articleComments.length > 0
+	})
+	comments.value = commentCount.value
+
+	
+
 })
 
 
@@ -281,7 +371,8 @@ h2{
 
 .comment-section{
 
-	margin-top: var(--space-xl);
+	margin: var(--space-xl) 0;
+
 
 	ol li{
 		line-height: 1.5;
@@ -295,20 +386,18 @@ h2{
 	}
 
 	.comment-list{
-		/* border: 1px solid rgba(0,0,0,1); */
 		margin: 0;
 		padding: 0;
 
 		.comment{
-			border-top: 1.5px solid var(--teak);
+			border-top: 1px solid var(--teak);
 			margin-right: 1rem;
 
 			.content-container{
 				display: grid;
 				grid-template-columns: 25% 1fr;
-				/* border-top: 1px solid rgba(150,150,0,.5); */
 
-				.comment-author{
+				.comment-info{
 
 				}
 
@@ -328,10 +417,116 @@ h2{
 
 	.response-container{
 
+		margin-top: var(--space-xl);
+
 		.form-title{
 			text-align: center;
 		}
 
+		.form-container{
+
+			display: grid;
+			grid-template-columns: repeat(var(--grid-columns), 1fr);
+			background: var(--surface-3);
+			padding: 2rem;
+			border-radius: 8px;
+		
+
+			.form{
+				
+				display: grid;
+				grid-column: 2 / 12;
+				gap: 2rem;
+				padding: 2rem;
+				background: var(--surface-3);
+
+				.form-fields{
+					display: grid;
+					grid-template-columns: repeat(12, 1fr);
+					margin-bottom: 2ch;
+
+					.comment-content,
+					.author-info{
+						display: grid;
+						grid-template-columns: subgrid;
+						grid-column: 1 / -1;
+					}
+
+					.comment-content {
+						margin-bottom: 2ch;
+					}
+
+					.form-group{
+						display: grid;
+						grid-column: 2 / span 10;
+						
+						label{
+							margin-bottom: 1ch;
+						}
+
+						input{
+							border: 1px solid var(--deepslate-0);
+							border-radius: 6px;
+							box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+						}
+
+						textarea{
+							box-sizing: content-box;
+							height: 6lh;
+							margin-top: 1rem;
+						}
+
+						input, 
+						textarea{
+							border: 1px solid var(--deepslate-0);
+							border-radius: 6px;
+							box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+							padding: .5em 1em;
+
+						}
+						
+					}
+
+					.form-group:not(:last-of-type){
+						margin-bottom: 2ch;
+					}
+				}
+				
+				.form-controls{
+					display: grid;
+					grid-template-columns: repeat(12, 1fr);
+
+					.btn-container{
+						grid-column: 2 / span 10;
+						display: flex;
+						justify-content: end;
+					}
+				}
+
+			}
+		}
+
+	}
+
+	button{
+		background: var(--deepslate-6);
+		color: var(--young-orange-2);
+		border: 0;
+		border-radius: 6px;
+		font-size: var(--fs-600);
+		cursor: pointer;
+		transition: background .5s ease-in-out;
+
+		&:hover,
+		&:focus-visible{
+			background: var(--deepslate-5);
+		}
+	}
+
+	button:disabled{
+		background: var(--deepslate-1);
+		color: var(--young-orange-0);
+		cursor: not-allowed;
 	}
 
 }

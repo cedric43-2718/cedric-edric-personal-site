@@ -29,11 +29,13 @@ app.http('getBlobs', {
             if(containerName === 'markdown-files') {
                 for await(const blob of containerClient.listBlobsFlat({includeMetadata: true})){
                     const blobMeta = blob.metadata ? blob.metadata : 'no metadata'
-                    fetchedBlobs.push({
-                        name: blob.name,
-                        created: blob.properties.createdOn,
-                        metaData: blobMeta
-                    })
+                    if(blob.properties.contentType === 'text/markdown'){
+                        fetchedBlobs.push({
+                            name: blob.name,
+                            created: blob.properties.createdOn,
+                            metaData: blobMeta
+                        })
+                    }
                 }
             } else {
                 for await(const blob of containerClient.listBlobsFlat()){

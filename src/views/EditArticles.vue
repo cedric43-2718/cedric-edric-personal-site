@@ -92,6 +92,7 @@ const isInvalid = computed(() => {
 
 const editorContent = ref('')
 const contentToSubmit = ref('')
+const isEditing = ref(true)
 
 // update editorContent (v, h) could pass h for html as well
 
@@ -117,7 +118,7 @@ const articleData = reactive(
 			previewImage: '',
 			creatorId: articleStore.currentUser
 		},
-		articleId: articleId,		
+		articleId: articleId		
 	});
 
 const handleSubmit = async () => {
@@ -125,7 +126,7 @@ const handleSubmit = async () => {
 		console.error("Article information is missing required information")
 		return
 	}
-	await articleStore.callUploadMkd(articleData)
+	await articleStore.callUploadMkd(articleData, isEditing.value)
 	
 	articleData.content = ''
 	articleData.metaData.authorName = ''

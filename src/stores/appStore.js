@@ -128,6 +128,8 @@ export const useGeneralStore = defineStore('content', () => {
         body: JSON.stringify(article)
       })
 
+      
+
       if(!response.ok){
         const errorText = await response.text()
         throw new Error(`there was an error recieving content from the markdown dashboard: ${response.status} - ${errorText}`)
@@ -137,6 +139,29 @@ export const useGeneralStore = defineStore('content', () => {
 
     } catch(err) {
       console.error('failed to pass content to and call backend api', err)
+    }
+    
+  }
+
+   // this method calls the backend api uploadCommentToStorage
+  const callUploadComment = async (comment, commentFile) => {
+    try{
+
+      const response = await fetch(`http://localhost:7071/api/uploadCommentToStorage?commentFile=${commentFile}`, {
+        // http://localhost:7071/api/uploadCommentToStorage
+        // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/uploadMkdToStorage
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(comment)
+      })
+
+      if(!response.ok){
+        const errorText = await response.text()
+        throw new Error(`there was an error recieving content from the comment form: ${response.status} - ${errorText}`)
+      }
+
+    } catch(err) {
+      console.error('failed to pass comment and call backend api', err)
     }
     
   }
@@ -189,7 +214,7 @@ export const useGeneralStore = defineStore('content', () => {
     
   }
 
-  // call get a list of blobs from a storage container
+  // call get blobs from storage
 
   const latestBlobs = ref([])
   const loadedBlobs = ref(false)
@@ -221,6 +246,42 @@ export const useGeneralStore = defineStore('content', () => {
     }
 
   }
+
+  // call get comments from storage
+
+  const articleComments = ref([])
+  // const loadedBlobs = ref(false)
+
+  const callGetComments = async (articleName) => {
+    try {
+      const response = await fetch(`http://localhost:7071/api/getComments?articleName=${articleName}`, {
+        // http://localhost:7071/api/getBlobs
+        // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getBlobs
+        method: 'GET',
+        headers: { 
+          "Content-Type": "application/json"
+          // 'x-functions-key': process.env.GET_BLOBS_FUNCTION_KEY 
+        }
+      })
+
+      if(!response.ok) {
+        throw new Error('Error Getting Comments From Container. Check you are passing the right filename.')
+      }
+
+      const data = await response.json()
+      const { fetchedComments } = data
+      console.log('getComments response', data)
+      articleComments.value = fetchedComments
+      // loadedBlobs.value = true
+
+    } catch(err) {
+      console.log("from store: there was an error when calling backend api", err)
+    }
+
+  }
+
+
+
 
   // generate SAS url for image uploads
 
@@ -303,6 +364,7 @@ export const useGeneralStore = defineStore('content', () => {
     isMkdLoading,
     articleMeta,
     latestBlobs,
+    articleComments,
     sasUploadUrl,
     sasImageUrl,
     ImageUrl,
@@ -316,6 +378,7 @@ export const useGeneralStore = defineStore('content', () => {
     callUploadMkd,
     callGetMkd,
     callGetBlobs,
+    callGetComments,
     callGetSASUrl,
     callGetCsv,
     updateUser

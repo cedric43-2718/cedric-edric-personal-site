@@ -44,8 +44,12 @@ app.http('uploadMkdToStorage', {
             return { status: 400, body: 'the connection exists, but is not properly configured'}
         }
 
+        const articleBlobName = articleId
+        const commentsBlobName = `${articleId}-comments.json`
+
         const containerClient = blobServiceClient.getContainerClient(containerName)
-        const blockBlobClient = containerClient.getBlockBlobClient(articleId)
+        const articleBlockBlobClient = containerClient.getBlockBlobClient(articleBlobName)
+        const commentsBlockBlobClient = containerClient.getBlockBlobClient(commentsBlobName)
 
         // create metadata object  and upload options
         const metadata = {}
@@ -56,17 +60,30 @@ app.http('uploadMkdToStorage', {
         if (markdownMeta?.creatorId) metadata.creatorId = String(markdownMeta.creatorId)    
         if (markdownMeta?.description) metadata.description = String(markdownMeta.description)   
     
-        const uploadOptions = {
+        const markdownUploadOptions = {
             metadata,
             blobHTTPHeaders: {
                 blobContentType: 'text/markdown' // maybe application/json
             }
         }
 
+        const commentUploadOptions = {
+            blobHTTPHeaders: {
+                blobContentType: 'application/json' // maybe application/json
+            }
+        }
+
+        const markdownPayload = Buffer.from(markdownContent, 'utf8')
+        const commentsPayload = Buffer.from(JSON.stringify({ comments: [] }))
+
         // upload data, the buffer temporarily stores chunks of data before upload
         try {
-            const data = Buffer.from(markdownContent, 'utf8')
-            await blockBlobClient.uploadData(data, uploadOptions)
+            
+            // article and metadata upload
+            await articleBlockBlobClient.uploadData(markdownPayload, markdownUploadOptions)
+
+            // everytime a new article is created upload an empty comments file
+            await commentsBlockBlobClient.uploadData(commentsPayload, commentUploadOptions)
 
             // return blob url so iy can be inspected in the azurite json containers
             // im using azure storage explorer but a good fallback
@@ -74,7 +91,8 @@ app.http('uploadMkdToStorage', {
                 status: 201,
                 body: {
                     message: 'Uploaded to blob storage',
-                    url: blockBlobClient.url,
+                    url: articleBlockBlobClient.url,
+                    commentsUrl: commentsBlockBlobClient.url,
                     metadata  
                 }
             }
