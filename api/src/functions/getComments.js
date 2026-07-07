@@ -1,4 +1,5 @@
-const { app } = require('@azure/functions');
+import { app } from '@azure/functions'
+import { BlobServiceClient } from "@azure/storage-blob"
 
 app.http('getComments', {
     method: 'GET',
@@ -23,13 +24,14 @@ app.http('getComments', {
             const commentContent = await streamToString(downloadResponse.readableStreamBody)
 
             // parse comments
-            const parsedComments = JSON.parse(commentContent)
+            const fetchedComments = commentContent
+                .split(/\r?\n/)
+                .filter(Boolean)
+                .map(line => JSON.parse(line))
 
             return {
                 status: 200,
-                body: JSON.stringify({
-                    fetchedComments: parsedComments.comments ?? parsedComments ?? []
-                }),
+                body: JSON.stringify({ fetchedComments }),
                 headers: { 'Content-Type': 'application/json' }
             }
 

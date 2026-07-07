@@ -49,7 +49,7 @@ app.http('uploadMkdToStorage', {
 
         const containerClient = blobServiceClient.getContainerClient(containerName)
         const articleBlockBlobClient = containerClient.getBlockBlobClient(articleBlobName)
-        const commentsBlockBlobClient = containerClient.getBlockBlobClient(commentsBlobName)
+        const commentsAppendBlobClient = containerClient.getAppendBlobClient(commentsBlobName)
 
         // create metadata object  and upload options
         const metadata = {}
@@ -67,14 +67,14 @@ app.http('uploadMkdToStorage', {
             }
         }
 
-        const commentUploadOptions = {
-            blobHTTPHeaders: {
-                blobContentType: 'application/json' // maybe application/json
-            }
-        }
+        // const commentUploadOptions = {
+        //     blobHTTPHeaders: {
+        //         blobContentType: 'application/json' // maybe application/json
+        //     }
+        // }
 
         const markdownPayload = Buffer.from(markdownContent, 'utf8')
-        const commentsPayload = Buffer.from(JSON.stringify({ comments: [] }))
+        // const commentsPayload = Buffer.from(JSON.stringify({ comments: [] }))
 
         // upload data, the buffer temporarily stores chunks of data before upload
         try {
@@ -83,7 +83,11 @@ app.http('uploadMkdToStorage', {
             await articleBlockBlobClient.uploadData(markdownPayload, markdownUploadOptions)
 
             // everytime a new article is created upload an empty comments file
-            await commentsBlockBlobClient.uploadData(commentsPayload, commentUploadOptions)
+            await commentsAppendBlobClient.create({
+                blobHTTPHeaders: {
+                    blobContentType: 'application/json'
+                }
+            })
 
             // return blob url so iy can be inspected in the azurite json containers
             // im using azure storage explorer but a good fallback
@@ -92,7 +96,7 @@ app.http('uploadMkdToStorage', {
                 body: {
                     message: 'Uploaded to blob storage',
                     url: articleBlockBlobClient.url,
-                    commentsUrl: commentsBlockBlobClient.url,
+                    commentsUrl: commentsAppendBlobClient.url,
                     metadata  
                 }
             }

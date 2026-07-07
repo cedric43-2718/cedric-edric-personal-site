@@ -13,26 +13,15 @@
 		<div class="response-divider"></div>
 		<section class="comment-section">
 			<h2 class="title" v-if="comments">Comments</h2>
-			<ol class="comment-list" v-if="comments">
+			<ol v-for="comment in articleStore.articleComments" :key="comment.commentId" class="comment-list" v-if="comments">
 				<li class="comment">
 					<div class="content-container">
 						<div class="comment-info">
-							<p class="author fs-note">Jason Rudokas</p>
-							<p class="date fs-note">Oct 18, 2026</p>
+							<p class="author fs-note">{{ comment.authorName }}</p>
+							<p class="date fs-note">{{ formatDate(comment.postDate) }}</p>
 						</div>
 						<div class="comment-content">
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem sunt aliquam consectetur velit voluptatem voluptate adipisci dignissimos atque unde quis facere quae, veniam quasi tempora, ducimus quaerat praesentium quia? Ab?</p>
-						</div>
-					</div>
-				</li>
-				<li class="comment">
-					<div class="content-container">
-						<div class="comment-info">
-							<p class="author fs-note">Caleb</p>
-							<p class="date fs-note">Oct 18, 2026</p>
-						</div>
-						<div class="comment-content">
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem sunt aliquam consectetur velit voluptatem voluptate adipisci dignissimos atque unde quis facere quae, veniam quasi tempora, ducimus quaerat praesentium quia? Ab?</p>
+							<p>{{ comment.content }}</p>
 						</div>
 					</div>
 				</li>
@@ -91,7 +80,7 @@ const htmlContent = ref('')
 
 // comment related refs and reactive data
 
-const comments = ref(false)
+const comments = computed(() => articleStore.articleComments.length > 0)
 
 const isInvalid = computed(() => {
   return commentData.authorName.trim() === '' || commentData.content.trim() === '' || commentData.authorEmail.trim() === '';
@@ -103,7 +92,7 @@ const commentData = reactive(
 		content: '',
 		authorName: '',
 		authorEmail: '',
-		postDate: Date().toISOString()
+		postDate: new Date().toISOString()
 	}
 )
 
@@ -114,16 +103,15 @@ const handleSubmit = async () => {
 	}
 
 	await articleStore.callUploadComment(commentData, props.id)
+	await articleStore.callGetComments(props.id)
+
 
 	commentData.content = ''
 	commentData.authorName = ''
 	commentData.authorEmail = ''
+	commentData.postDate = ''
 
 }
-
-
-
-
 
 onMounted(async () => {
 	
@@ -131,15 +119,8 @@ onMounted(async () => {
 	htmlContent.value = articleStore.htmlFromMkdFile
 	htmlContentLoading.value = articleStore.isMkdLoading
 
-	// await articleStore.callGetComments(props.id)
-
-
-	const commentCount = computed(() => {
-		return articleStore.articleComments.length > 0
-	})
-	comments.value = commentCount.value
-
-	
+	await articleStore.callGetComments(props.id)
+	// console.log("Article:", articleStore.articleComments[0].authorEmail)
 
 })
 

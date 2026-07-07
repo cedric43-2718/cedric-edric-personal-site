@@ -144,10 +144,10 @@ export const useGeneralStore = defineStore('content', () => {
   }
 
    // this method calls the backend api uploadCommentToStorage
-  const callUploadComment = async (comment, commentFile) => {
+  const callUploadComment = async (comment, articleName) => {
     try{
 
-      const response = await fetch(`http://localhost:7071/api/uploadCommentToStorage?commentFile=${commentFile}`, {
+      const response = await fetch(`http://localhost:7071/api/uploadCommentToStorage?articleName=${articleName}`, {
         // http://localhost:7071/api/uploadCommentToStorage
         // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/uploadMkdToStorage
         method: 'POST',
@@ -270,8 +270,9 @@ export const useGeneralStore = defineStore('content', () => {
 
       const data = await response.json()
       const { fetchedComments } = data
-      console.log('getComments response', data)
+      // console.log('getComments response', data)
       articleComments.value = fetchedComments
+      console.log(articleComments.value[0])
       // loadedBlobs.value = true
 
     } catch(err) {
@@ -376,6 +377,7 @@ export const useGeneralStore = defineStore('content', () => {
     fetchRecipes,
     fetchRecipe,
     callUploadMkd,
+    callUploadComment,
     callGetMkd,
     callGetBlobs,
     callGetComments,
