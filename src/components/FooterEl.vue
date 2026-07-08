@@ -70,9 +70,8 @@
 				</div>
 				<div v-if="isArticleRoute" class="login">
 					<!-- <router-link :to="{name: 'login-success'}">Login</router-link> -->
-					<!-- <a v-if="!generalStore.isEditor" href="/.auth/login/google?post_login_redirect_uri=https://cedricedric.net/login-success">Login</a>
-					<router-link v-else :to="{name: 'edit-articles'}">Markdown Editor</router-link> -->
-					<router-link :to="{name: 'edit-articles'}">Markdown Editor</router-link>
+					<a v-if="!generalStore.isEditor" href="/.auth/login/google?post_login_redirect_uri=https://cedricedric.net/login-success">Login</a>
+					<router-link v-else :to="{name: 'edit-articles'}">Markdown Editor</router-link>
 				</div>
 			</div>
 		</div>
