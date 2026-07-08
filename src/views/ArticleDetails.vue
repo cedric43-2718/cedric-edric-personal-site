@@ -346,9 +346,9 @@ h2{
 		line-height: 1.4;
 	}
 
-	&:deep(p):not(:has(+ h1, + h2)) {
-		/* margin-bottom: 1ch; */
-	}
+	/* &:deep(p):not(:has(+ h1, + h2)) {
+		
+	} */
 
 	&:deep(li){
 		/* line-height: 1.5; */
@@ -400,10 +400,6 @@ h2{
 			.content-container{
 				display: grid;
 				grid-template-columns: 25% 1fr;
-
-				.comment-info{
-
-				}
 
 				.comment-content{
 					background: var(--young-orange-0a);
