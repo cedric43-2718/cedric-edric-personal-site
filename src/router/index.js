@@ -92,15 +92,14 @@ const router = createRouter({
 
         const generalStore = useGeneralStore()
 
-        // for production
-        // const authDetails = await getUserInfo()
-        // await generalStore.callGetCsv(authDetails.userDetails, 'editor')
+        const authDetails = await getUserInfo()
+        await generalStore.callGetCsv(authDetails.userDetails, 'editor')
 
         // for testing
-        generalStore.isEditor = true
+        // generalStore.isEditor = true
 
        if(generalStore.isEditor) {
-          // generalStore.updateUser(authDetails.userDetails)
+          generalStore.updateUser(authDetails.userDetails)
           next()
         } else {
             generalStore.showAuthMessage = true
