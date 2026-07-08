@@ -67,14 +67,7 @@ app.http('uploadMkdToStorage', {
             }
         }
 
-        // const commentUploadOptions = {
-        //     blobHTTPHeaders: {
-        //         blobContentType: 'application/json' // maybe application/json
-        //     }
-        // }
-
         const markdownPayload = Buffer.from(markdownContent, 'utf8')
-        // const commentsPayload = Buffer.from(JSON.stringify({ comments: [] }))
 
         // upload data, the buffer temporarily stores chunks of data before upload
         try {
