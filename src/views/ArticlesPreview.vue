@@ -138,8 +138,8 @@
 
 <script setup>
 
-import { ref, computed, onMounted } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { ref, computed, onMounted} from 'vue'
+import { useRouter, useRoute, onBeforeRouteUpdate } from 'vue-router'
 import { useCycleList } from '@vueuse/core'
 import { useGeneralStore } from '@/stores/appStore'
 import CycleInstance  from '@/components/CycleInstance.vue'
@@ -218,6 +218,7 @@ const blobsLoaded = computed(() => articleStore.loadedBlobs)
 const imagesLoaded = ref(false)
 
 const isContentLoaded = computed(() => blobsLoaded.value && imagesLoaded.value)
+
 
 // onMounted(async () => {
 // 	await articleStore.callGetBlobs('markdown-files')

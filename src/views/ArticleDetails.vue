@@ -62,7 +62,7 @@
 
 <script setup>
 
-import { ref, computed, reactive, onMounted } from 'vue'
+import { ref, computed, reactive, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useGeneralStore } from '@/stores/appStore'
 import { v4 as uuidv4 } from 'uuid'
@@ -96,6 +96,30 @@ const commentData = reactive(
 	}
 )
 
+// this function will be watched and reset the comment state whenever a new article id is passed as a prop
+// this is a better approach with nested routes since in this case the rendering template is being re-used and
+// on mounted will not run again every time the article changes
+// much of this was being done in an omMounted hook
+
+const loadArticle = async (articleId) => {
+	if(!articleId) return
+
+	// reset refs related to article state
+	articleStore.articleComments = [] 			// callGetComments
+	articleStore.isMkdLoading = true 			// callGetMkd
+	htmlContent.value = '' 						// this
+	htmlContentLoading.value = true 			// this
+
+	// load markdown
+	await articleStore.callGetMkd(articleId)
+	htmlContent.value = articleStore.htmlFromMkdFile		// callGetMkd
+	htmlContentLoading.value = articleStore.isMkdLoading	// callGetMkd
+
+	// load comments
+	await articleStore.callGetComments(articleId)
+
+}
+
 const handleSubmit = async () => {
 	if(!commentData.content.trim() || !commentData.authorName || !commentData.authorEmail) {
 		console.error("Comment information is missing required information")
@@ -109,21 +133,20 @@ const handleSubmit = async () => {
 	commentData.content = ''
 	commentData.authorName = ''
 	commentData.authorEmail = ''
-	commentData.postDate = ''
+	commentData.postDate = new Date().toISOString() // may want to just set this to empty
 
 }
 
-onMounted(async () => {
-	
-	await articleStore.callGetMkd(props.id)
-	htmlContent.value = articleStore.htmlFromMkdFile
-	htmlContentLoading.value = articleStore.isMkdLoading
+// this takes the place of onMounted and will run everytime the id prop is refreshed
+// immediate forces the watcher to trigger on creation instead of lazy
 
-	await articleStore.callGetComments(props.id)
-	// console.log("Article:", articleStore.articleComments[0].authorEmail)
-
-})
-
+watch(
+	() => props.id,
+	(newId) => {
+		loadArticle(newId)
+	},
+	{ immediate: true }
+)
 
 </script>
 

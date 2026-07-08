@@ -179,6 +179,10 @@ export const useGeneralStore = defineStore('content', () => {
 
   const callGetMkd = async (article) => {
 
+    htmlFromMkdFile.value = ''
+    articleMeta.value = null
+    isMkdLoading.value = true
+
     try {
 
       const response = await fetch(`http://localhost:7071/api/getMkdFromStorage?articleId=${article}`, {
@@ -194,7 +198,6 @@ export const useGeneralStore = defineStore('content', () => {
 
       const data = await response.json()
       // console.log('getMkdFromStorage response', data)
-
       const { markdown , metadata } = data
       
 
@@ -237,7 +240,7 @@ export const useGeneralStore = defineStore('content', () => {
 
       const data = await response.json()
       const { fetchedBlobs } = data
-      console.log('getBlobs response', data)
+      // console.log('getBlobs response', data)
       latestBlobs.value = fetchedBlobs
       loadedBlobs.value = true
 
@@ -253,6 +256,9 @@ export const useGeneralStore = defineStore('content', () => {
   // const loadedBlobs = ref(false)
 
   const callGetComments = async (articleName) => {
+
+    articleComments.value = []
+
     try {
       const response = await fetch(`http://localhost:7071/api/getComments?articleName=${articleName}`, {
         // http://localhost:7071/api/getBlobs
@@ -260,7 +266,6 @@ export const useGeneralStore = defineStore('content', () => {
         method: 'GET',
         headers: { 
           "Content-Type": "application/json"
-          // 'x-functions-key': process.env.GET_BLOBS_FUNCTION_KEY 
         }
       })
 
@@ -269,20 +274,16 @@ export const useGeneralStore = defineStore('content', () => {
       }
 
       const data = await response.json()
-      const { fetchedComments } = data
-      // console.log('getComments response', data)
-      articleComments.value = fetchedComments
-      console.log(articleComments.value[0])
-      // loadedBlobs.value = true
+      // const { fetchedComments } = data
+      // articleComments.value = fetchedComments
+      articleComments.value = Array.isArray(data?.fetchedComments) ? data.fetchedComments : []
 
     } catch(err) {
       console.log("from store: there was an error when calling backend api", err)
+      articleComments.value = []
     }
 
   }
-
-
-
 
   // generate SAS url for image uploads
 
