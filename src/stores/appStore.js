@@ -253,7 +253,6 @@ export const useGeneralStore = defineStore('content', () => {
   // call get comments from storage
 
   const articleComments = ref([])
-  // const loadedBlobs = ref(false)
 
   const callGetComments = async (articleName) => {
 
