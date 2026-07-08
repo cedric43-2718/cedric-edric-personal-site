@@ -19,6 +19,16 @@ app.http('getComments', {
             const containerClient = blobServiceClient.getContainerClient('markdown-files')
             const blobClient = containerClient.getBlobClient(commentBlob)
 
+            // if a comments blob does not exist return an empty one which will prevent stale state from possibly being re-used
+            const blobExists = await blobClient.exists()
+            if(!blobExists){
+                return {
+                    status: 200,
+                    body: JSON.stringify({ fetchedComments: [] }),
+                    headers: { 'Content-Type': 'application/json' }
+                }
+            }
+
             // download json contents
             const downloadResponse = await blobClient.download()
             const commentContent = await streamToString(downloadResponse.readableStreamBody)
