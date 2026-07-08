@@ -120,7 +120,7 @@ export const useGeneralStore = defineStore('content', () => {
 
       console.log("store", JSON.stringify(article))
 
-      const response = await fetch("http://localhost:7071/api/uploadMkdToStorage", {
+      const response = await fetch("https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/uploadMkdToStorage", {
         // http://localhost:7071/api/uploadMkdToStorage
         // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/uploadMkdToStorage
         method: 'POST',
@@ -147,9 +147,9 @@ export const useGeneralStore = defineStore('content', () => {
   const callUploadComment = async (comment, articleName) => {
     try{
 
-      const response = await fetch(`http://localhost:7071/api/uploadCommentToStorage?articleName=${articleName}`, {
+      const response = await fetch(`https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/uploadCommentToStorage?articleName=${articleName}`, {
         // http://localhost:7071/api/uploadCommentToStorage
-        // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/uploadMkdToStorage
+        // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/uploadCommentToStorage
         method: 'POST',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(comment)
@@ -185,7 +185,7 @@ export const useGeneralStore = defineStore('content', () => {
 
     try {
 
-      const response = await fetch(`http://localhost:7071/api/getMkdFromStorage?articleId=${article}`, {
+      const response = await fetch(`https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getMkdFromStorage?articleId=${article}`, {
         // http://localhost:7071/api/getMkdFromStorage
         // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getMkdFromStorage
         method: 'GET',
@@ -224,7 +224,7 @@ export const useGeneralStore = defineStore('content', () => {
 
   const callGetBlobs = async (containerName) => {
     try {
-      const response = await fetch(`http://localhost:7071/api/getBlobs?containerName=${containerName}`, {
+      const response = await fetch(`https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getBlobs?containerName=${containerName}`, {
         // http://localhost:7071/api/getBlobs
         // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getBlobs
         method: 'GET',
@@ -259,9 +259,9 @@ export const useGeneralStore = defineStore('content', () => {
     articleComments.value = []
 
     try {
-      const response = await fetch(`http://localhost:7071/api/getComments?articleName=${articleName}`, {
+      const response = await fetch(`https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getComments?articleName=${articleName}`, {
         // http://localhost:7071/api/getBlobs
-        // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getBlobs
+        // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getComments
         method: 'GET',
         headers: { 
           "Content-Type": "application/json"
@@ -295,7 +295,7 @@ export const useGeneralStore = defineStore('content', () => {
     try {
 
       const params = new URLSearchParams({ fileName, fileType })
-      const url = `http://localhost:7071/api/getSASUploadUrl?${params.toString()}`
+      const url = `https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getSASUploadUrl?${params.toString()}`
       
       // http://localhost:7071/api/getSASUploadUrl
       // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getSASUploadUrl
@@ -328,7 +328,7 @@ export const useGeneralStore = defineStore('content', () => {
 
   const callGetCsv = async (email, role) => {
     try {
-      const response = await fetch(`http://localhost:7071/api/getValuesFromCsv?email=${email}&role=${role}`, {
+      const response = await fetch(`https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getValuesFromCsv?email=${email}&role=${role}`, {
         // http://localhost:7071/api/getValuesFromCsv
         // https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getValuesFromCsv
         method: 'GET',
