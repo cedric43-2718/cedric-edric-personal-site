@@ -31,16 +31,16 @@ const router = createRouter({
       path: '/articles',
       name: 'articles',
       component: ArticlesPreview,
-      beforeEnter: async () => {
-        const articleStore = useGeneralStore()
-        await articleStore.callGetBlobs('markdown-files')
+      beforeEnter: async (to, from, next) => {
+        const generalStore = useGeneralStore()
 
-        // if(from.path === '/create-edit-articles') {
-        //   await articleStore.callGetBlobs('markdown-files')
-        // } else {
-        //   articleStore.callGetBlobs('markdown-files')
-        // }
-        
+        try {
+          await generalStore.callGetBlobs('markdown-files')
+          next()
+        } catch (error) {
+          console.error('Unable to load articles before entering route', error)
+          next()
+        }
       },
       children: [
         {
