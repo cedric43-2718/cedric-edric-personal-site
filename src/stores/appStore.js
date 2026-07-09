@@ -223,6 +223,9 @@ export const useGeneralStore = defineStore('content', () => {
   const loadedBlobs = ref(false)
 
   const callGetBlobs = async (containerName) => {
+
+    loadedBlobs.value = false
+
     try {
       const response = await fetch(`https://func-cedric-edric-contactapi-d6adccexftctabaw.eastus-01.azurewebsites.net/api/getBlobs?containerName=${containerName}`, {
         // http://localhost:7071/api/getBlobs
