@@ -1,15 +1,20 @@
 export function formatDate(dateString) {
-
-	const date = new Date(dateString)	
-
-	const options = { 
-		month: 'short', 
-		day: '2-digit', 
-		year: 'numeric',
-		timeZone: 'UTC' 
+	if (!dateString) {
+		return 'Date unavailable'
 	}
 
-	const formatedDate = new Intl.DateTimeFormat('en-us', options).format(date)
+	const date = new Date(dateString)
 
-	return formatedDate
+	if (Number.isNaN(date.getTime())) {
+		return 'Date unavailable'
+	}
+
+	const options = {
+		month: 'short',
+		day: '2-digit',
+		year: 'numeric',
+		timeZone: 'UTC'
+	}
+
+	return new Intl.DateTimeFormat('en-us', options).format(date)
 }
