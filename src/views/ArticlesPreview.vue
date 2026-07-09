@@ -101,7 +101,7 @@
 				<div class="project-items">
 					<div class="project-info">
 						<p class="fs-tertiary-heading">{{ article.metaData?.author }}</p>
-						<p class="fs-note">{{ formatDate(article.metaData.date) }}</p>
+						<p class="fs-note">{{ formatDate(article.metaData.date) || '' }}</p>
 					</div>
 				</div>
 				<div class="description">
@@ -139,7 +139,7 @@
 <script setup>
 
 import { ref, computed, onMounted} from 'vue'
-import { useRouter, useRoute, onBeforeRouteUpdate } from 'vue-router'
+import { useRouter, useRoute, watch } from 'vue-router'
 import { useCycleList } from '@vueuse/core'
 import { useGeneralStore } from '@/stores/appStore'
 import CycleInstance  from '@/components/CycleInstance.vue'
@@ -220,10 +220,23 @@ const imagesLoaded = ref(false)
 const isContentLoaded = computed(() => blobsLoaded.value && imagesLoaded.value)
 
 
-// onMounted(async () => {
-// 	await articleStore.callGetBlobs('markdown-files')
+const loadArticles = async () => {
+	await articleStore.callGetBlobs('markdown-files')
+}
 
-// })
+onMounted(() => {
+	loadArticles()
+})
+
+watch(
+	() => route.fullPath,
+	async (newPath) => {
+		if (newPath === '/articles') {
+			await loadArticles()
+		}
+	}
+)
+
 
 </script>
 
