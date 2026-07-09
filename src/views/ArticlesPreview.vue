@@ -138,8 +138,8 @@
 
 <script setup>
 
-import { ref, computed, onMounted} from 'vue'
-import { useRouter, useRoute, watch } from 'vue-router'
+import { ref, computed, onMounted, watch} from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useCycleList } from '@vueuse/core'
 import { useGeneralStore } from '@/stores/appStore'
 import CycleInstance  from '@/components/CycleInstance.vue'
