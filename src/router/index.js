@@ -31,11 +31,11 @@ const router = createRouter({
       path: '/articles',
       name: 'articles',
       component: ArticlesPreview,
-      beforeEnter: async (to, from, next) => {
+      beforeEnter: (to, from, next) => {
         const generalStore = useGeneralStore()
 
         try {
-          await generalStore.callGetBlobs('markdown-files')
+          generalStore.callGetBlobs('markdown-files')
           next()
         } catch (error) {
           console.error('Unable to load articles before entering route', error)

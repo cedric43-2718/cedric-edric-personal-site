@@ -125,7 +125,7 @@
 			</div>
 			<div class="project-image">
 				<img 
-					:src="article.metaData.previewImage" 
+					:src="article.metaData?.previewImage" 
 					@load="imagesLoaded = true"
 					@error="imagesLoaded = true" 
 					alt="article preview image"
