@@ -34,17 +34,17 @@
 							<div class="comment-content">
 								<div class="form-group comment-group">
 									<label for="description">Comment</label>
-									<textarea name="comment" required id="comment" v-model.lazy="commentData.content"></textarea>
+									<textarea name="comment" required id="comment" maxlength="1000" v-model.lazy="commentData.content"></textarea>
 								</div>
 							</div>
 							<div class="author-info">
 								<div class="form-group name-group">
 									<label for="name">Name</label>
-									<input type="text" required id="name" name="author_name" v-model.lazy="commentData.authorName">
+									<input type="text" required id="name" name="author_name" maxlength="80" v-model.lazy="commentData.authorName">
 								</div>
 								<div class="form-group title-group">
 									<label for="title">Email</label>
-									<input type="email" required id="email" name="author_email" v-model.lazy="commentData.authorEmail">
+									<input type="email" required id="email" name="author_email" maxlength="255" v-model.lazy="commentData.authorEmail">
 								</div>	
 							</div>
 						</div>
@@ -121,12 +121,25 @@ const loadArticle = async (articleId) => {
 }
 
 const handleSubmit = async () => {
-	if(!commentData.content.trim() || !commentData.authorName || !commentData.authorEmail) {
+
+	const content = commentData.content.trim()
+	const authorName = commentData.authorName.trim()
+  	const authorEmail = commentData.authorEmail.trim()
+
+	if(!content || !authorName || !authorEmail) {
 		console.error("Comment information is missing required information")
 		return
 	}
 
-	await articleStore.callUploadComment(commentData, props.id)
+	const payload = {
+		commentId: commentData.commentId,
+		content,
+		authorName,
+		authorEmail,
+		postDate: commentData.postDate
+	}
+
+	await articleStore.callUploadComment(payload, props.id)
 	await articleStore.callGetComments(props.id)
 
 
